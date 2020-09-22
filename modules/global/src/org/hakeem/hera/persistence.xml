@@ -2,5 +2,11 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="hera" transaction-type="RESOURCE_LOCAL">
 
+        <class>org.hakeem.hera.entity.party.Party</class>
+        <class>org.hakeem.hera.entity.party.Person</class>
+        <class>org.hakeem.hera.entity.party.Organization</class>
+        <class>org.hakeem.hera.entity.types.Country</class>
+        <class>org.hakeem.hera.entity.party.PartyAddress</class>
+        <class>org.hakeem.hera.entity.party.PartyRole</class>
     </persistence-unit>
 </persistence>
