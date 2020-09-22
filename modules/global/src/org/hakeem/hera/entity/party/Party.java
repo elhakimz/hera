@@ -2,6 +2,7 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.hakeem.hera.entity.types.PartyType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +16,22 @@ import java.util.List;
 public class Party extends StandardEntity {
     private static final long serialVersionUID = -705611384233901522L;
 
+    @Column(name = "PARTY_TYPE")
+    private String partyType;
+
     @Column(name = "NAME", length = 100)
     private String name;
 
     @OneToMany(mappedBy = "party")
     private List<PartyAddress> addresses;
+
+    public PartyType getPartyType() {
+        return partyType == null ? null : PartyType.fromId(partyType);
+    }
+
+    public void setPartyType(PartyType partyType) {
+        this.partyType = partyType == null ? null : partyType.getId();
+    }
 
     public List<PartyAddress> getAddresses() {
         return addresses;

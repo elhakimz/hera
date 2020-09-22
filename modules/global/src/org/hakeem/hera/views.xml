@@ -4,10 +4,15 @@
     <view entity="hera_Party" name="party-view" extends="_local">
         <property name="addresses" view="_minimal"/>
     </view>
+
     <view name="organization-view" extends="_local">
         <property name="addresses" view="_minimal"/>
     </view>
-    <view name="person-view" extends="_local">
-        <property name="addresses" view="_minimal"/>
+
+    <view name="person-view" extends="_local"/>
+    <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
+        <property name="country" view="_minimal"/>
     </view>
+
+    <view entity="hera_Country" name="country-view" extends="_local"/>
 </views>

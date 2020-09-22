@@ -1,9 +1,11 @@
 package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
+import org.hakeem.hera.entity.types.PartyType;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 
 @MappedSuperclass
 @NamePattern("%s|name")
@@ -19,5 +21,13 @@ public class Organization extends Party {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if(getPartyType()==null){
+            this.setPartyType(PartyType.ORGANIZATION);
+            this.setName(getFullName());
+        }
     }
 }

@@ -1,13 +1,16 @@
 package org.hakeem.hera.entity.party;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import org.hakeem.hera.entity.types.Country;
 
 import javax.persistence.*;
 
 @Table(name = "HERA_PARTY_ADDRESS")
 @Entity(name = "hera_PartyAddress")
+@NamePattern("%s|city")
 public class PartyAddress extends StandardEntity {
     private static final long serialVersionUID = 784505589915153906L;
 
@@ -30,6 +33,18 @@ public class PartyAddress extends StandardEntity {
 
     @Column(name = "POSTAL_CODE", length = 25)
     private String postalCode;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COUNTRY_ID")
+    private Country country;
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 
     public String getPostalCode() {
         return postalCode;

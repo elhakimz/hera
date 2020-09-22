@@ -2,10 +2,12 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import org.hakeem.hera.entity.types.Gender;
+import org.hakeem.hera.entity.types.PartyType;
 import org.hakeem.hera.entity.types.Salutation;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import java.time.LocalDate;
 
 @MappedSuperclass
@@ -88,5 +90,14 @@ public class Person extends Party {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+
+    @PrePersist
+    public void prePersist() {
+         if(this.getPartyType()==null){
+             this.setPartyType(PartyType.PERSON);
+             this.setName(firstName+" "+lastName+", "+getSalutation().name());
+         }
     }
 }

@@ -6,6 +6,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "HERA_COUNTRY")
 @Entity(name = "hera_Country")
@@ -13,7 +14,8 @@ import javax.persistence.Table;
 public class Country extends StandardEntity {
     private static final long serialVersionUID = -5922546117360262786L;
 
-    @Column(name = "NAME", length = 100)
+    @Column(name = "NAME", nullable = false, length = 100)
+    @NotNull
     private String name;
 
     @Column(name = "DESCRIPTION")
