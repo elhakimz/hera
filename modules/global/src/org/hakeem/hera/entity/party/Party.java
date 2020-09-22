@@ -2,22 +2,17 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import org.hakeem.hera.entity.types.PartyType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
+@javax.persistence.DiscriminatorValue("PARTY")
 @Table(name = "HERA_PARTY")
 @Entity(name = "hera_Party")
 @NamePattern("%s|name")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public class Party extends StandardEntity {
     private static final long serialVersionUID = -705611384233901522L;
-
-    @Column(name = "PARTY_TYPE")
-    private String partyType;
 
     @Column(name = "NAME", length = 100)
     private String name;
@@ -25,12 +20,15 @@ public class Party extends StandardEntity {
     @OneToMany(mappedBy = "party")
     private List<PartyAddress> addresses;
 
-    public PartyType getPartyType() {
-        return partyType == null ? null : PartyType.fromId(partyType);
+    @OneToMany(mappedBy = "party")
+    private List<PartyContact> contacts;
+
+    public List<PartyContact> getContacts() {
+        return contacts;
     }
 
-    public void setPartyType(PartyType partyType) {
-        this.partyType = partyType == null ? null : partyType.getId();
+    public void setContacts(List<PartyContact> contacts) {
+        this.contacts = contacts;
     }
 
     public List<PartyAddress> getAddresses() {

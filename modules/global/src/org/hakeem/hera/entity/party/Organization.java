@@ -4,10 +4,11 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import org.hakeem.hera.entity.types.PartyType;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 
-@MappedSuperclass
+@javax.persistence.DiscriminatorValue("ORGANIZATION")
+@Entity(name = "hera_Organization")
 @NamePattern("%s|name")
 public class Organization extends Party {
     private static final long serialVersionUID = 7062370672113295566L;
@@ -25,9 +26,8 @@ public class Organization extends Party {
 
     @PrePersist
     public void prePersist() {
-        if(getPartyType()==null){
-            this.setPartyType(PartyType.ORGANIZATION);
-            this.setName(getFullName());
-        }
+
+        this.setName(getFullName());
+
     }
 }

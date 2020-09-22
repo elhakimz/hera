@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://personEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.person">
+    <data>
+        <instance id="personDc"
+                  class="org.hakeem.hera.entity.party.Person">
+            <view extends="person-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="personDc">
+            <column width="350px">
+                <lookupField id="salutationField" property="salutation"/>
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="middleNameField" property="middleName"/>
+                <textField id="lastNameField" property="lastName"/>
+                <dateField id="birthDateField" property="birthDate"/>
+                <textField id="birthPlaceField" property="birthPlace"/>
+                <lookupField id="genderField" property="gender"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

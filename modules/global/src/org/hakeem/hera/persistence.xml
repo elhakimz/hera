@@ -8,5 +8,6 @@
         <class>org.hakeem.hera.entity.types.Country</class>
         <class>org.hakeem.hera.entity.party.PartyAddress</class>
         <class>org.hakeem.hera.entity.party.PartyRole</class>
+        <class>org.hakeem.hera.entity.party.PartyContact</class>
     </persistence-unit>
 </persistence>

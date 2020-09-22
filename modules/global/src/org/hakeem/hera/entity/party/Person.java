@@ -6,11 +6,12 @@ import org.hakeem.hera.entity.types.PartyType;
 import org.hakeem.hera.entity.types.Salutation;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import java.time.LocalDate;
 
-@MappedSuperclass
+@javax.persistence.DiscriminatorValue("PERSON")
+@Entity(name = "hera_Person")
 @NamePattern("%s|name")
 public class Person extends Party {
     private static final long serialVersionUID = 7053738058657349224L;
@@ -95,9 +96,7 @@ public class Person extends Party {
 
     @PrePersist
     public void prePersist() {
-         if(this.getPartyType()==null){
-             this.setPartyType(PartyType.PERSON);
              this.setName(firstName+" "+lastName+", "+getSalutation().name());
-         }
+
     }
 }

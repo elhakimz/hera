@@ -5,14 +5,21 @@
         <property name="addresses" view="_minimal"/>
     </view>
 
-    <view name="organization-view" extends="_local">
+    <view entity="hera_Organization" name="organization-view" extends="_local">
         <property name="addresses" view="_minimal"/>
     </view>
 
-    <view name="person-view" extends="_local"/>
+    <view entity="hera_Person" name="person-view" extends="_local">
+        <property name="addresses" view="partyAddress-view"/>
+        <property name="contacts" view="partyContact-view"/>
+    </view>
+
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
         <property name="country" view="_minimal"/>
     </view>
 
     <view entity="hera_Country" name="country-view" extends="_local"/>
+    <view entity="hera_PartyContact" name="partyContact-view" extends="_local">
+        <property name="party" view="_minimal"/>
+    </view>
 </views>

@@ -3,5 +3,6 @@
     <menu id="application-hera" insertBefore="administration" caption="mainMsg://menu_config.application-hera">
         <item screen="hera_Party.browse" caption="mainMsg://menu_config.hera_Party.browse"/>
         <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse"/>
+        <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse"/>
     </menu>
 </menu-config>

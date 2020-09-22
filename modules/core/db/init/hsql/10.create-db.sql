@@ -8,8 +8,21 @@ create table HERA_PARTY (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
+    DTYPE varchar(31),
     --
     NAME varchar(100),
+    --
+    -- from hera_Organization
+    FULL_NAME varchar(100),
+    --
+    -- from hera_Person
+    SALUTATION varchar(50),
+    FIRST_NAME varchar(100),
+    MIDDLE_NAME varchar(100),
+    LAST_NAME varchar(100),
+    BIRTH_DATE date,
+    BIRTH_PLACE varchar(100),
+    GENDER varchar(50),
     --
     primary key (ID)
 )^
@@ -31,6 +44,7 @@ create table HERA_PARTY_ADDRESS (
     CITY varchar(100),
     PROVINCE varchar(100),
     POSTAL_CODE varchar(25),
+    COUNTRY_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -64,7 +78,7 @@ create table HERA_COUNTRY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(100),
+    NAME varchar(100) not null,
     DESCRIPTION varchar(255),
     CODE varchar(20),
     --
