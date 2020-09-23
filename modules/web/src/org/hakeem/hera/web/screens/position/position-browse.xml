@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://positionBrowse.caption"
+        focusComponent="positionsTable"
+        messagesPack="org.hakeem.hera.web.screens.position">
+    <data readOnly="true">
+        <collection id="positionsDc"
+                    class="org.hakeem.hera.entity.hr.Position">
+            <view extends="_local">
+                <property name="positionType" view="_local"/>
+            </view>
+            <loader id="positionsDl">
+                <query>
+                    <![CDATA[select e from hera_Position e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="positionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="positionsTable"
+                dataLoader="positionsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="positionsTable"
+                    width="100%"
+                    dataContainer="positionsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="estFromDate"/>
+                <column id="estThruDate"/>
+                <column id="hasSalary"/>
+                <column id="isExempt"/>
+                <column id="isFullTime"/>
+                <column id="isTemporary"/>
+                <column id="actFromDate"/>
+                <column id="actThruDate"/>
+                <column id="statusType"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="positionsTable.create"/>
+                <button id="editBtn" action="positionsTable.edit"/>
+                <button id="removeBtn" action="positionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

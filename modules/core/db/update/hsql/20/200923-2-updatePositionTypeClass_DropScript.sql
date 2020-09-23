@@ -1,0 +1,1 @@
+alter table HERA_POSITION_TYPE_CLASS drop column STANDARD_HOURS_PER_WEEK__U99189 cascade ;

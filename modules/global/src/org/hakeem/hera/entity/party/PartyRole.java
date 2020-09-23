@@ -2,6 +2,7 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.slf4j.Logger;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public class PartyRole extends StandardEntity {
     private static final long serialVersionUID = -2053731754971987258L;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(PartyRole.class);
 
     @Column(name = "NAME", length = 100)
     private String name;
@@ -63,6 +65,7 @@ public class PartyRole extends StandardEntity {
     }
 
     public String getName() {
+
         return name;
     }
 

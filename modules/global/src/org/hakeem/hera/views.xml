@@ -4,15 +4,21 @@
     <view entity="hera_Party" name="party-view" extends="_local">
         <property name="addresses" view="_minimal"/>
         <property name="identifiers" view="_minimal"/>
+        <property name="contacts" view="_minimal"/>
+        <property name="photoImage" view="_minimal"/>
     </view>
 
     <view entity="hera_Organization" name="organization-view" extends="_local">
         <property name="addresses" view="_minimal"/>
+        <property name="contacts" view="_minimal"/>
+        <property name="photoImage" view="_minimal"/>
     </view>
 
     <view entity="hera_Person" name="person-view" extends="_local">
         <property name="addresses" view="partyAddress-view"/>
         <property name="contacts" view="partyContact-view"/>
+        <property name="age"/>
+        <property name="photoImage" view="_minimal"/>
     </view>
 
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
@@ -32,5 +38,34 @@
     </view>
     <view entity="hera_PartyIdentifier" name="partyIdentifier-view" extends="_local">
         <property name="party" view="_minimal"/>
+    </view>
+    <view entity="hera_PartyRole" name="partyRole-view" extends="_local">
+        <property name="party" view="_minimal"/>
+    </view>
+    <view entity="hera_PositionType" name="positionType-view" extends="_local">
+        <property name="company" view="_minimal"/>
+    </view>
+    <view entity="hera_PositionTypeClass" name="positionTypeClass-view" extends="_local">
+        <property name="classificationType" view="_minimal"/>
+        <property name="positionType" view="_minimal"/>
+    </view>
+    <view entity="hera_PositionResponsibility" name="positionResponsibility-view" extends="_local">
+        <property name="position" view="_minimal"/>
+    </view>
+    <view entity="hera_Position" name="position-view" extends="_local">
+        <property name="positionType" view="positionType-view"/>
+        <property name="budgetItem" view="_minimal"/>
+        <property name="name"/>
+        <property name="withinOrganization" view="organization-view"/>
+        <property name="positionResponsibilities" view="_local"/>
+        <property name="positionFulfillments" view="_local">
+            <property name="acceptedBy" view="_minimal"/>
+            <property name="fulfillmentOf" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="hera_PositionFulfillment" name="positionFulfillment-view" extends="_local">
+        <property name="acceptedBy" view="person-view"/>
+        <property name="fulfillmentOf" view="position-view"/>
+        <property name="name"/>
     </view>
 </views>

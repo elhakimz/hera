@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://positionEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.position">
+    <data>
+        <instance id="positionDc"
+                  class="org.hakeem.hera.entity.hr.Position">
+            <view extends="position-view">
+                <property name="positionResponsibilities" view="_local"/>
+                <property name="positionFulfillments" view="positionFulfillment-view"/>
+            </view>
+            <loader/>
+            <collection id="positionResponsibilitiesDc" property="positionResponsibilities"/>
+            <collection id="positionFulfillmentsDc" property="positionFulfillments" />
+
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="positionDc">
+                <column width="350px">
+                    <pickerField id="positionTypeField" property="positionType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <dateField id="estFromDateField" property="estFromDate"/>
+                    <dateField id="estThruDateField" property="estThruDate"/>
+                    <checkBox id="hasSalaryField" property="hasSalary"/>
+                    <checkBox id="isExemptField" property="isExempt"/>
+                    <checkBox id="isFullTimeField" property="isFullTime"/>
+                    <checkBox id="isTemporaryField" property="isTemporary"/>
+
+                </column>
+                <column>
+                    <dateField id="actFromDateField" property="actFromDate"/>
+                    <dateField id="actThruDateField" property="actThruDate"/>
+                    <pickerField id="budgetItemField" property="budgetItem">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="withinOrganizationField" property="withinOrganization">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <lookupField id="statusTypeField" property="statusType"/>
+                </column>
+            </form>
+            <tabSheet stylename="framed" caption="Responsibility and Fulfillments">
+                <tab id="tab2" caption="Position Fulfillment" spacing="true">
+                    <groupBox spacing="true" >
+                        <table id="positionFulfillmentsTable" dataContainer="positionFulfillmentsDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="acceptedBy"/>
+                                <column id="fromDate"/>
+                                <column id="thruDate"/>
+                                <column id="note"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="positionFulfillmentsTable.create"/>
+                                <button action="positionFulfillmentsTable.edit"/>
+                                <button action="positionFulfillmentsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+
+                </tab>
+
+                <tab id="tab1" caption="Position Responsibility" spacing="true" >
+                    <groupBox spacing="true">
+                        <table id="positionResponsibilitiesTable" dataContainer="positionResponsibilitiesDc" width="100%"
+                               height="200px">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="fromDate"/>
+                                <column id="thruDate"/>
+                                <column id="note"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="positionResponsibilitiesTable.create"/>
+                                <button action="positionResponsibilitiesTable.edit"/>
+                                <button action="positionResponsibilitiesTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+
+                </tab>
+
+            </tabSheet>
+
+        </scrollBox>
+
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -12,5 +12,14 @@
         <item screen="hera_PartyPerson.browse" caption="mainMsg://menu_config.hera_PartyPerson.browse"/>
         <item screen="hera_PartyOrg.browse" caption="mainMsg://menu_config.hera_PartyOrg.browse"/>
         <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse"/>
+        <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
+        <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse"/>
+        <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
+        <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
+        <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
+        <item screen="hera_PositionClassificationType.browse"
+              caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
+        <item screen="hera_PositionFulfillment.browse" caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
+        <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse"/>
     </menu>
 </menu-config>

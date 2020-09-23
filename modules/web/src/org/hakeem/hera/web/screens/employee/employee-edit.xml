@@ -10,14 +10,20 @@
             <loader/>
         </instance>
 
+        <instance id="personDc" class="org.hakeem.hera.entity.party.Person">
+            <loader id="personDl">
+            </loader>
+        </instance>
+
+
+
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
+        <hbox spacing="true">
         <form id="form" dataContainer="employeeDc">
             <column width="350px">
-                <textField id="nameField" property="name"/>
-                <textField id="descriptionField" property="description"/>
                 <pickerField id="partyField" property="party"  >
                     <actions >
                         <action id="lookup" type="picker_lookup"   >
@@ -33,6 +39,9 @@
                 <textField id="empCodeField" property="empCode"/>
             </column>
         </form>
+            <fragment screen="hera_PersonFragment"/>
+        </hbox>
+
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

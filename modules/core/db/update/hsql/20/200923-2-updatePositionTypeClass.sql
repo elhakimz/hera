@@ -1,0 +1,2 @@
+alter table HERA_POSITION_TYPE_CLASS alter column STANDARD_HOURS_PER_WEEK rename to STANDARD_HOURS_PER_WEEK__U99189 ^
+alter table HERA_POSITION_TYPE_CLASS add column STANDARD_HOURS_PER_WEEK double precision ;

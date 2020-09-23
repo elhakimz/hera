@@ -16,7 +16,7 @@ public class Employee extends PartyRole {
     private static final long serialVersionUID = -8297129083732717267L;
 
     @CaseConversion
-    @Column(name = "EMP_CODE", nullable = false, length = 11)
+    @Column(name = "EMP_CODE",  length = 11)
     @NotNull
     private String empCode;
 
@@ -32,6 +32,7 @@ public class Employee extends PartyRole {
     public void prePersist() {
           if(getParty()!=null){
               this.setName(getParty().getName()+"("+this.getEmpCode()+")");
+              this.setDescription(getParty().getName()+", Employee No:"+this.getEmpCode()+"");
           }
 
     }

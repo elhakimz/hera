@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://partyCompanyBrowse.caption"
+        focusComponent="partyRolesTable"
+        messagesPack="org.hakeem.hera.web.screens.partyrole">
+    <data readOnly="true">
+        <collection id="partyRolesDc"
+                    class="org.hakeem.hera.entity.party.PartyRole">
+            <view extends="partyRole-view"/>
+            <loader id="partyRolesDl">
+                <query>
+                    <![CDATA[select e from hera_Company e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="partyRolesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="partyRolesTable"
+                dataLoader="partyRolesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="partyRolesTable"
+                    width="100%"
+                    dataContainer="partyRolesDc">
+            <actions >
+                <action id="create" type="create" visible="false"/>
+                <action id="edit" type="edit" visible="false"/>
+                <action id="remove" type="remove" visible="false"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="description"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="partyRolesTable.create"/>
+                <button id="editBtn" action="partyRolesTable.edit"/>
+                <button id="removeBtn" action="partyRolesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

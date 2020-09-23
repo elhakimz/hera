@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://positionTypeEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.positiontype">
+    <data>
+        <instance id="positionTypeDc"
+                  class="org.hakeem.hera.entity.hr.PositionType">
+            <view extends="_local">
+                <property name="company" view="_minimal"/>
+                <property name="positionTypeClasses" view="positionTypeClass-view"/>
+            </view>
+            <loader/>
+            <collection id="positionTypeClassesDc" property="positionTypeClasses"/>
+
+        </instance>
+        <collection id="positionClassificationDc" class="org.hakeem.hera.entity.hr.PositionClassificationType">
+            <loader>
+                <query> select p from hera_PositionClassificationType p</query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="positionTypeDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="codeField" property="code"/>
+                <textField id="descriptionField" property="description"/>
+                <textField id="benefitPercentField" property="benefitPercent"/>
+                <pickerField id="companyField" property="company">
+                    <actions>
+                        <action id="lookup" type="picker_lookup">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <groupBox id="positionTypeClassesBox"
+                  caption="msg://org.hakeem.hera.entity.hr/PositionType.positionTypeClasses">
+            <table id="positionTypeClassesTable"
+                   dataContainer="positionTypeClassesDc" width="100%" height="200px" editable="true">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="fromDate" editable="true"/>
+                    <column id="thruDate" editable="true"/>
+                    <column id="standardHoursPerWeek" editable="true"/>
+                    <column id="classificationType" editable="true" optionsContainer="positionClassificationDc"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="positionTypeClassesTable.create"/>
+                    <button action="positionTypeClassesTable.edit"/>
+                    <button action="positionTypeClassesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

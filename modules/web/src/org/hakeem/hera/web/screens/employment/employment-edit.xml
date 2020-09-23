@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://employmentEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.employment">
+    <data>
+        <instance id="employmentDc"
+                  class="org.hakeem.hera.entity.hr.Employment">
+            <view extends="employment-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="employmentDc">
+            <column width="350px">
+                <pickerField id="fromPartyRoleField" property="fromPartyRole" caption="Employee">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="toPartyRoleField" property="toPartyRole" caption="Company">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <dateField id="fromDateField" property="fromDate"/>
+                <dateField id="thruDateField" property="thruDate"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

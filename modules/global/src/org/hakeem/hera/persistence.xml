@@ -14,5 +14,12 @@
         <class>org.hakeem.hera.entity.hr.Company</class>
         <class>org.hakeem.hera.entity.party.PartyRelationship</class>
         <class>org.hakeem.hera.entity.hr.Employment</class>
+        <class>org.hakeem.hera.entity.hr.Position</class>
+        <class>org.hakeem.hera.entity.hr.PositionResponsibility</class>
+        <class>org.hakeem.hera.entity.hr.PositionType</class>
+        <class>org.hakeem.hera.entity.finance.BudgetItem</class>
+        <class>org.hakeem.hera.entity.hr.PositionTypeClass</class>
+        <class>org.hakeem.hera.entity.hr.PositionClassificationType</class>
+        <class>org.hakeem.hera.entity.hr.PositionFulfillment</class>
     </persistence-unit>
 </persistence>

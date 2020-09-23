@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://positionFulfillmentBrowse.caption"
+        focusComponent="positionFulfillmentsTable"
+        messagesPack="org.hakeem.hera.web.screens.positionfulfillment">
+    <data readOnly="true">
+        <collection id="positionFulfillmentsDc"
+                    class="org.hakeem.hera.entity.hr.PositionFulfillment">
+            <view extends="_local">
+                <property name="acceptedBy" view="_minimal"/>
+                <property name="fulfillmentOf" view="_local"/>
+            </view>
+            <loader id="positionFulfillmentsDl">
+                <query>
+                    <![CDATA[select e from hera_PositionFulfillment e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="positionFulfillmentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="positionFulfillmentsTable"
+                dataLoader="positionFulfillmentsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="positionFulfillmentsTable"
+                    width="100%"
+                    dataContainer="positionFulfillmentsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+                <column id="acceptedBy"/>
+                <column id="fulfillmentOf"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="positionFulfillmentsTable.create"/>
+                <button id="editBtn" action="positionFulfillmentsTable.edit"/>
+                <button id="removeBtn" action="positionFulfillmentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

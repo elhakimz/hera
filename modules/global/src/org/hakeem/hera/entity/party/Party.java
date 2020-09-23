@@ -1,7 +1,11 @@
 package org.hakeem.hera.entity.party;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +29,20 @@ public class Party extends StandardEntity {
 
     @OneToMany(mappedBy = "party")
     private List<PartyContact> contacts;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PHOTO_IMAGE_ID")
+    private FileDescriptor photoImage;
+
+    public FileDescriptor getPhotoImage() {
+        return photoImage;
+    }
+
+    public void setPhotoImage(FileDescriptor photoImage) {
+        this.photoImage = photoImage;
+    }
 
     public List<PartyIdentifier> getIdentifiers() {
         return identifiers;
