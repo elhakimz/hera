@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://partyAddressBrowse.caption"
+        focusComponent="partyAddressesTable"
+        messagesPack="org.hakeem.hera.web.screens.partyaddress">
+    <data readOnly="true">
+        <collection id="partyAddressesDc"
+                    class="org.hakeem.hera.entity.party.PartyAddress">
+            <view extends="_local">
+                <property name="party" view="_minimal"/>
+            </view>
+            <loader id="partyAddressesDl">
+                <query>
+                    <![CDATA[select e from hera_PartyAddress e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="partyAddressesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="partyAddressesTable"
+                dataLoader="partyAddressesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="partyAddressesTable"
+                    width="100%"
+                    dataContainer="partyAddressesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="party"/>
+                <column id="addressLine1"/>
+                <column id="addressLine2"/>
+                <column id="city"/>
+                <column id="province"/>
+                <column id="postalCode"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="partyAddressesTable.create"/>
+                <button id="editBtn" action="partyAddressesTable.edit"/>
+                <button id="removeBtn" action="partyAddressesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

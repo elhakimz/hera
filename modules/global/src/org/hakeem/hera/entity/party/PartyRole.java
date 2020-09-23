@@ -4,10 +4,13 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
+@DiscriminatorValue("ROLE")
 @Table(name = "HERA_PARTY_ROLE")
 @Entity(name = "hera_PartyRole")
 @NamePattern("%s|name")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 public class PartyRole extends StandardEntity {
     private static final long serialVersionUID = -2053731754971987258L;
 
@@ -20,6 +23,28 @@ public class PartyRole extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PARTY_ID")
     private Party party;
+
+    @Column(name = "FROM_DATE")
+    private LocalDate fromDate;
+
+    @Column(name = "THRU_DATE")
+    private LocalDate thruDate;
+
+    public LocalDate getThruDate() {
+        return thruDate;
+    }
+
+    public void setThruDate(LocalDate thruDate) {
+        this.thruDate = thruDate;
+    }
+
+    public LocalDate getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(LocalDate fromDate) {
+        this.fromDate = fromDate;
+    }
 
     public Party getParty() {
         return party;

@@ -9,5 +9,10 @@
         <class>org.hakeem.hera.entity.party.PartyAddress</class>
         <class>org.hakeem.hera.entity.party.PartyRole</class>
         <class>org.hakeem.hera.entity.party.PartyContact</class>
+        <class>org.hakeem.hera.entity.hr.Employee</class>
+        <class>org.hakeem.hera.entity.party.PartyIdentifier</class>
+        <class>org.hakeem.hera.entity.hr.Company</class>
+        <class>org.hakeem.hera.entity.party.PartyRelationship</class>
+        <class>org.hakeem.hera.entity.hr.Employment</class>
     </persistence-unit>
 </persistence>

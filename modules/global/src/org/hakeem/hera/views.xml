@@ -22,4 +22,11 @@
     <view entity="hera_PartyContact" name="partyContact-view" extends="_local">
         <property name="party" view="_minimal"/>
     </view>
+    <view entity="hera_Employee" name="employee-view" extends="_local">
+        <property name="party" view="_minimal"/>
+    </view>
+    <view entity="hera_Employment" name="employment-view" extends="_local">
+        <property name="fromPartyRole" view="_minimal"/>
+        <property name="toPartyRole" view="_minimal"/>
+    </view>
 </views>

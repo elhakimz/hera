@@ -7,7 +7,11 @@
         <instance id="personDc"
                   class="org.hakeem.hera.entity.party.Person">
             <view extends="person-view"/>
+            <view extends="_local">
+                <property name="addresses" view="_minimal"/>
+            </view>
             <loader/>
+            <collection id="addressesDc" property="addresses"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -24,6 +28,27 @@
                 <lookupField id="genderField" property="gender"/>
             </column>
         </form>
+        <groupBox id="addressesBox" caption="msg://org.hakeem.hera.entity.party/Party.addresses">
+            <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="addressLine1"/>
+                    <column id="addressLine2"/>
+                    <column id="city"/>
+                    <column id="province"/>
+                    <column id="postalCode"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="addressesTable.create"/>
+                    <button action="addressesTable.edit"/>
+                    <button action="addressesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

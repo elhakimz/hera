@@ -18,10 +18,21 @@ public class Party extends StandardEntity {
     private String name;
 
     @OneToMany(mappedBy = "party")
+    private List<PartyIdentifier> identifiers;
+
+    @OneToMany(mappedBy = "party")
     private List<PartyAddress> addresses;
 
     @OneToMany(mappedBy = "party")
     private List<PartyContact> contacts;
+
+    public List<PartyIdentifier> getIdentifiers() {
+        return identifiers;
+    }
+
+    public void setIdentifiers(List<PartyIdentifier> identifiers) {
+        this.identifiers = identifiers;
+    }
 
     public List<PartyContact> getContacts() {
         return contacts;

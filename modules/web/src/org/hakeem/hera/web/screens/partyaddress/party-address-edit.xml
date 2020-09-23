@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://partyAddressEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.partyaddress">
+    <data>
+        <instance id="partyAddressDc"
+                  class="org.hakeem.hera.entity.party.PartyAddress">
+            <view extends="partyAddress-view">
+                <property name="party" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="partyAddressDc">
+            <column width="350px">
+                <pickerField id="partyField" property="party">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="addressLine1Field" property="addressLine1"/>
+                <textField id="addressLine2Field" property="addressLine2"/>
+                <textField id="cityField" property="city"/>
+                <textField id="provinceField" property="province"/>
+                <textField id="postalCodeField" property="postalCode"/>
+                <pickerField id="countryField" property="country">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
