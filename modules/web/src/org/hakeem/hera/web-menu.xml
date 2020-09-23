@@ -6,5 +6,11 @@
         <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse"/>
         <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse"/>
         <item screen="hera_Organization.browse" caption="mainMsg://menu_config.hera_Organization.browse"/>
+        <item screen="hera_PartyContact.browse" caption="mainMsg://menu_config.hera_PartyContact.browse"/>
+        <item screen="hera_PartyIdentifier.browse" caption="mainMsg://menu_config.hera_PartyIdentifier.browse"/>
+        <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
+        <item screen="hera_PartyPerson.browse" caption="mainMsg://menu_config.hera_PartyPerson.browse"/>
+        <item screen="hera_PartyOrg.browse" caption="mainMsg://menu_config.hera_PartyOrg.browse"/>
+        <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse"/>
     </menu>
 </menu-config>

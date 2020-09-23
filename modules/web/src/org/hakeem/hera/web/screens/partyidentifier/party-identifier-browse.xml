@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://partyIdentifierBrowse.caption"
+        focusComponent="partyIdentifiersTable"
+        messagesPack="org.hakeem.hera.web.screens.partyidentifier">
+    <data readOnly="true">
+        <collection id="partyIdentifiersDc"
+                    class="org.hakeem.hera.entity.party.PartyIdentifier">
+            <view extends="_local"/>
+            <loader id="partyIdentifiersDl">
+                <query>
+                    <![CDATA[select e from hera_PartyIdentifier e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="partyIdentifiersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="partyIdentifiersTable"
+                dataLoader="partyIdentifiersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="partyIdentifiersTable"
+                    width="100%"
+                    dataContainer="partyIdentifiersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="identType"/>
+                <column id="identNumber"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="partyIdentifiersTable.create"/>
+                <button id="editBtn" action="partyIdentifiersTable.edit"/>
+                <button id="removeBtn" action="partyIdentifiersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -7,10 +7,12 @@
         <instance id="partyDc"
                   class="org.hakeem.hera.entity.party.Party">
             <view extends="_local">
-                <property name="addresses" view="_minimal"/>
+                <property name="addresses" view="_local"/>
+                <property name="contacts" view="_local"/>
             </view>
             <loader/>
             <collection id="addressesDc" property="addresses"/>
+            <collection id="contactsDc" property="contacts"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -39,6 +41,25 @@
                     <button action="addressesTable.create"/>
                     <button action="addressesTable.edit"/>
                     <button action="addressesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="contactsBox" caption="msg://org.hakeem.hera.entity.party/Party.contacts">
+            <table id="contactsTable" dataContainer="contactsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="contactType"/>
+                    <column id="contactNumber"/>
+                    <column id="isActive"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="contactsTable.create"/>
+                    <button action="contactsTable.edit"/>
+                    <button action="contactsTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>

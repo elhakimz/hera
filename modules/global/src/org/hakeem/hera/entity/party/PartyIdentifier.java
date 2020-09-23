@@ -1,5 +1,6 @@
 package org.hakeem.hera.entity.party;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import org.hakeem.hera.entity.types.IdentifierType;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 
 @Table(name = "HERA_PARTY_IDENTIFIER")
 @Entity(name = "hera_PartyIdentifier")
+@NamePattern("%s|identNumber")
 public class PartyIdentifier extends StandardEntity {
     private static final long serialVersionUID = 1402444269526595637L;
 

@@ -1,5 +1,6 @@
 package org.hakeem.hera.entity.party;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 
 @Table(name = "HERA_PARTY_CONTACT")
 @Entity(name = "hera_PartyContact")
+@NamePattern("%s|contactNumber")
 public class PartyContact extends StandardEntity {
     private static final long serialVersionUID = 8351422690720304503L;
 

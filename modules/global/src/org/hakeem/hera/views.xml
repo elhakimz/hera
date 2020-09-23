@@ -3,6 +3,7 @@
 
     <view entity="hera_Party" name="party-view" extends="_local">
         <property name="addresses" view="_minimal"/>
+        <property name="identifiers" view="_minimal"/>
     </view>
 
     <view entity="hera_Organization" name="organization-view" extends="_local">
@@ -28,5 +29,8 @@
     <view entity="hera_Employment" name="employment-view" extends="_local">
         <property name="fromPartyRole" view="_minimal"/>
         <property name="toPartyRole" view="_minimal"/>
+    </view>
+    <view entity="hera_PartyIdentifier" name="partyIdentifier-view" extends="_local">
+        <property name="party" view="_minimal"/>
     </view>
 </views>

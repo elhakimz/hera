@@ -1,0 +1,36 @@
+package org.hakeem.hera.web.screens.employee;
+
+import com.haulmont.cuba.gui.ScreenBuilders;
+import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.PickerField;
+import com.haulmont.cuba.gui.screen.*;
+import org.hakeem.hera.entity.hr.Employee;
+import org.hakeem.hera.entity.party.Party;
+import org.hakeem.hera.entity.party.Person;
+import org.hakeem.hera.web.screens.party.PartyPersonBrowse;
+import org.hakeem.hera.web.screens.person.PersonBrowse;
+
+import javax.inject.Inject;
+
+@UiController("hera_Employee.edit")
+@UiDescriptor("employee-edit.xml")
+@EditedEntityContainer("employeeDc")
+@LoadDataBeforeShow
+public class EmployeeEdit extends StandardEditor<Employee> {
+    @Inject
+    private ScreenBuilders screenBuilders;
+
+    @Inject
+    private PickerField<Party> partyField;
+
+    @Subscribe("partyField.lookup")
+    public void onPartyFieldLookup(Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(partyField)
+                .withScreenClass(PartyPersonBrowse.class)
+                .withOpenMode(OpenMode.DIALOG)
+                .build()
+                .show();
+    }
+
+
+}
