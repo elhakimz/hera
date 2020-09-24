@@ -77,4 +77,9 @@
         <property name="workeffort" view="workeffort-view"/>
     </view>
     <view entity="hera_Workeffort" name="workeffort-view" extends="_local"/>
+    <view entity="hera_PositionStructure" name="positionStructure-view" extends="_local">
+        <property name="position" view="_minimal"/>
+        <property name="managedBy" view="_minimal"/>
+        <property name="name"/>
+    </view>
 </views>

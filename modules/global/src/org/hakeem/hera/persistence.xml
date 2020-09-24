@@ -25,5 +25,9 @@
         <class>org.hakeem.hera.entity.timesheet.Timesheet</class>
         <class>org.hakeem.hera.entity.timesheet.TimeEntry</class>
         <class>org.hakeem.hera.entity.timesheet.Workeffort</class>
+        <class>org.hakeem.hera.entity.payroll.Paycheck</class>
+        <class>org.hakeem.hera.entity.finance.BankAccount</class>
+        <class>org.hakeem.hera.entity.finance.Currency</class>
+        <class>org.hakeem.hera.entity.hr.PositionStructure</class>
     </persistence-unit>
 </persistence>

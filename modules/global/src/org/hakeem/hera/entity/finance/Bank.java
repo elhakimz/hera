@@ -14,6 +14,17 @@ public class Bank extends StandardEntity {
     @JoinColumn(name = "ORGANIZATION_ID")
     private Organization organization;
 
+    @Column(name = "BIC", length = 100)
+    private String bic;
+
+    public String getBic() {
+        return bic;
+    }
+
+    public void setBic(String bic) {
+        this.bic = bic;
+    }
+
     public Organization getOrganization() {
         return organization;
     }

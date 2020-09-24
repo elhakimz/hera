@@ -2,27 +2,28 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-hera" insertBefore="administration" caption="mainMsg://menu_config.application-hera">
         <item screen="hera_Party.browse" caption="mainMsg://menu_config.hera_Party.browse"/>
-        <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse"/>
-        <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse"/>
-        <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse"/>
-        <item screen="hera_Organization.browse" caption="mainMsg://menu_config.hera_Organization.browse"/>
-        <item screen="hera_PartyContact.browse" caption="mainMsg://menu_config.hera_PartyContact.browse"/>
-        <item screen="hera_PartyIdentifier.browse" caption="mainMsg://menu_config.hera_PartyIdentifier.browse"/>
-        <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
+        <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse" icon="GLOBE"/>
+        <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse" icon="USER"/>
+        <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse" icon="ADDRESS_BOOK"/>
+        <item screen="hera_Organization.browse" caption="mainMsg://menu_config.hera_Organization.browse" icon="BUILDING"/>
+        <item screen="hera_PartyContact.browse" caption="mainMsg://menu_config.hera_PartyContact.browse" icon="ADDRESS_CARD"/>
+        <item screen="hera_PartyIdentifier.browse" caption="mainMsg://menu_config.hera_PartyIdentifier.browse" icon="font-icon:ID_CARD"/>
+        <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse" icon="USER_CIRCLE"/>
         <item screen="hera_PartyPerson.browse" caption="mainMsg://menu_config.hera_PartyPerson.browse"/>
         <item screen="hera_PartyOrg.browse" caption="mainMsg://menu_config.hera_PartyOrg.browse"/>
-        <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse"/>
+        <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse" icon="font-icon:INDUSTRY"/>
         <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
-        <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse"/>
+        <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse" icon="FLAG"/>
         <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
         <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
         <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
         <item screen="hera_PositionClassificationType.browse"
               caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
         <item screen="hera_PositionFulfillment.browse" caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
-        <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse"/>
+        <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse" icon="ASTERISK"/>
         <item screen="hera_PositionResponsibility.browse"
               caption="mainMsg://menu_config.hera_PositionResponsibility.browse"/>
-        <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse"/>
+        <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse" icon="font-icon:BOOK"/>
+        <item screen="hera_PositionStructure.browse" caption="mainMsg://menu_config.hera_PositionStructure.browse" icon="CUBES"/>
     </menu>
 </menu-config>

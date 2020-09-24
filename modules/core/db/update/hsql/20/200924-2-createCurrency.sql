@@ -1,0 +1,2 @@
+alter table HERA_CURRENCY add constraint FK_HERA_CURRENCY_ON_COUNTRY foreign key (COUNTRY_ID) references HERA_COUNTRY(ID);
+create index IDX_HERA_CURRENCY_ON_COUNTRY on HERA_CURRENCY (COUNTRY_ID);

@@ -39,13 +39,13 @@
                 <column>
                     <dateField id="actFromDateField" property="actFromDate"/>
                     <dateField id="actThruDateField" property="actThruDate"/>
-                    <pickerField id="budgetItemField" property="budgetItem">
+                    <pickerField id="budgetItemField" property="budgetItem" icon="BOOK">
                         <actions>
                             <action id="lookup" type="picker_lookup"/>
                             <action id="clear" type="picker_clear"/>
                         </actions>
                     </pickerField>
-                    <pickerField id="withinOrganizationField" property="withinOrganization">
+                    <pickerField id="withinOrganizationField" property="withinOrganization" icon="BUILDING">
                         <actions>
                             <action id="lookup" type="picker_lookup"/>
                             <action id="clear" type="picker_clear"/>
