@@ -21,5 +21,9 @@
         <class>org.hakeem.hera.entity.hr.PositionTypeClass</class>
         <class>org.hakeem.hera.entity.hr.PositionClassificationType</class>
         <class>org.hakeem.hera.entity.hr.PositionFulfillment</class>
+        <class>org.hakeem.hera.entity.finance.Bank</class>
+        <class>org.hakeem.hera.entity.timesheet.Timesheet</class>
+        <class>org.hakeem.hera.entity.timesheet.TimeEntry</class>
+        <class>org.hakeem.hera.entity.timesheet.Workeffort</class>
     </persistence-unit>
 </persistence>

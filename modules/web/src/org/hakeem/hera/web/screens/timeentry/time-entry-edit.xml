@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://timeEntryEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.timeentry">
+    <data>
+        <instance id="timeEntryDc"
+                  class="org.hakeem.hera.entity.timesheet.TimeEntry">
+            <view extends="timeEntry-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="timeEntryDc">
+            <column width="350px">
+                <pickerField id="timesheetField" property="timesheet" enable="false">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="entryIdField" property="entryId"/>
+                <dateField id="fromDateTimeField" property="fromDateTime"/>
+                <dateField id="thruDateTimeField" property="thruDateTime"/>
+                <textField id="hoursField" property="hours"/>
+                <textField id="noteField" property="note"/>
+                <pickerField id="workeffortField" property="workeffort">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

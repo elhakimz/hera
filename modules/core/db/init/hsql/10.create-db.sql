@@ -295,3 +295,86 @@ create table HERA_POSITION_TYPE_CLASS (
     primary key (ID)
 )^
 -- end HERA_POSITION_TYPE_CLASS
+-- begin HERA_BANK
+create table HERA_BANK (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ORGANIZATION_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_BANK
+-- begin HERA_TIME_ENTRY
+create table HERA_TIME_ENTRY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TIMESHEET_ID varchar(36),
+    ENTRY_ID varchar(100),
+    FROM_DATE_TIME timestamp not null,
+    THRU_DATE_TIME timestamp,
+    HOURS double precision,
+    NOTE varchar(255),
+    WORKEFFORT_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_TIME_ENTRY
+-- begin HERA_TIMESHEET
+create table HERA_TIMESHEET (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EMPLOYEE_ID varchar(36),
+    FROM_DATE date not null,
+    THRU_DATE date,
+    NOTE varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_TIMESHEET
+-- begin HERA_WORKEFFORT
+create table HERA_WORKEFFORT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100) not null,
+    DESCRIPTION varchar(255),
+    SCHEDULED_START date not null,
+    SCHEDULED_COMPLETION date not null,
+    TOTAL_AMOUNT_ALLOWED decimal(19, 2),
+    TOTAL_HOURS_ALLOWED double precision,
+    ESTIMATED_HOURS double precision,
+    ACTUAL_START date,
+    ACTUAL_COMPLETION date,
+    ACTUAL_HOURS double precision,
+    SPECIAL_TERMS varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_WORKEFFORT

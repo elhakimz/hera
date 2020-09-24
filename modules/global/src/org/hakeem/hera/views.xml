@@ -68,4 +68,13 @@
         <property name="fulfillmentOf" view="position-view"/>
         <property name="name"/>
     </view>
+    <view entity="hera_Timesheet" name="timesheet-view" extends="_local">
+        <property name="employee" view="employee-view"/>
+        <property name="timeEntries" view="timeEntry-view"/>
+        <property name="name"/>
+    </view>
+    <view entity="hera_TimeEntry" name="timeEntry-view" extends="_local">
+        <property name="workeffort" view="workeffort-view"/>
+    </view>
+    <view entity="hera_Workeffort" name="workeffort-view" extends="_local"/>
 </views>

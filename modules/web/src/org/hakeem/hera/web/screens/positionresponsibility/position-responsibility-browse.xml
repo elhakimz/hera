@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://positionResponsibilityBrowse.caption"
+        focusComponent="positionResponsibilitiesTable"
+        messagesPack="org.hakeem.hera.web.screens.positionresponsibility">
+    <data readOnly="true">
+        <collection id="positionResponsibilitiesDc"
+                    class="org.hakeem.hera.entity.hr.PositionResponsibility">
+            <view extends="_local">
+                <property name="position" view="_minimal"/>
+            </view>
+            <loader id="positionResponsibilitiesDl">
+                <query>
+                    <![CDATA[select e from hera_PositionResponsibility e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="positionResponsibilitiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="positionResponsibilitiesTable"
+                dataLoader="positionResponsibilitiesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="positionResponsibilitiesTable"
+                    width="100%"
+                    dataContainer="positionResponsibilitiesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="position"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="positionResponsibilitiesTable.create"/>
+                <button id="editBtn" action="positionResponsibilitiesTable.edit"/>
+                <button id="removeBtn" action="positionResponsibilitiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

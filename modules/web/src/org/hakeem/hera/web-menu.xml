@@ -21,5 +21,8 @@
               caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
         <item screen="hera_PositionFulfillment.browse" caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
         <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse"/>
+        <item screen="hera_PositionResponsibility.browse"
+              caption="mainMsg://menu_config.hera_PositionResponsibility.browse"/>
+        <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse"/>
     </menu>
 </menu-config>
