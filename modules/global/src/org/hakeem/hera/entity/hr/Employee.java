@@ -6,8 +6,10 @@ import org.hakeem.hera.entity.party.PartyRole;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @javax.persistence.DiscriminatorValue("EMPLOYEE")
 @Entity(name = "hera_Employee")
@@ -16,9 +18,20 @@ public class Employee extends PartyRole {
     private static final long serialVersionUID = -8297129083732717267L;
 
     @CaseConversion
-    @Column(name = "EMP_CODE",  length = 11)
+    @Column(name = "EMP_CODE", length = 11)
     @NotNull
     private String empCode;
+
+    @OneToMany(mappedBy = "acceptedBy")
+    private List<PositionFulfillment> positionFulfillments;
+
+    public List<PositionFulfillment> getPositionFulfillments() {
+        return positionFulfillments;
+    }
+
+    public void setPositionFulfillments(List<PositionFulfillment> positionFulfillments) {
+        this.positionFulfillments = positionFulfillments;
+    }
 
     public String getEmpCode() {
         return empCode;

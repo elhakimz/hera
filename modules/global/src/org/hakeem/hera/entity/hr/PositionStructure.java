@@ -19,7 +19,7 @@ public class PositionStructure extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "POSITION_ID")
-    private Position position;
+    private Position reportTo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MANAGED_BY_ID")
@@ -51,7 +51,7 @@ public class PositionStructure extends StandardEntity {
 
     public String getName() {
         try {
-            name= getPosition().getName()+" M-> "+getManagedBy().getName();
+            name= getReportTo().getName()+" M-> "+getManagedBy().getName();
         } catch (Exception e) {
             log.error("Error", e);
         }
@@ -94,11 +94,11 @@ public class PositionStructure extends StandardEntity {
         this.managedBy = managedBy;
     }
 
-    public Position getPosition() {
-        return position;
+    public Position getReportTo() {
+        return reportTo;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setReportTo(Position reportTo) {
+        this.reportTo = reportTo;
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://positionStructureEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.positionstructure">
+    <data>
+        <instance id="positionStructureDc"
+                  class="org.hakeem.hera.entity.hr.PositionStructure">
+            <view extends="positionStructure-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="positionStructureDc">
+            <column width="350px">
+                <pickerField id="positionField" property="reportTo">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="managedByField" property="managedBy">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="descriptionField" property="description"/>
+                <dateField id="fromDateField" property="fromDate"/>
+                <dateField id="thruDateField" property="thruDate"/>
+                <textField id="nameField" property="name"/>
+                <lookupField id="statusField" property="status"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -29,5 +29,6 @@
         <class>org.hakeem.hera.entity.finance.BankAccount</class>
         <class>org.hakeem.hera.entity.finance.Currency</class>
         <class>org.hakeem.hera.entity.hr.PositionStructure</class>
+        <class>org.hakeem.hera.entity.timesheet.Attendance</class>
     </persistence-unit>
 </persistence>

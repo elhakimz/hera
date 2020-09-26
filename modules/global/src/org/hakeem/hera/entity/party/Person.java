@@ -18,6 +18,7 @@ import java.time.Period;
 @NamePattern("%s|name")
 public class Person extends Party {
     private static final long serialVersionUID = 7053738058657349224L;
+
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(Person.class);
 
     @Column(name = "SALUTATION")

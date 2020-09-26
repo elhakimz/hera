@@ -33,7 +33,7 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="position" editable="true"/>
+                <column id="reportTo" editable="true"/>
                 <column id="managedBy" editable="true"/>
                 <column id="description" editable="true"/>
                 <column id="fromDate" editable="true"/>
