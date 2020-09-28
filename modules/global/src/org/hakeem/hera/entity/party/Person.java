@@ -47,6 +47,7 @@ public class Person extends Party {
     private String gender;
 
     public Integer getAge() {
+
         try {
             if(getBirthDate()!=null){
                Period period = Period.between(getBirthDate(), LocalDate.now());
@@ -55,6 +56,7 @@ public class Person extends Party {
         } catch (Exception e) {
             log.error("Error", e);
         }
+
         return age;
     }
 

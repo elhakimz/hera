@@ -306,7 +306,7 @@ create table HERA_BANK (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    ORGANIZATION_ID varchar(36),
+    ORGANIZATION_ID varchar(36) not null,
     BIC varchar(100),
     --
     primary key (ID)
@@ -390,6 +390,10 @@ create table HERA_BANK_ACCOUNT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    PARTY_ID varchar(36),
+    BANK_ID varchar(36),
+    CURRENCY_ID varchar(36),
+    --
     primary key (ID)
 )^
 -- end HERA_BANK_ACCOUNT
@@ -436,11 +440,12 @@ create table HERA_POSITION_STRUCTURE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    POSITION_ID varchar(36),
+    POSITION_ID varchar(36) not null,
+    REPORT_TO_NAME varchar(100),
     MANAGED_BY_ID varchar(36),
-    DESCRIPTION varchar(255),
     FROM_DATE date,
     THRU_DATE date,
+    IS_PRIMARY boolean,
     STATUS varchar(50),
     --
     primary key (ID)
@@ -471,3 +476,103 @@ create table HERA_ATTENDANCE (
     primary key (ID)
 )^
 -- end HERA_ATTENDANCE
+-- begin HERA_SALARY_STEP
+create table HERA_SALARY_STEP (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    SEQ_ID integer,
+    AMOUNT decimal(19, 2),
+    DATE_MODIFIED date,
+    PAY_GRADE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_SALARY_STEP
+-- begin HERA_POSITION_TYPE_RATE
+create table HERA_POSITION_TYPE_RATE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FROM_DATE date,
+    THRU_DATE date,
+    RATE decimal(19, 2),
+    RATE_TYPE varchar(50),
+    POSITION_TYPE_ID varchar(36),
+    SALARY_STEP_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_POSITION_TYPE_RATE
+-- begin HERA_PAY_HISTORY
+create table HERA_PAY_HISTORY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FRON_DATE date,
+    THRU_DATE date,
+    AMOUNT decimal(19, 2),
+    DESCRIPTION varchar(255),
+    EMPLOYMENT_ID varchar(36),
+    PERIOD_TYPE varchar(50),
+    SALARY_STEP_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_PAY_HISTORY
+-- begin HERA_PAY_GRADE
+create table HERA_PAY_GRADE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_PAY_GRADE
+-- begin HERA_BANK_ACCOUNT_NUMBER
+create table HERA_BANK_ACCOUNT_NUMBER (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    BANK_ACCOUNT_ID varchar(36),
+    NUMBER_TYPE varchar(50),
+    ACCOUNT_NO varchar(100),
+    COMPACT_ACCOUNT_NO varchar(100),
+    EXPIRE_DATE date,
+    IS_ACTIVE boolean,
+    --
+    primary key (ID)
+)^
+-- end HERA_BANK_ACCOUNT_NUMBER

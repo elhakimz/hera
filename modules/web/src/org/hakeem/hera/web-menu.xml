@@ -4,44 +4,43 @@
 
         <menu id="company_menu" caption="Company" icon="INDUSTRY">
            <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse" />
-           <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
-           <item screen="hera_PositionClassificationType.browse"
-                 caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
-           <item screen="hera_PositionFulfillment.browse" caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
-           <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse" />
-           <item screen="hera_PositionResponsibility.browse"
-                 caption="mainMsg://menu_config.hera_PositionResponsibility.browse"/>
-            <item screen="hera_PositionStructure.browse" caption="mainMsg://menu_config.hera_PositionStructure.browse" />
-       </menu>
+            <item screen="hera_PositionStructure.browse" caption="mainMsg://menu_config.hera_PositionStructure.browse"/>
+            <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse"/>
+            <item screen="hera_PositionFulfillment.browse"
+                  caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
+            <item screen="hera_PositionResponsibility.browse"
+                  caption="mainMsg://menu_config.hera_PositionResponsibility.browse"/>
+            <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
+            <item screen="hera_PositionClassificationType.browse"
+                  caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
+        </menu>
 
         <menu id="employees_menu" caption="Employees" icon="USER_CIRCLE">
-            <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse" />
+            <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
             <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
         </menu>
-
         <menu id="attendance_menu" caption="Attendance" icon="CALENDAR_CHECK_O">
-            <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse" />
+            <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse"/>
         </menu>
-
         <menu id="payroll_menu" caption="Payroll" icon="MONEY">
-
+            <item screen="hera_Bank.browse" caption="mainMsg://menu_config.hera_Bank.browse"/>
         </menu>
 
         <menu id="parties_menu" caption="Parties" icon="ID_CARD">
             <item screen="hera_Party.browse" caption="mainMsg://menu_config.hera_Party.browse"/>
-            <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse" />
-            <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse" />
-            <item screen="hera_Organization.browse" caption="mainMsg://menu_config.hera_Organization.browse" />
-            <item screen="hera_PartyContact.browse" caption="mainMsg://menu_config.hera_PartyContact.browse" />
-            <item screen="hera_PartyIdentifier.browse" caption="mainMsg://menu_config.hera_PartyIdentifier.browse" />
+            <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse"/>
+            <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse"/>
+            <item screen="hera_Organization.browse" caption="mainMsg://menu_config.hera_Organization.browse"/>
+            <item screen="hera_PartyContact.browse" caption="mainMsg://menu_config.hera_PartyContact.browse"/>
+            <item screen="hera_PartyIdentifier.browse" caption="mainMsg://menu_config.hera_PartyIdentifier.browse"/>
             <item screen="hera_PartyPerson.browse" caption="mainMsg://menu_config.hera_PartyPerson.browse"/>
             <item screen="hera_PartyOrg.browse" caption="mainMsg://menu_config.hera_PartyOrg.browse"/>
-            <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse" />
+            <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse"/>
             <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
             <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
         </menu>
-
         <menu id="master_menu" caption="master" icon="font-icon:GEAR">
+            <item screen="hera_Currency.browse" caption="mainMsg://menu_config.hera_Currency.browse"/>
             <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse" icon="GLOBE"/>
         </menu>
 

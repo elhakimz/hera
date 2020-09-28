@@ -52,7 +52,9 @@ public class PositionFulfillment extends StandardEntity {
     public String getName() {
         try {
             if(getFulfillmentOf()!=null){
-                name=getFulfillmentOf().getName() + " by "+ acceptedBy.getName();
+                name=(getFulfillmentOf()!=null ? getFulfillmentOf().getName():"?")
+                        + " by "+ (getAcceptedBy()!=null? getAcceptedBy().getName():"?");
+
             }
         } catch (Exception e) {
             log.error("Error", e);

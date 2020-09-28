@@ -6,6 +6,7 @@ import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import org.hakeem.hera.entity.finance.BankAccount;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,6 +36,17 @@ public class Party extends StandardEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PHOTO_IMAGE_ID")
     private FileDescriptor photoImage;
+
+    @OneToMany(mappedBy = "party")
+    private List<BankAccount> bankAccounts;
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
 
     public FileDescriptor getPhotoImage() {
         return photoImage;

@@ -7,7 +7,14 @@
     <data readOnly="true">
         <collection id="positionStructuresDc"
                     class="org.hakeem.hera.entity.hr.PositionStructure">
-            <view extends="positionStructure-view"/>
+            <view extends="_local">
+                <property name="reportTo" view="_minimal">
+                    <property name="positionType" view="_minimal"/>
+                </property>
+                <property name="managedBy" view="_minimal">
+                    <property name="positionType" view="_minimal"/>
+                </property>
+            </view>
             <loader id="positionStructuresDl">
                 <query>
                     <![CDATA[select e from hera_PositionStructure e]]>
@@ -26,19 +33,21 @@
         </filter>
         <groupTable id="positionStructuresTable"
                     width="100%"
-                    dataContainer="positionStructuresDc" editable="true">
+                    dataContainer="positionStructuresDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="reportTo" editable="true"/>
-                <column id="managedBy" editable="true"/>
-                <column id="description" editable="true"/>
-                <column id="fromDate" editable="true"/>
-                <column id="thruDate" editable="true"/>
-                <column id="status" editable="true"/>
+                <group>
+                    <column id="reportToName" caption="Report To"/>
+                </group>
+                <column id="managedBy"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+                <column id="isPrimary"/>
+                <column id="status"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

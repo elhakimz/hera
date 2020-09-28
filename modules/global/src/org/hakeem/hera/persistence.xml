@@ -30,5 +30,10 @@
         <class>org.hakeem.hera.entity.finance.Currency</class>
         <class>org.hakeem.hera.entity.hr.PositionStructure</class>
         <class>org.hakeem.hera.entity.timesheet.Attendance</class>
+        <class>org.hakeem.hera.entity.payroll.PositionTypeRate</class>
+        <class>org.hakeem.hera.entity.payroll.PayGrade</class>
+        <class>org.hakeem.hera.entity.payroll.SalaryStep</class>
+        <class>org.hakeem.hera.entity.payroll.PayHistory</class>
+        <class>org.hakeem.hera.entity.finance.BankAccountNumber</class>
     </persistence-unit>
 </persistence>

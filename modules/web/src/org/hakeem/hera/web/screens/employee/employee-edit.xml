@@ -7,10 +7,11 @@
         <instance id="employeeDc"
                   class="org.hakeem.hera.entity.hr.Employee">
             <view extends="employee-view">
-                <property name="positionFulfillments" view="_local"/>
+                <property name="positionFulfillments" view="positionFulfillment-view"/>
             </view>
             <loader/>
-            <collection id="positionFulfillmentsDc" property="positionFulfillments" />
+            <collection id="positionFulfillmentsDc" property="positionFulfillments" >
+            </collection>
         </instance>
         <instance id="personDc" class="org.hakeem.hera.entity.party.Person">
             <loader id="personDl">
@@ -43,8 +44,16 @@
         <groupBox id="positionFulfillmentsBox" caption="msg://org.hakeem.hera.entity.hr/Employee.positionFulfillments">
             <table id="positionFulfillmentsTable" dataContainer="positionFulfillmentsDc" width="100%" height="200px">
                 <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
+                    <action id="create" type="create">
+                       <properties>
+                           <property name="openMode" value="DIALOG"/>
+                       </properties>
+                    </action>
+                    <action id="edit" type="edit">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>

@@ -1,0 +1,2 @@
+alter table HERA_BANK_ACCOUNT add constraint FK_HERA_BANK_ACCOUNT_ON_BANK foreign key (BANK_ID) references HERA_BANK(ID);
+create index IDX_HERA_BANK_ACCOUNT_ON_BANK on HERA_BANK_ACCOUNT (BANK_ID);

@@ -63,7 +63,10 @@
         </property>
     </view>
     <view entity="hera_PositionFulfillment" name="positionFulfillment-view" extends="_local">
-        <property name="fulfillmentOf" view="_local"/>
+        <property name="fulfillmentOf" view="_local">
+            <property name="name"/>
+            <property name="positionType" view="_minimal"/>
+        </property>
         <property name="name"/>
         <property name="acceptedBy" view="_minimal"/>
     </view>
@@ -77,8 +80,33 @@
     </view>
     <view entity="hera_Workeffort" name="workeffort-view" extends="_local"/>
     <view entity="hera_PositionStructure" name="positionStructure-view" extends="_local">
-        <property name="reportTo" view="_minimal"/>
-        <property name="managedBy" view="_minimal"/>
+        <property name="reportTo" view="position-view">
+        </property>
+        <property name="managedBy" view="position-view">
+        </property>
         <property name="name"/>
+    </view>
+    <view entity="hera_BankAccount" name="bankAccount-view" extends="_local">
+        <property name="name"/>
+        <property name="party" view="_minimal"/>
+        <property name="bank" view="_minimal">
+            <property name="organization" view="_minimal"/>
+            <property name="bic"/>
+        </property>
+        <property name="currency" view="_minimal"/>
+    </view>
+    <view entity="hera_Bank" name="bank-view" extends="_local">
+        <property name="name"/>
+        <property name="organization" view="_local">
+        </property>
+        <property name="bankAccounts" view="bankAccount-view"/>
+    </view>
+    <view entity="hera_BankAccountNumber" name="bankAccountNumber-view" extends="_local">
+        <property name="bankAccount" view="_minimal">
+            <property name="party" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="hera_Currency" name="currency-view" extends="_local">
+        <property name="country" view="_minimal"/>
     </view>
 </views>

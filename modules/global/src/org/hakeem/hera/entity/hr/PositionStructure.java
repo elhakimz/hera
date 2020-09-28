@@ -1,32 +1,32 @@
 package org.hakeem.hera.entity.hr;
 
 import com.haulmont.chile.core.annotations.MetaProperty;
-import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import org.hakeem.hera.entity.types.StatusType;
 import org.slf4j.Logger;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Table(name = "HERA_POSITION_STRUCTURE")
 @Entity(name = "hera_PositionStructure")
-@NamePattern("%s|description")
 public class PositionStructure extends StandardEntity {
     private static final long serialVersionUID = -2567796695324479638L;
 
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(PositionStructure.class);
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "POSITION_ID")
+    @NotNull
     private Position reportTo;
+
+    @Column(name = "REPORT_TO_NAME", length = 100)
+    private String reportToName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MANAGED_BY_ID")
     private Position managedBy;
-
-    @Column(name = "DESCRIPTION")
-    private String description;
 
     @Column(name = "FROM_DATE")
     private LocalDate fromDate;
@@ -38,8 +38,27 @@ public class PositionStructure extends StandardEntity {
     @MetaProperty
     private String name;
 
+    @Column(name = "IS_PRIMARY")
+    private Boolean isPrimary;
+
     @Column(name = "STATUS")
     private String status;
+
+    public String getReportToName() {
+        return reportToName;
+    }
+
+    public void setReportToName(String reportToName) {
+        this.reportToName = reportToName;
+    }
+
+    public Boolean getIsPrimary() {
+        return isPrimary;
+    }
+
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
+    }
 
     public StatusType getStatus() {
         return status == null ? null : StatusType.fromId(status);
@@ -51,7 +70,9 @@ public class PositionStructure extends StandardEntity {
 
     public String getName() {
         try {
-            name= getReportTo().getName()+" M-> "+getManagedBy().getName();
+
+            name= (getManagedBy()!=null ? getManagedBy().getName():"?")
+                    +" -> "+(getReportTo()!=null ? getReportTo().getName():"?");
         } catch (Exception e) {
             log.error("Error", e);
         }
@@ -78,14 +99,6 @@ public class PositionStructure extends StandardEntity {
         this.fromDate = fromDate;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Position getManagedBy() {
         return managedBy;
     }
@@ -100,5 +113,24 @@ public class PositionStructure extends StandardEntity {
 
     public void setReportTo(Position reportTo) {
         this.reportTo = reportTo;
+    }
+
+    @PrePersist
+    public void prePersist() {
+
+        try {
+            setReportToName(getReportTo().getName());
+        } catch (Exception e) {
+            log.error("Error", e);
+        }
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        try {
+            setReportToName(getReportTo().getName());
+        } catch (Exception e) {
+            log.error("Error", e);
+        }
     }
 }

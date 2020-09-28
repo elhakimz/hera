@@ -1,0 +1,1 @@
+alter table HERA_POSITION_STRUCTURE alter column DESCRIPTION rename to DESCRIPTION__U26707 ^
