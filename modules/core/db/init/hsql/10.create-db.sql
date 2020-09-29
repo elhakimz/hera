@@ -511,6 +511,7 @@ create table HERA_POSITION_TYPE_RATE (
     RATE decimal(19, 2),
     RATE_TYPE varchar(50),
     POSITION_TYPE_ID varchar(36),
+    PERIOD_TYPE varchar(50),
     SALARY_STEP_ID varchar(36),
     --
     primary key (ID)

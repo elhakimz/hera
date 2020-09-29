@@ -25,8 +25,6 @@ public class BankEdit extends StandardEditor<Bank> {
     private DataContext dataContext;
 
     @Inject
-    private Metadata metadata;
-    @Inject
     private Table<BankAccount> bankAccountsTable;
 
     @Inject
@@ -36,6 +34,7 @@ public class BankEdit extends StandardEditor<Bank> {
     private Table<BankAccountNumber> bankAccountNumbersTable;
 
     private BankAccount currentBankAccount;
+
     @Inject
     private CollectionContainer<BankAccountNumber> bankAccountNumbersDc;
 
@@ -47,6 +46,7 @@ public class BankEdit extends StandardEditor<Bank> {
           bankAccountNumbersDl.setParameter("bankAccount", currentBankAccount);
           bankAccountNumbersDl.load();
           bankAccountNumbersTable.setEnabled(true);
+          bankAccountNumbersTable.setFocusable(true);
     }
 
 
@@ -56,9 +56,6 @@ public class BankEdit extends StandardEditor<Bank> {
          ban.setAccountNo("?");
          ban.setIsActive(Boolean.FALSE);
          bankAccountNumbersDc.getMutableItems().add(ban);
-
-
-
     }
 
     @Subscribe("bankAccountNumbersTable.create")

@@ -24,6 +24,7 @@
         </menu>
         <menu id="payroll_menu" caption="Payroll" icon="MONEY">
             <item screen="hera_Bank.browse" caption="mainMsg://menu_config.hera_Bank.browse"/>
+            <item screen="hera_PositionTypeRate.browse" caption="mainMsg://menu_config.hera_PositionTypeRate.browse"/>
         </menu>
 
         <menu id="parties_menu" caption="Parties" icon="ID_CARD">
@@ -43,6 +44,7 @@
             <item screen="hera_Currency.browse" caption="mainMsg://menu_config.hera_Currency.browse"/>
             <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse" icon="GLOBE"/>
         </menu>
+        <item screen="hera_PayGrade.browse" caption="mainMsg://menu_config.hera_PayGrade.browse"/>
 
     </menu>
 </menu-config>

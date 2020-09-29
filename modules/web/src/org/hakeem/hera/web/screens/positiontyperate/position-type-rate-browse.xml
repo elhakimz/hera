@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://positionTypeRateBrowse.caption"
+        focusComponent="positionTypeRatesTable"
+        messagesPack="org.hakeem.hera.web.screens.positiontyperate">
+    <data >
+        <collection id="positionTypeRatesDc"
+                    class="org.hakeem.hera.entity.payroll.PositionTypeRate">
+            <view extends="_local">
+                <property name="positionType" view="_minimal"/>
+            </view>
+            <loader id="positionTypeRatesDl">
+                <query>
+                    <![CDATA[select e from hera_PositionTypeRate e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="positionTypeRatesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="positionTypeRatesTable"
+                dataLoader="positionTypeRatesDl">
+            <properties include=".*"/>
+        </filter>
+        <table id="positionTypeRatesTable"
+                    width="100%"
+                    dataContainer="positionTypeRatesDc" editable="true">
+            <actions>
+                <action id="create" type="create" shortcut="CTRL-ALT-N"/>
+                <action id="remove" type="remove" shortcut="CTRL-ALT-D"/>
+            </actions>
+            <columns>
+                <column id="positionType" editable="true" caption="Position Type"/>
+                <column id="rateType" editable="true" caption="Rate Type"/>
+                <column id="rate" editable="true" caption="Rate" required="true" type="decimal"  generator="generateCurrencyCell">
+
+                </column>
+                <column id="fromDate" editable="true" caption="From Date"/>
+                <column id="thruDate" editable="true" caption="Thru Date"/>
+            </columns>
+            <rowsCount/>
+
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

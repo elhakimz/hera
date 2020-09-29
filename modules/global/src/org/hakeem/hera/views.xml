@@ -109,4 +109,15 @@
     <view entity="hera_Currency" name="currency-view" extends="_local">
         <property name="country" view="_minimal"/>
     </view>
+    <view entity="hera_PositionTypeRate" name="positionTypeRate-view" extends="_local">
+        <property name="positionType" view="_minimal"/>
+        <property name="salaryStep" view="_minimal"/>
+    </view>
+    <view entity="hera_PayGrade" name="payGrade-view" extends="_local">
+        <property name="salarySteps" view="salaryStep-view"/>
+    </view>
+    <view entity="hera_SalaryStep" name="salaryStep-view" extends="_local">
+        <property name="payGrade" view="_minimal"/>
+        <property name="positionTypeRates" view="_minimal"/>
+    </view>
 </views>

@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "HERA_SALARY_STEP")
 @Entity(name = "hera_SalaryStep")
@@ -23,6 +24,17 @@ public class SalaryStep extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PAY_GRADE_ID")
     private PayGrade payGrade;
+
+    @OneToMany(mappedBy = "salaryStep")
+    private List<PositionTypeRate> positionTypeRates;
+
+    public List<PositionTypeRate> getPositionTypeRates() {
+        return positionTypeRates;
+    }
+
+    public void setPositionTypeRates(List<PositionTypeRate> positionTypeRates) {
+        this.positionTypeRates = positionTypeRates;
+    }
 
     public PayGrade getPayGrade() {
         return payGrade;

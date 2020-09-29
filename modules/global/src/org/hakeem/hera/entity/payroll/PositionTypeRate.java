@@ -28,9 +28,20 @@ public class PositionTypeRate extends StandardEntity {
     @JoinColumn(name = "POSITION_TYPE_ID")
     private PositionType positionType;
 
+    @Column(name = "PERIOD_TYPE")
+    private String periodType;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SALARY_STEP_ID")
     private SalaryStep salaryStep;
+
+    public PeriodType getPeriodType() {
+        return periodType == null ? null : PeriodType.fromId(periodType);
+    }
+
+    public void setPeriodType(PeriodType periodType) {
+        this.periodType = periodType == null ? null : periodType.getId();
+    }
 
     public SalaryStep getSalaryStep() {
         return salaryStep;

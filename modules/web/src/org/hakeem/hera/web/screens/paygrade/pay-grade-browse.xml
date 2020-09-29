@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://payGradeBrowse.caption"
+        focusComponent="payGradesTable"
+        messagesPack="org.hakeem.hera.web.screens.paygrade">
+    <data >
+        <collection id="payGradesDc"
+                    class="org.hakeem.hera.entity.payroll.PayGrade">
+            <view extends="payGrade-view"/>
+            <loader id="payGradesDl">
+                <query>
+                    <![CDATA[select e from hera_PayGrade e]]>
+                </query>
+            </loader>
+            <collection id="salaryStepsDc" property="salarySteps"/>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+
+    <layout spacing="true">
+        <filter id="filter"
+                applyTo="payGradesTable"
+                dataLoader="payGradesDl" >
+            <properties include=".*"/>
+        </filter>
+      <table id="payGradesTable"
+             width="100%"
+             dataContainer="payGradesDc" editable="true" height="300px" >
+          <actions>
+              <action id="create" type="create" />
+              <action id="remove" type="remove" />
+          </actions>
+          <columns>
+              <column  id="name" editable="true"/>
+              <column  id="description" editable="true"/>
+          </columns>
+          <buttonsPanel id="buttonsPanel"
+                        alwaysVisible="true">
+              <button id="createBtn" action="payGradesTable.create"/>
+              <button id="removeBtn" action="payGradesTable.remove"/>
+          </buttonsPanel>
+      </table>
+      <groupBox caption="Salary Steps" height="200px">
+          <table id="salaryStepsTable" dataContainer="salaryStepsDc" width="100%" height="100%" editable="true">
+              <actions>
+                  <action id="create" type="create" shortcut="CTRL-ALT-N"/>
+                  <action id="remove" type="remove" shortcut="CTRL-ALT-D"/>
+              </actions>
+              <columns>
+                  <column id="seqId" editable="true"/>
+                  <column id="amount" editable="true"/>
+                  <column id="dateModified" editable="true"/>
+              </columns>
+              <rows/>
+          </table>
+      </groupBox>
+
+
+
+
+     </layout>
+</window>

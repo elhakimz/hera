@@ -5,7 +5,9 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Table(name = "HERA_PAY_GRADE")
 @Entity(name = "hera_PayGrade")
@@ -18,6 +20,17 @@ public class PayGrade extends StandardEntity {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy = "payGrade")
+    private List<SalaryStep> salarySteps;
+
+    public List<SalaryStep> getSalarySteps() {
+        return salarySteps;
+    }
+
+    public void setSalarySteps(List<SalaryStep> salarySteps) {
+        this.salarySteps = salarySteps;
+    }
 
     public String getDescription() {
         return description;
