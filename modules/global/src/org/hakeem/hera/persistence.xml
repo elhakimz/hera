@@ -35,5 +35,7 @@
         <class>org.hakeem.hera.entity.payroll.SalaryStep</class>
         <class>org.hakeem.hera.entity.payroll.PayHistory</class>
         <class>org.hakeem.hera.entity.finance.BankAccountNumber</class>
+        <class>org.hakeem.hera.entity.hr.RankType</class>
+        <class>org.hakeem.hera.entity.hr.EmployeeRank</class>
     </persistence-unit>
 </persistence>

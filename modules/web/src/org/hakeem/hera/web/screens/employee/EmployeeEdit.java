@@ -1,5 +1,6 @@
 package org.hakeem.hera.web.screens.employee;
 
+import com.haulmont.cuba.core.global.queryconditions.Condition;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.Action;
 import com.haulmont.cuba.gui.components.HasValue;
@@ -47,9 +48,10 @@ public class EmployeeEdit extends StandardEditor<Employee> {
 
     @Subscribe("partyField")
     public void onPartyFieldValueChange(HasValue.ValueChangeEvent<Party> event) {
-           personDl.setQuery("select p from hera_Person p where p.id = :id");
+           personDl.setQuery("select p from hera_Person p where p.id = :id ");
            personDl.setParameter("id", Objects.requireNonNull(event.getValue()).getId());
            personDl.load();
+
     }
 
 

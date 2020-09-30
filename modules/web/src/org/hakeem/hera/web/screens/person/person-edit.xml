@@ -8,6 +8,9 @@
                   class="org.hakeem.hera.entity.party.Person">
             <view extends="person-view"/>
             <view extends="_local">
+                <property name="photoImage" view="_local"/>
+            </view>
+            <view extends="_local">
                 <property name="addresses" view="_minimal"/>
             </view>
             <loader/>
@@ -17,22 +20,37 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="personDc">
-            <column width="350px">
-                <lookupField id="salutationField" property="salutation"/>
-                <textField id="firstNameField" property="firstName"/>
-                <textField id="middleNameField" property="middleName"/>
-                <textField id="lastNameField" property="lastName"/>
-                <dateField id="birthDateField" property="birthDate"/>
-                <textField id="birthPlaceField" property="birthPlace"/>
-                <lookupField id="genderField" property="gender"/>
-            </column>
-        </form>
+       <hbox spacing="true">
+           <form id="form" dataContainer="personDc">
+               <column width="350px">
+                   <lookupField id="salutationField" property="salutation"/>
+                   <textField id="firstNameField" property="firstName"/>
+                   <textField id="middleNameField" property="middleName"/>
+                   <textField id="lastNameField" property="lastName"/>
+                   <dateField id="birthDateField" property="birthDate"/>
+                   <textField id="birthPlaceField" property="birthPlace"/>
+                   <lookupField id="genderField" property="gender"/>
+                   <upload id="photoImageField" property="photoImage" fileStoragePutMode="IMMEDIATE"/>
+               </column>
+           </form>
+
+           <image id="photoImageDisplay" property="photoImage" width="150px" dataContainer="personDc" css="border:1px solid #efefef" scaleMode="SCALE_DOWN"/>
+
+       </hbox>
+
         <groupBox id="addressesBox" caption="msg://org.hakeem.hera.entity.party/Party.addresses">
             <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
                 <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
+                    <action id="create" type="create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                    </action>
+                    <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                    </action>
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>

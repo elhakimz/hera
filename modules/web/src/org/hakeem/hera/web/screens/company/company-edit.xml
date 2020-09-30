@@ -8,6 +8,7 @@
                   class="org.hakeem.hera.entity.hr.Company">
             <view extends="_local">
                 <property name="party" view="party-view"/>
+                <property name="parentCompany" view="company-view"/>
             </view>
             <loader/>
         </instance>
@@ -23,6 +24,13 @@
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
+                <pickerField id="parentCompanyField" property="parentCompany" caption="ParentCompany">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField property="description"/>
                 <dateField id="fromDateField" property="fromDate"/>
                 <dateField id="thruDateField" property="thruDate"/>
             </column>

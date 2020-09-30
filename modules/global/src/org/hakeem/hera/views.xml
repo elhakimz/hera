@@ -5,20 +5,20 @@
         <property name="addresses" view="_minimal"/>
         <property name="identifiers" view="_minimal"/>
         <property name="contacts" view="_minimal"/>
-        <property name="photoImage" view="_minimal"/>
+        <property name="photoImage" view="_local"/>
     </view>
 
     <view entity="hera_Organization" name="organization-view" extends="_local">
         <property name="addresses" view="_minimal"/>
         <property name="contacts" view="_minimal"/>
-        <property name="photoImage" view="_minimal"/>
+        <property name="photoImage" view="_local"/>
     </view>
 
     <view entity="hera_Person" name="person-view" extends="_local">
         <property name="addresses" view="partyAddress-view"/>
         <property name="contacts" view="partyContact-view"/>
         <property name="age"/>
-        <property name="photoImage" view="_minimal"/>
+        <property name="photoImage" view="_local"/>
     </view>
 
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
@@ -120,4 +120,19 @@
         <property name="payGrade" view="_minimal"/>
         <property name="positionTypeRates" view="_minimal"/>
     </view>
+    <view entity="hera_Attendance" name="attendance-view"/>
+
+    <view entity="hera_EmployeeRank" name="employeeRank-view">
+        <property name="employee" view="_minimal"/>
+    </view>
+    <view entity="hera_Rank" name="rankType-view"/>
+
+    <view entity="hera_Company" name="company-view">
+        <property name="parentCompany" view="_minimal"/>
+        <property name="description" />
+        <property name="fromDate"/>
+        <property name="thruDate"/>
+        <property name="name"/>
+    </view>
+
 </views>

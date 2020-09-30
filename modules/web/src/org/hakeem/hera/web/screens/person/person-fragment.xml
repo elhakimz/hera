@@ -3,22 +3,27 @@
     <data>
         <instance id="personDc"
                   class="org.hakeem.hera.entity.party.Person"
-                  view="person-view" provided="true" >
+                   provided="true" >
+            <view extends="_local">
+                <property name="photoImage" view="_minimal"/>
+            </view>
             <loader/>
         </instance>
     </data>
     <layout >
         <groupBox stylename="light" caption="Personal Data">
-            <form editable="false" dataContainer="personDc">
-                <column>
-                    <label id="nameField" property="name" stylename="h2"/>
-                    <label property="gender" />
-                    <label property="age" />
-                    <!--                <textField id="birthDateField" property="birthDate"/>-->
-                    <!--                <textField id="genderField" property="gender"/>-->
-                </column>
-            </form>
-
+            <hbox spacing="true">
+                <image dataContainer="personDc" property="photoImage" width="150px" scaleMode="SCALE_DOWN" css="border:1px solid #efefef"/>
+                <form editable="false" dataContainer="personDc">
+                    <column>
+                        <label id="nameField" property="name" stylename="h2"/>
+                        <label property="gender" />
+                        <label property="age" />
+                        <!--                <textField id="birthDateField" property="birthDate"/>-->
+                        <!--                <textField id="genderField" property="gender"/>-->
+                    </column>
+                </form>
+            </hbox>
         </groupBox>
 
     </layout>

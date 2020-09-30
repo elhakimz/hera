@@ -68,6 +68,9 @@ create table HERA_PARTY_ROLE (
     FROM_DATE date,
     THRU_DATE date,
     --
+    -- from hera_Company
+    PARENT_COMPANY_ID varchar(36),
+    --
     -- from hera_Employee
     EMP_CODE varchar(11),
     --
@@ -577,3 +580,38 @@ create table HERA_BANK_ACCOUNT_NUMBER (
     primary key (ID)
 )^
 -- end HERA_BANK_ACCOUNT_NUMBER
+-- begin HERA_EMPLOYEE_RANK
+create table HERA_EMPLOYEE_RANK (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EMPLYEE_ID varchar(36),
+    RANK_TYPE_ID varchar(36),
+    PROMOTIONDATE date,
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYEE_RANK
+-- begin HERA_RANK
+create table HERA_RANK (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_RANK

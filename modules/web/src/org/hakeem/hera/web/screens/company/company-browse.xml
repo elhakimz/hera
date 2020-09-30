@@ -7,7 +7,7 @@
     <data readOnly="true">
         <collection id="companiesDc"
                     class="org.hakeem.hera.entity.hr.Company">
-            <view extends="_local"/>
+            <view extends="company-view"/>
             <loader id="companiesDl">
                 <query>
                     <![CDATA[select e from hera_Company e]]>
@@ -24,9 +24,9 @@
                 dataLoader="companiesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="companiesTable"
+        <treeTable id="companiesTable"
                     width="100%"
-                    dataContainer="companiesDc">
+                    dataContainer="companiesDc" hierarchyProperty="parentCompany">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -45,7 +45,7 @@
                 <button id="editBtn" action="companiesTable.edit"/>
                 <button id="removeBtn" action="companiesTable.remove"/>
             </buttonsPanel>
-        </groupTable>
+        </treeTable>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

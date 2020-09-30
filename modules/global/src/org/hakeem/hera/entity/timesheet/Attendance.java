@@ -42,14 +42,14 @@ public class Attendance extends StandardEntity {
 
     @Transient
     @MetaProperty
-    private String extraHours;
+    private String overtime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EXTRA_HOUR_PERMITTED_BY_ID")
-    private Employee extraHoursPermittedBy;
+    private Employee overtimeApprovedBy;
 
     @Column(name = "EXTRA_HOURS_REASON")
-    private String extraHoursReason;
+    private String overtimeReason;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TIMESHEET_ID")
@@ -63,28 +63,28 @@ public class Attendance extends StandardEntity {
         this.timesheet = timesheet;
     }
 
-    public String getExtraHoursReason() {
-        return extraHoursReason;
+    public String getOvertimeReason() {
+        return overtimeReason;
     }
 
-    public void setExtraHoursReason(String extraHoursReason) {
-        this.extraHoursReason = extraHoursReason;
+    public void setOvertimeReason(String overtimeReason) {
+        this.overtimeReason = overtimeReason;
     }
 
-    public Employee getExtraHoursPermittedBy() {
-        return extraHoursPermittedBy;
+    public Employee getOvertimeApprovedBy() {
+        return overtimeApprovedBy;
     }
 
-    public void setExtraHoursPermittedBy(Employee extraHoursPermittedBy) {
-        this.extraHoursPermittedBy = extraHoursPermittedBy;
+    public void setOvertimeApprovedBy(Employee overtimeApprovedBy) {
+        this.overtimeApprovedBy = overtimeApprovedBy;
     }
 
-    public String getExtraHours() {
-        return extraHours;
+    public String getOvertime() {
+        return overtime;
     }
 
-    public void setExtraHours(String extraHours) {
-        this.extraHours = extraHours;
+    public void setOvertime(String overtime) {
+        this.overtime = overtime;
     }
 
     public Employee getLeavePermittedBy() {

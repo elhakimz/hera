@@ -21,6 +21,8 @@ public class CompanyEdit extends StandardEditor<Company> {
 
     @Inject
     private PickerField<Party> partyField;
+    @Inject
+    private PickerField<Company> parentCompanyField;
 
     @Subscribe("partyField.lookup")
     public void onPartyFieldLookup(Action.ActionPerformedEvent event) {
@@ -29,6 +31,14 @@ public class CompanyEdit extends StandardEditor<Company> {
                 .withOpenMode(OpenMode.DIALOG)
                 .build()
                 .show();
+    }
+
+    @Subscribe("parentCompanyField.lookup")
+    public void onParentCompanyFieldLookup(Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(parentCompanyField)
+                .withScreenClass(CompanyBrowse.class)
+                .withOpenMode(OpenMode.DIALOG)
+                .build().show();
     }
     
     

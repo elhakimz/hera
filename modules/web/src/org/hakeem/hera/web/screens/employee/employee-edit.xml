@@ -13,7 +13,7 @@
             <collection id="positionFulfillmentsDc" property="positionFulfillments" >
             </collection>
         </instance>
-        <instance id="personDc" class="org.hakeem.hera.entity.party.Person">
+        <instance id="personDc" class="org.hakeem.hera.entity.party.Person" view="person-view">
             <loader id="personDl">
             </loader>
         </instance>
