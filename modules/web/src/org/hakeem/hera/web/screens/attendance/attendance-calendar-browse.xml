@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://attendanceCalendarBrowse.caption"
+        focusComponent="attendanceCalendar"
+        messagesPack="org.hakeem.hera.web.screens.attendance">
+    <data>
+        <collection id="employeesDc" class="org.hakeem.hera.entity.hr.Employee" >
+            <view extends="_local">
+                <property name="party" view="party-view"/>
+            </view>
+            <loader>
+                <query>
+                    <![CDATA[select e from hera_Employee e ]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="attendancesDc"
+                    class="org.hakeem.hera.entity.timesheet.Attendance">
+            <view extends="attendance-view">
+                <property name="employee" view="_minimal"/>
+                <property name="fromDateTime"/>
+                <property name="toDateTime"/>
+                <property name="attendanceType"/>
+                <property name="hasPermit"/>
+                <property name="leaveTime"/>
+                <property name="leavePermittedBy" view="_minimal"/>
+                <property name="presentHours"/>
+                <property name="overtime"/>
+                <property name="overtimeApprovedBy" view="_minimal"/>
+                <property name="overtimeReason"/>
+                <property name="name"/>
+            </view>
+            <loader id="attendancesDl">
+                <query>
+                    <![CDATA[select e from hera_Attendance e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="attendanceDc" class="org.hakeem.hera.entity.timesheet.Attendance" >
+            <view extends="attendance-view">
+               <property name="timesheet" view="timesheet-view"/>
+            </view>
+            <loader />
+        </instance>
+        <instance id="timesheetDc" class="org.hakeem.hera.entity.timesheet.Timesheet">
+            <view extends="timesheet-view">
+                <property name="timeEntries"/>
+            </view>
+            <collection id="timeEntriesDc" property="timeEntries"/>
+            <loader />
+        </instance>
+
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="mainSplit"
+            spacing="true">
+<!--        <filter id="filter"-->
+<!--                dataLoader="attendancesDl" >-->
+<!--            <properties include=".*"-->
+<!--                        excludeProperties="version,createTs,createdBy,updateTs,updatedBy,deleteTs,deletedBy"-->
+<!--                        excludeRecursively="true" />-->
+<!--            <property name="employee" caption="Employee"/>-->
+
+<!--        </filter>-->
+        <split id="mainSplit" pos="22"  orientation="horizontal">
+            <vbox>
+                <vbox expand="employeeTable" spacing="true">
+                    <table id="employeeTable" dataContainer="employeesDc" stylename="borderless no-vertical-lines no-horizontal-lines" width="100%">
+                        <columns>
+                            <column id="name"/>
+                        </columns>
+                        <rows/>
+                    </table>
+                </vbox>
+
+            </vbox>
+           <vbox>
+            <split id="splitPanel" orientation="horizontal" width="100%"  pos="60" >
+                <vbox expand="attendanceCalendar" spacing="true" margin="true">
+                    <hbox align="MIDDLE_CENTER">
+                        <dateField resolution="MONTH" caption="MONTH"  dateFormat="MM/yy"/>
+                    </hbox>
+                    <calendar caption="Attendance" id="attendanceCalendar"  dataContainer="attendancesDc" width="100%" startDate="2020-10-01"
+                              captionProperty="name"
+                              startDateProperty="fromDateTime"
+                              endDateProperty="toDateTime" endDate="2020-10-30"/>
+                </vbox>
+                <vbox spacing="true" stylename="card" height="100%" expand="timesheetGroup" margin="true">
+                    <groupBox caption="Attendance Data" stylename="borderless"  >
+                        <form id="attendanceForm" dataContainer="attendanceDc" editable="false">
+                            <column>
+                                <textField id="employeeField" property="employee" stylename="borderless"/>
+                                <textField id="attendanceTypeField" property="attendanceType" stylename="borderless"/>
+                                <dateField id="fromDateTimeField" property="fromDateTime" stylename="borderless"/>
+                                <dateField id="toDateTimeField" property="toDateTime" stylename="borderless"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                    <groupBox id="timesheetGroup" caption="Timesheet" expand="timeEntriesCalendar" >
+                        <form id="timesheetForm" dataContainer="timesheetDc" editable="false">
+                            <column>
+                                <textArea id="timesheetNoteField" property="note" stylename="borderless"/>
+                            </column>
+                        </form>
+                        <calendar  dataContainer="timeEntriesDc" caption="Timesheet" id="timeEntriesCalendar"  width="100%"  height="100%" startDateProperty="fromDateTime" endDateProperty="thruDateTime"/>
+                    </groupBox>
+                </vbox>
+            </split>
+           </vbox>
+        </split>
+
+    </layout>
+</window>

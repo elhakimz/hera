@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://attendanceBrowse.caption"
+        focusComponent="attendancesTable"
+        messagesPack="org.hakeem.hera.web.screens.attendance">
+    <data >
+        <collection id="attendancesDc"
+                    class="org.hakeem.hera.entity.timesheet.Attendance">
+            <view extends="_local">
+                <property name="employee" view="_minimal"/>
+                <property name="leavePermittedBy" view="_minimal"/>
+                <property name="presentHours"/>
+                <property name="overtime"/>
+                <property name="overtimeApprovedBy" view="_minimal"/>
+            </view>
+            <loader id="attendancesDl">
+                <query>
+                    <![CDATA[select e from hera_Attendance e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="attendancesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="attendancesTable"
+                dataLoader="attendancesDl">
+            <properties include=".*"
+                        exclude="(id)"
+                        excludeProperties="version,createTs,createdBy,updateTs,updatedBy,deleteTs,deletedBy"
+                        excludeRecursively="true"/>
+        </filter>
+        <dataGrid id="attendancesTable"
+                  width="100%"
+                  dataContainer="attendancesDc" editorEnabled="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column property="employee" id="employee"/>
+                <column property="fromDateTime" id="fromDateTime"/>
+                <column property="toDateTime" id="toDateTime"/>
+                <column property="attendanceType" id="attendanceType"/>
+                <column property="hasPermit" id="hasPermit"/>
+                <column property="leaveTime" id="leaveTime"/>
+                <column property="leavePermittedBy" id="leavePermittedBy"/>
+                <column property="presentHours" id="presentHours"/>
+                <column property="overtime" id="overtime"/>
+                <column property="overtimeApprovedBy" id="overtimeApprovedBy"/>
+                <column property="overtimeReason" id="overtimeReason"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="attendancesTable.create"/>
+                <button id="editBtn" action="attendancesTable.edit"/>
+                <button id="removeBtn" action="attendancesTable.remove"/>
+                <button id="excelBtn" action="attendancesTable.excel"/>
+            </buttonsPanel>
+        </dataGrid>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

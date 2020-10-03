@@ -34,7 +34,6 @@
                     <checkBox id="isExemptField" property="isExempt"/>
                     <checkBox id="isFullTimeField" property="isFullTime"/>
                     <checkBox id="isTemporaryField" property="isTemporary"/>
-
                 </column>
                 <column>
                     <dateField id="actFromDateField" property="actFromDate"/>

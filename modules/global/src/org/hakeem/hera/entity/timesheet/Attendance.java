@@ -3,6 +3,7 @@ package org.hakeem.hera.entity.timesheet;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import org.hakeem.hera.entity.hr.Employee;
+import org.slf4j.Logger;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.time.LocalTime;
 @Entity(name = "hera_Attendance")
 public class Attendance extends StandardEntity {
     private static final long serialVersionUID = -3044039629414966553L;
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(Attendance.class);
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EMPLOYEE_ID")
@@ -42,7 +44,7 @@ public class Attendance extends StandardEntity {
 
     @Transient
     @MetaProperty
-    private String overtime;
+    private Double overtime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EXTRA_HOUR_PERMITTED_BY_ID")
@@ -54,6 +56,10 @@ public class Attendance extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TIMESHEET_ID")
     private Timesheet timesheet;
+
+    @Transient
+    @MetaProperty
+    private String name;
 
     public Timesheet getTimesheet() {
         return timesheet;
@@ -79,13 +85,6 @@ public class Attendance extends StandardEntity {
         this.overtimeApprovedBy = overtimeApprovedBy;
     }
 
-    public String getOvertime() {
-        return overtime;
-    }
-
-    public void setOvertime(String overtime) {
-        this.overtime = overtime;
-    }
 
     public Employee getLeavePermittedBy() {
         return leavePermittedBy;
@@ -149,5 +148,39 @@ public class Attendance extends StandardEntity {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Double getOvertime() {
+        return overtime;
+    }
+
+    public void setOvertime(Double overtime) {
+        this.overtime = overtime;
+    }
+
+    public String getName() {
+
+        name = getAttendanceType()!= null ? getAttendanceType().name():"?";
+
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Attendance{" +
+                "fromDateTime=" + fromDateTime +
+                ", toDateTime=" + toDateTime +
+                ", attendanceType='" + attendanceType + '\'' +
+                ", hasPermit=" + hasPermit +
+                ", leaveTime=" + leaveTime +
+                ", presentHours=" + presentHours +
+                ", overtime=" + overtime +
+                ", overtimeReason='" + overtimeReason + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,17 @@
+@import "hover-defaults";
+@import "org.hakeem.hera/hover-ext-defaults";
+@import "app-components";
+@import "org.hakeem.hera/hover-ext";
+
+.hover {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include org_hakeem_hera-hover-ext;
+
+  .avatar-icon-small{
+         border-radius: 50%;
+         border:1px solid #eeeeee;
+         background-color:#fff
+      }
+}

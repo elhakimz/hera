@@ -2,7 +2,6 @@ package org.hakeem.hera.entity.hr;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import org.slf4j.Logger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +12,6 @@ import javax.persistence.Table;
 @NamePattern("%s|name")
 public class RankType extends StandardEntity {
     private static final long serialVersionUID = 4987649209323041845L;
-
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(RankType.class);
 
     @Column(name = "NAME")
     private String name;

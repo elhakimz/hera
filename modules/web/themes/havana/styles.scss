@@ -1,0 +1,16 @@
+@import "havana-defaults";
+@import "org.hakeem.hera/havana-ext-defaults";
+@import "app-components";
+@import "org.hakeem.hera/havana-ext";
+
+.havana {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include org_hakeem_hera-havana-ext;
+
+   .avatar-icon-small{
+       border-radius: 50%;
+       border:1px solid #eeeeee
+    }
+}

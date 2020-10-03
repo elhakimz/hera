@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://agreementEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.agreement">
+    <data>
+        <instance id="agreementDc"
+                  class="org.hakeem.hera.entity.agreement.Agreement">
+            <view extends="agreement-view">
+                <property name="code"/>
+                <property name="agreementDate"/>
+                <property name="fromDate"/>
+                <property name="thruDate"/>
+                <property name="description"/>
+                <property name="agreementType"/>
+                <property name="textual"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="agreementDc">
+            <column width="350px">
+                <textField id="codeField" property="code"/>
+                <dateField id="agreementDateField" property="agreementDate"/>
+                <dateField id="fromDateField" property="fromDate"/>
+                <dateField id="thruDateField" property="thruDate"/>
+                <textField id="descriptionField" property="description"/>
+                <lookupField id="agreementTypeField" property="agreementType"/>
+                <pickerField id="partyRelationshipField" property="partyRelationship">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="textualField" property="textual"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

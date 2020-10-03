@@ -10,9 +10,13 @@
                   caption="mainMsg://menu_config.hera_PositionFulfillment.browse"/>
             <item screen="hera_PositionResponsibility.browse"
                   caption="mainMsg://menu_config.hera_PositionResponsibility.browse"/>
-            <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
-            <item screen="hera_PositionClassificationType.browse"
-                  caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
+            <menu id="company_menu_types" caption="Types" icon="BOOK">
+                <item screen="hera_PositionType.browse" caption="mainMsg://menu_config.hera_PositionType.browse"/>
+                <item screen="hera_PositionClassificationType.browse"
+                      caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
+                <item screen="hera_Rank.browse" caption="mainMsg://menu_config.hera_Rank.browse"/>
+
+            </menu>
         </menu>
 
         <menu id="employees_menu" caption="Employees" icon="USER_CIRCLE">
@@ -20,6 +24,7 @@
             <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
         </menu>
         <menu id="attendance_menu" caption="Attendance" icon="CALENDAR_CHECK_O">
+            <item screen="hera_Attendance.browse" caption="mainMsg://menu_config.hera_Attendance.browse"/>
             <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse"/>
         </menu>
         <menu id="payroll_menu" caption="Payroll" icon="MONEY">
@@ -41,11 +46,13 @@
             <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
             <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
         </menu>
-        <menu id="master_menu" caption="master" icon="font-icon:GEAR">
+        <menu id="master_menu" caption="Master" icon="font-icon:GEAR">
             <item screen="hera_Currency.browse" caption="mainMsg://menu_config.hera_Currency.browse"/>
             <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse" icon="GLOBE"/>
+            <item screen="hera_Holiday.browse" caption="mainMsg://menu_config.hera_Holiday.browse"/>
         </menu>
-        <item screen="hera_Rank.browse" caption="mainMsg://menu_config.hera_Rank.browse"/>
+        <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
+        <item screen="hera_AttendanceCalendar.browse" caption="mainMsg://menu_config.hera_AttendanceCalendar.browse"/>
 
     </menu>
 </menu-config>

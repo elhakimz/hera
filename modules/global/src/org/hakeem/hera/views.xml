@@ -31,11 +31,14 @@
     </view>
     <view entity="hera_Employee" name="employee-view" extends="_local">
         <property name="party" view="_minimal"/>
+        <property name="name"/>
         <property name="positionFulfillments" view="positionFulfillment-view"/>
     </view>
     <view entity="hera_Employment" name="employment-view" extends="_local">
         <property name="fromPartyRole" view="_minimal"/>
         <property name="toPartyRole" view="_minimal"/>
+        <property name="agreements" view="agreement-view"/>
+        <property name="name"/>
     </view>
     <view entity="hera_PartyIdentifier" name="partyIdentifier-view" extends="_local">
         <property name="party" view="_minimal"/>
@@ -120,7 +123,14 @@
         <property name="payGrade" view="_minimal"/>
         <property name="positionTypeRates" view="_minimal"/>
     </view>
-    <view entity="hera_Attendance" name="attendance-view"/>
+    <view entity="hera_Attendance" name="attendance-view">
+        <property name="name"/>
+        <property name="fromDateTime"/>
+        <property name="toDateTime"/>
+        <property name="attendanceType"/>
+        <property name="timesheet"/>
+        <property name="employee"/>
+    </view>
 
     <view entity="hera_EmployeeRank" name="employeeRank-view">
         <property name="employee" view="_minimal"/>
@@ -132,6 +142,22 @@
         <property name="description" />
         <property name="fromDate"/>
         <property name="thruDate"/>
+        <property name="name"/>
+    </view>
+    <view entity="hera_Holiday" name="holiday-view"/>
+
+    <view entity="hera_Agreement" name="agreement-view">
+        <property name="code"/>
+        <property name="agreementDate"/>
+        <property name="fromDate"/>
+        <property name="thruDate"/>
+        <property name="description"/>
+        <property name="agreementType"/>
+         <property name="partyRelationship" view="partyRelationship-view"/>
+    </view>
+    <view entity="hera_PartyRelationship" name="partyRelationship-view">
+       <property name="fromPartyRole" view="_minimal"/>
+        <property name="toPartyRole" view="_minimal"/>
         <property name="name"/>
     </view>
 

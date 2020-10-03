@@ -2,9 +2,12 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.hakeem.hera.entity.agreement.Agreement;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 @DiscriminatorValue("RELATIONSHIP")
 @Table(name = "HERA_PARTY_RELATIONSHIP")
@@ -33,6 +36,9 @@ public class PartyRelationship extends StandardEntity {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy = "partyRelationship")
+    private List<Agreement> agreements;
 
     public String getDescription() {
         return description;
@@ -81,4 +87,14 @@ public class PartyRelationship extends StandardEntity {
     public void setFromPartyRole(PartyRole fromPartyRole) {
         this.fromPartyRole = fromPartyRole;
     }
+
+    public List<Agreement> getAgreements() {
+        return agreements;
+    }
+
+    public void setAgreements(List<Agreement> agreements) {
+        this.agreements = agreements;
+    }
+
+
 }

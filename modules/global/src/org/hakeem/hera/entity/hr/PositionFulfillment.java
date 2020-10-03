@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Table(name = "HERA_POSITION_FULFILLMENT")
 @Entity(name = "hera_PositionFulfillment")
@@ -96,5 +97,24 @@ public class PositionFulfillment extends StandardEntity {
 
     public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PositionFulfillment that = (PositionFulfillment) o;
+        return Objects.equals(getFromDate(), that.getFromDate()) &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getThruDate(), that.getThruDate()) &&
+                Objects.equals(getNote(), that.getNote()) &&
+                Objects.equals(getAcceptedBy(), that.getAcceptedBy()) &&
+                Objects.equals(getFulfillmentOf(), that.getFulfillmentOf());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getFromDate(), getName(), getThruDate(), getNote(), getAcceptedBy(), getFulfillmentOf());
     }
 }

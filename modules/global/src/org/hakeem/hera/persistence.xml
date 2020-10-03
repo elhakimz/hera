@@ -37,5 +37,7 @@
         <class>org.hakeem.hera.entity.finance.BankAccountNumber</class>
         <class>org.hakeem.hera.entity.hr.RankType</class>
         <class>org.hakeem.hera.entity.hr.EmployeeRank</class>
+        <class>org.hakeem.hera.entity.timesheet.Holiday</class>
+        <class>org.hakeem.hera.entity.agreement.Agreement</class>
     </persistence-unit>
 </persistence>

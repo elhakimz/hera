@@ -7,6 +7,8 @@
         <instance id="employmentDc"
                   class="org.hakeem.hera.entity.hr.Employment">
             <view extends="employment-view"/>
+            <collection id="agreementsDc" property="agreements"/>
+
             <loader/>
         </instance>
     </data>
@@ -31,6 +33,41 @@
                 <dateField id="thruDateField" property="thruDate"/>
             </column>
         </form>
+        <groupBox caption="Agreements">
+            <table id="agreementsTable"
+                        width="100%"
+                        dataContainer="agreementsDc">
+                <actions>
+                    <action id="create" type="create">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
+                    <action id="edit" type="edit">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="code"/>
+                    <column id="agreementDate"/>
+                    <column id="fromDate"/>
+                    <column id="thruDate"/>
+                    <column id="description"/>
+                    <column id="agreementType"/>
+                </columns>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="createBtn" action="agreementsTable.create"/>
+                    <button id="editBtn" action="agreementsTable.edit"/>
+                    <button id="removeBtn" action="agreementsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
