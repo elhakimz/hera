@@ -6,67 +6,228 @@
     <data>
         <instance id="personDc"
                   class="org.hakeem.hera.entity.party.Person">
-            <view extends="person-view"/>
-            <view extends="_local">
+            <view extends="person-view">
                 <property name="photoImage" view="_local"/>
-            </view>
-            <view extends="_local">
-                <property name="addresses" view="_minimal"/>
+                <property name="addresses" view="partyAddress-view"/>
+                <property name="bankAccounts" view="bankAccount-view"/>
+                <property name="identifiers" view="partyIdentifier-view"/>
+                <property name="courses" view="_local"/>
+                <property name="educations" view="_local"/>
+                <property name="skills" view="_local"/>
             </view>
             <loader/>
             <collection id="addressesDc" property="addresses"/>
+            <collection id="identifiersDc" property="identifiers"/>
+            <collection id="bankAccountsDc" property="bankAccounts"/>
+            <collection id="coursesDc" property="courses"/>
+            <collection id="educationsDc" property="educations"/>
+            <collection id="skillsDc" property="skills"/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-       <hbox spacing="true">
-           <form id="form" dataContainer="personDc">
-               <column width="350px">
-                   <lookupField id="salutationField" property="salutation"/>
-                   <textField id="firstNameField" property="firstName"/>
-                   <textField id="middleNameField" property="middleName"/>
-                   <textField id="lastNameField" property="lastName"/>
-                   <dateField id="birthDateField" property="birthDate"/>
-                   <textField id="birthPlaceField" property="birthPlace"/>
-                   <lookupField id="genderField" property="gender"/>
-                   <upload id="photoImageField" property="photoImage" fileStoragePutMode="IMMEDIATE"/>
-               </column>
-           </form>
+    <layout expand="scrollbox" spacing="true">
+        <scrollBox id="scrollbox" orientation="vertical" width="100%" spacing="true" margin="true">
+            <hbox spacing="true">
+                <form id="form" dataContainer="personDc">
+                    <column width="350px">
+                        <lookupField id="salutationField" property="salutation"/>
+                        <textField id="firstNameField" property="firstName"/>
+                        <textField id="middleNameField" property="middleName"/>
+                        <textField id="lastNameField" property="lastName"/>
+                        <dateField id="birthDateField" property="birthDate"/>
+                        <textField id="birthPlaceField" property="birthPlace"/>
+                        <lookupField id="genderField" property="gender"/>
+                    </column>
+                    <column>
+                        <lookupField id="religionTypeField" property="religionType"/>
+                        <lookupField id="maritalStatusField" property="maritalStatus"/>
+                        <upload id="photoImageField" property="photoImage" fileStoragePutMode="IMMEDIATE"/>
+                    </column>
+                </form>
+                <image id="photoImageDisplay" property="photoImage" width="150px" dataContainer="personDc"
+                       css="border:1px solid #efefef" scaleMode="SCALE_DOWN"/>
+            </hbox>
+            <groupBox caption="msg://org.hakeem.hera.entity.party/Person.ident_tab">
+                <tabSheet stylename="padded-tabbar">
+                    <tab id="tab1" caption="msg://org.hakeem.hera.entity.party/PartyAddress"  >
+                        <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="edit" type="edit">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="addressLine1"/>
+                                <column id="addressLine2"/>
+                                <column id="city"/>
+                                <column id="province"/>
+                                <column id="postalCode"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="addressesTable.create"/>
+                                <button action="addressesTable.edit"/>
+                                <button action="addressesTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </tab>
+                    <tab id="tab2" caption="msg://org.hakeem.hera.entity.party/PartyIdentifier">
+                        <table id="identifiersTable" dataContainer="identifiersDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="edit" type="edit">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="identType"/>
+                                <column id="identNumber"/>
+                                <column id="fromDate"/>
+                                <column id="thruDate"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="identifiersTable.create"/>
+                                <button action="identifiersTable.edit"/>
+                                <button action="identifiersTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </tab>
+                </tabSheet>
 
-           <image id="photoImageDisplay" property="photoImage" width="150px" dataContainer="personDc" css="border:1px solid #efefef" scaleMode="SCALE_DOWN"/>
+            </groupBox>
 
-       </hbox>
-
-        <groupBox id="addressesBox" caption="msg://org.hakeem.hera.entity.party/Party.addresses">
-            <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create">
+            <groupBox id="bankAccountsBox" caption="msg://org.hakeem.hera.entity.party/Party.bankAccounts">
+                <table id="bankAccountsTable" dataContainer="bankAccountsDc" width="100%" height="200px">
+                    <actions>
+                        <action id="create" type="create">
                             <properties>
                                 <property name="openMode" value="DIALOG"/>
                             </properties>
-                    </action>
-                    <action id="edit" type="edit">
+                        </action>
+                        <action id="edit" type="edit">
                             <properties>
                                 <property name="openMode" value="DIALOG"/>
                             </properties>
-                    </action>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="addressLine1"/>
-                    <column id="addressLine2"/>
-                    <column id="city"/>
-                    <column id="province"/>
-                    <column id="postalCode"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="addressesTable.create"/>
-                    <button action="addressesTable.edit"/>
-                    <button action="addressesTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+                        </action>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="bankAccountsTable.create"/>
+                        <button action="bankAccountsTable.edit"/>
+                        <button action="bankAccountsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+
+            <groupBox caption="msg://org.hakeem.hera.entity.party/Person.skill_tab">
+                <tabSheet stylename="padded-tabbar" >
+                    <tab id="tab11" caption="msg://org.hakeem.hera.entity.party/Person.skills">
+                        <table id="skillsTable" dataContainer="skillsDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="edit" type="edit">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                                <column id="description"/>
+                                <column id="yearsExperience"/>
+                                <column id="skillLevelType"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="skillsTable.create"/>
+                                <button action="skillsTable.edit"/>
+                                <button action="skillsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </tab>
+                    <tab id="tab12" caption="msg://org.hakeem.hera.entity.party/Person.educations">
+                        <table id="educationsTable" dataContainer="educationsDc" width="100%" height="200px">
+                        <actions>
+                            <action id="create" type="create">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="edit" type="edit">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="description"/>
+                            <column id="fromDate"/>
+                            <column id="toDate"/>
+                            <column id="qualificationType"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="educationsTable.create"/>
+                            <button action="educationsTable.edit"/>
+                            <button action="educationsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                    </tab>
+                    <tab id="tab13" caption="msg://org.hakeem.hera.entity.party/Person.courses">
+                        <table id="coursesTable" dataContainer="coursesDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="edit" type="edit">
+                                    <properties>
+                                        <property name="openMode" value="DIALOG"/>
+                                    </properties>
+                                </action>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                                <column id="description"/>
+                                <column id="fromDate"/>
+                                <column id="toDate"/>
+                                <column id="qualificationType"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="coursesTable.create"/>
+                                <button action="coursesTable.edit"/>
+                                <button action="coursesTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </tab>
+                </tabSheet>
+            </groupBox>
+        </scrollBox>
+
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

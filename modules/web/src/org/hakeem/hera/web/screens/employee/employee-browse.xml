@@ -7,7 +7,14 @@
     <data readOnly="true">
         <collection id="employeesDc"
                     class="org.hakeem.hera.entity.hr.Employee">
-            <view extends="_local"/>
+            <view extends="_local">
+               <property name="name"/>
+                <property name="party"/>
+                <property name="description"/>
+                <property name="fromDate"/>
+                <property name="thruDate"/>
+                <property name="empCode"/>
+            </view>
             <loader id="employeesDl">
                 <query>
                     <![CDATA[select e from hera_Employee e]]>

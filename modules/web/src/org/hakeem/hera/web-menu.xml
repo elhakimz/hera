@@ -2,7 +2,7 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-hera" insertBefore="administration" caption="mainMsg://menu_config.application-hera">
 
-        <menu id="company_menu" caption="Company" icon="INDUSTRY">
+        <menu id="company_menu" caption="mainMsg://menu_config.hera_Company.browse" icon="INDUSTRY">
            <item screen="hera_Company.browse" caption="mainMsg://menu_config.hera_Company.browse" />
             <item screen="hera_PositionStructure.browse" caption="mainMsg://menu_config.hera_PositionStructure.browse"/>
             <item screen="hera_Position.browse" caption="mainMsg://menu_config.hera_Position.browse"/>
@@ -19,11 +19,12 @@
             </menu>
         </menu>
 
-        <menu id="employees_menu" caption="Employees" icon="USER_CIRCLE">
+        <menu id="employees_menu" caption="mainMsg://menu_config.hera_Employee.browse" icon="USER_CIRCLE">
             <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
             <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
         </menu>
         <menu id="attendance_menu" caption="Attendance" icon="CALENDAR_CHECK_O">
+            <item screen="hera_AttendanceCalendar.browse" caption="mainMsg://menu_config.hera_AttendanceCalendar.browse"/>
             <item screen="hera_Attendance.browse" caption="mainMsg://menu_config.hera_Attendance.browse"/>
             <item screen="hera_Timesheet.browse" caption="mainMsg://menu_config.hera_Timesheet.browse"/>
         </menu>
@@ -33,7 +34,7 @@
             <item screen="hera_PayGrade.browse" caption="mainMsg://menu_config.hera_PayGrade.browse"/>
         </menu>
 
-        <menu id="parties_menu" caption="Parties" icon="ID_CARD">
+        <menu id="parties_menu" caption="mainMsg://menu_config.hera_Party.browse" icon="ID_CARD">
             <item screen="hera_Party.browse" caption="mainMsg://menu_config.hera_Party.browse"/>
             <item screen="hera_Person.browse" caption="mainMsg://menu_config.hera_Person.browse"/>
             <item screen="hera_PartyAddress.browse" caption="mainMsg://menu_config.hera_PartyAddress.browse"/>
@@ -52,7 +53,11 @@
             <item screen="hera_Holiday.browse" caption="mainMsg://menu_config.hera_Holiday.browse"/>
         </menu>
         <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
-        <item screen="hera_AttendanceCalendar.browse" caption="mainMsg://menu_config.hera_AttendanceCalendar.browse"/>
+        <item screen="hera_SkillType.browse" caption="mainMsg://menu_config.hera_SkillType.browse"/>
+        <item screen="hera_ContactMechanismType.browse"
+              caption="mainMsg://menu_config.hera_ContactMechanismType.browse"/>
+        <item screen="hera_CommunicationEventPurposeType.browse"
+              caption="mainMsg://menu_config.hera_CommunicationEventPurposeType.browse"/>
 
     </menu>
 </menu-config>

@@ -8,6 +8,9 @@
                   class="org.hakeem.hera.entity.party.Organization">
             <view extends="organization-view"/>
             <loader/>
+            <collection id="addressesDc" property="addresses"/>
+            <collection id="identifiersDc" property="identifiers"/>
+            <collection id="bankAccountsDc" property="bankAccounts"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -19,6 +22,83 @@
                 <textField id="fullNameField" property="fullName"/>
             </column>
         </form>
+
+        <groupBox id="addressesBox" caption="msg://org.hakeem.hera.entity.party/Party.addresses">
+            <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="addressLine1"/>
+                    <column id="addressLine2"/>
+                    <column id="city"/>
+                    <column id="province"/>
+                    <column id="postalCode"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="addressesTable.create"/>
+                    <button action="addressesTable.edit"/>
+                    <button action="addressesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="contactsBox" caption="msg://org.hakeem.hera.entity.party/Party.contacts">
+            <table id="contactsTable" dataContainer="contactsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="contactType"/>
+                    <column id="contactNumber"/>
+                    <column id="isActive"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="contactsTable.create"/>
+                    <button action="contactsTable.edit"/>
+                    <button action="contactsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="identifiersBox" caption="msg://org.hakeem.hera.entity.party/Party.identifiers">
+            <table id="identifiersTable" dataContainer="identifiersDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="identType"/>
+                    <column id="identNumber"/>
+                    <column id="fromDate"/>
+                    <column id="thruDate"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="identifiersTable.create"/>
+                    <button action="identifiersTable.edit"/>
+                    <button action="identifiersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="bankAccountsBox" caption="msg://org.hakeem.hera.entity.party/Party.bankAccounts">
+            <table id="bankAccountsTable" dataContainer="bankAccountsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                </columns>
+                <buttonsPanel>
+                    <button action="bankAccountsTable.create"/>
+                    <button action="bankAccountsTable.edit"/>
+                    <button action="bankAccountsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

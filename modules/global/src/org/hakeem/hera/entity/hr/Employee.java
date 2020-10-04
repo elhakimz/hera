@@ -4,10 +4,7 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.annotation.CaseConversion;
 import org.hakeem.hera.entity.party.PartyRole;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -48,5 +45,14 @@ public class Employee extends PartyRole {
               this.setDescription(getParty().getName()+", Employee No:"+this.getEmpCode()+"");
           }
 
+    }
+
+
+    @PreUpdate
+    public void preUpdate() {
+        if(getParty()!=null){
+            this.setName(getParty().getName()+"("+this.getEmpCode()+")");
+            this.setDescription(getParty().getName()+", Employee No:"+this.getEmpCode()+"");
+        }
     }
 }

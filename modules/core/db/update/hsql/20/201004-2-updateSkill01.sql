@@ -1,0 +1,2 @@
+alter table HERA_SKILL add constraint FK_HERA_SKILL_ON_SKILL_TYPE foreign key (SKILL_TYPE_ID) references HERA_SKILL_TYPE(ID);
+create index IDX_HERA_SKILL_ON_SKILL_TYPE on HERA_SKILL (SKILL_TYPE_ID);

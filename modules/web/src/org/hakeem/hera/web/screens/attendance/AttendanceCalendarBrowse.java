@@ -60,9 +60,13 @@ public class AttendanceCalendarBrowse extends StandardLookup<Attendance> {
 
     @Subscribe
     public void onInit(InitEvent event) {
-       employeeTable.addGeneratedColumn("image",this::renderAvatarImageComponent);
+
+        attendancesDl.setMaxResults(1);
+        attendancesDl.load();
+        employeeTable.addGeneratedColumn("image",this::renderAvatarImageComponent);
        employeeTable.setColumnHeaderVisible(false);
        employeeTable.setColumnControlVisible(false);
+
 
     }
 
@@ -120,6 +124,7 @@ public class AttendanceCalendarBrowse extends StandardLookup<Attendance> {
     public void onEmployeeTableSelection(Table.SelectionEvent<Employee> event) {
         Employee employee = event.getSource().getSingleSelected();
         if (employee!= null){
+            attendancesDl.setMaxResults(31);
             attendancesDl.setQuery("select e from hera_Attendance e where e.employee= :emp");
             attendancesDl.setParameter("emp", employee);
             attendancesDl.load();

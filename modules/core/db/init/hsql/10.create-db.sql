@@ -24,6 +24,8 @@ create table HERA_PARTY (
     BIRTH_DATE date,
     BIRTH_PLACE varchar(100),
     GENDER varchar(50),
+    RELIGION_TYPE varchar(50),
+    MARITAL_STATUS varchar(50),
     --
     primary key (ID)
 )^
@@ -152,6 +154,9 @@ create table HERA_PARTY_RELATIONSHIP (
     THRU_DATE date,
     NAME varchar(100),
     DESCRIPTION varchar(255),
+    --
+    -- from hera_FamilyRelation
+    FAMILY_RELATION_TYPE varchar(50),
     --
     primary key (ID)
 )^
@@ -656,3 +661,114 @@ create table HERA_AGREEMENT (
     primary key (ID)
 )^
 -- end HERA_AGREEMENT
+-- begin HERA_PERSON_USER
+create table HERA_PERSON_USER (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PERSON_ID varchar(36),
+    USER_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_PERSON_USER
+-- begin HERA_SKILL
+create table HERA_SKILL (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PERSON_ID varchar(36),
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    YEARS_EXPERIENCE integer,
+    SKILL_LEVEL_TYPE varchar(50),
+    SKILL_TYPE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_SKILL
+-- begin HERA_COMPANY_EVENT
+create table HERA_COMPANY_EVENT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    primary key (ID)
+)^
+-- end HERA_COMPANY_EVENT
+-- begin HERA_EDUCATION
+create table HERA_EDUCATION (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PERSON_ID varchar(36),
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    FROM_DATE date,
+    TO_DATE date,
+    QUALIFICATION_TYPE varchar(50),
+    --
+    primary key (ID)
+)^
+-- end HERA_EDUCATION
+-- begin HERA_COURSE
+create table HERA_COURSE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PERSON_ID varchar(36),
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    FROM_DATE date,
+    TO_DATE date,
+    QUALIFICATION_TYPE varchar(50),
+    --
+    primary key (ID)
+)^
+-- end HERA_COURSE
+-- begin HERA_SKILL_TYPE
+create table HERA_SKILL_TYPE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_SKILL_TYPE

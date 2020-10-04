@@ -17,12 +17,16 @@
     <view entity="hera_Person" name="person-view" extends="_local">
         <property name="addresses" view="partyAddress-view"/>
         <property name="contacts" view="partyContact-view"/>
+        <property name="identifiers" view="_minimal"/>
         <property name="age"/>
         <property name="photoImage" view="_local"/>
+        <property name="otherInfo"/>
+        <property name="birthDate"/>
+        <property name="birthPlace"/>
     </view>
 
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
-        <property name="country" view="_minimal"/>
+        <property name="country" view="_local"/>
     </view>
 
     <view entity="hera_Country" name="country-view" extends="_local"/>
@@ -30,7 +34,7 @@
         <property name="party" view="_minimal"/>
     </view>
     <view entity="hera_Employee" name="employee-view" extends="_local">
-        <property name="party" view="_minimal"/>
+        <property name="party" view="party-view"/>
         <property name="name"/>
         <property name="positionFulfillments" view="positionFulfillment-view"/>
     </view>
@@ -92,17 +96,13 @@
     <view entity="hera_BankAccount" name="bankAccount-view" extends="_local">
         <property name="name"/>
         <property name="party" view="_minimal"/>
-        <property name="bank" view="_minimal">
-            <property name="organization" view="_minimal"/>
-            <property name="bic"/>
-        </property>
+        <property name="bank" view="bank-view"/>
         <property name="currency" view="_minimal"/>
     </view>
     <view entity="hera_Bank" name="bank-view" extends="_local">
         <property name="name"/>
-        <property name="organization" view="_local">
-        </property>
-        <property name="bankAccounts" view="bankAccount-view"/>
+        <property name="organization" view="_local"/>
+        <property name="bankAccounts" view="_minimal"/>
     </view>
     <view entity="hera_BankAccountNumber" name="bankAccountNumber-view" extends="_local">
         <property name="bankAccount" view="_minimal">
@@ -160,5 +160,19 @@
         <property name="toPartyRole" view="_minimal"/>
         <property name="name"/>
     </view>
+
+    <view entity="hera_PersonUser" name="personUser-view">
+       <property name="person" view="_minimal"/>
+        <property name="user" view="_minimal"/>
+    </view>
+    <view entity="hera_Skill" name="skill-view"/>
+    <view entity="hera_Course" name="course-view"/>
+    <view entity="hera_Education" name="education-view"/>
+    <view entity="hera_SkillType" name="skillType-view"/>
+    <view entity="hera_FamilyRelation" name="familyRelation-view"/>
+    <view entity="hera_CommunicationEvent" name="communicationEvent-view"/>
+    <view entity="hera_CommunicationEventPurpose" name="communicationEventPurpose-view"/>
+    <view entity="hera_CommunicationEventPurposeType" name="communicationEventPurposeType-view"/>
+    <view entity="hera_ContactMechanismType" name="contactMechanismType-view"/>
 
 </views>

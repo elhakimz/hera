@@ -39,5 +39,16 @@
         <class>org.hakeem.hera.entity.hr.EmployeeRank</class>
         <class>org.hakeem.hera.entity.timesheet.Holiday</class>
         <class>org.hakeem.hera.entity.agreement.Agreement</class>
+        <class>org.hakeem.hera.entity.common.PersonUser</class>
+        <class>org.hakeem.hera.entity.qualification.Education</class>
+        <class>org.hakeem.hera.entity.qualification.Course</class>
+        <class>org.hakeem.hera.entity.qualification.Skill</class>
+        <class>org.hakeem.hera.entity.timesheet.CompanyEvent</class>
+        <class>org.hakeem.hera.entity.qualification.SkillType</class>
+        <class>org.hakeem.hera.entity.party.FamilyRelation</class>
+        <class>org.hakeem.hera.entity.commevent.CommunicationEvent</class>
+        <class>org.hakeem.hera.entity.commevent.ContactMechanismType</class>
+        <class>org.hakeem.hera.entity.commevent.CommunicationEventPurpose</class>
+        <class>org.hakeem.hera.entity.commevent.CommunicationEventPurposeType</class>
     </persistence-unit>
 </persistence>

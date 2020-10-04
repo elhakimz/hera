@@ -7,7 +7,6 @@ import org.hakeem.hera.entity.agreement.Agreement;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 @DiscriminatorValue("RELATIONSHIP")
 @Table(name = "HERA_PARTY_RELATIONSHIP")
@@ -39,6 +38,13 @@ public class PartyRelationship extends StandardEntity {
 
     @OneToMany(mappedBy = "partyRelationship")
     private List<Agreement> agreements;
+
+    @Column(name="PROCESS_STATE")
+    private String processState;
+
+    @Column(name="PROCESS_DATE")
+    private LocalDate processDate;
+
 
     public String getDescription() {
         return description;
@@ -96,5 +102,20 @@ public class PartyRelationship extends StandardEntity {
         this.agreements = agreements;
     }
 
+    public String getProcessState() {
+        return processState;
+    }
 
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    public LocalDate getProcessDate() {
+
+        return processDate;
+    }
+
+    public void setProcessDate(LocalDate processDate) {
+        this.processDate = processDate;
+    }
 }

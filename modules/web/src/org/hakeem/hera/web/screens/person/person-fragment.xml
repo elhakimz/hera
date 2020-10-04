@@ -4,8 +4,11 @@
         <instance id="personDc"
                   class="org.hakeem.hera.entity.party.Person"
                    provided="true" >
-            <view extends="_local">
+            <view extends="_minimal">
                 <property name="photoImage" view="_minimal"/>
+                <property name="otherInfo"/>
+                <property name="addresses" view="partyAddress-view"/>
+                <property name="gender"/>
             </view>
             <loader/>
         </instance>
@@ -19,6 +22,7 @@
                         <label id="nameField" property="name" stylename="h2"/>
                         <label property="gender" />
                         <label property="age" />
+                        <label property="otherInfo"/>
                         <!--                <textField id="birthDateField" property="birthDate"/>-->
                         <!--                <textField id="genderField" property="gender"/>-->
                     </column>

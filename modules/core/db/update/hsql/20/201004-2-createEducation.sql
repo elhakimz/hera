@@ -1,0 +1,2 @@
+alter table HERA_EDUCATION add constraint FK_HERA_EDUCATION_ON_PERSON foreign key (PERSON_ID) references HERA_PARTY(ID);
+create index IDX_HERA_EDUCATION_ON_PERSON on HERA_EDUCATION (PERSON_ID);
