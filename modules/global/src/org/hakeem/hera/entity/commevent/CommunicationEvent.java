@@ -5,6 +5,7 @@ import org.hakeem.hera.entity.party.PartyRelationship;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "HERA_COMMUNICATION_EVENT")
 @Entity(name = "hera_CommunicationEvent")
@@ -25,11 +26,14 @@ public class CommunicationEvent extends StandardEntity {
     private PartyRelationship partyRelationship;
 
     @Column(name = "STATUS_TYPE")
-    private String statusType;
+    private String communicationEventStatusType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONTACTMECHTYPE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private ContactMechanismType contactMechanismType;
+
+    @OneToMany(mappedBy = "communicationEvent")
+    private List<CommunicationEventPurpose> communicationEventPurposes;
 
     public LocalDate getFromDate() {
         return fromDate;
@@ -55,12 +59,12 @@ public class CommunicationEvent extends StandardEntity {
         this.partyRelationship = partyRelationship;
     }
 
-    private CommunicationEventStatusType getStatusType(){
-        return statusType==null? null : CommunicationEventStatusType.fromId(statusType);
+    public CommunicationEventStatusType getCommunicationEventStatusType(){
+        return communicationEventStatusType ==null? null : CommunicationEventStatusType.fromId(communicationEventStatusType);
      }
 
-    private void setStatusType(CommunicationEventStatusType statusType){
-        this.statusType = statusType == null ? null : statusType.getId();
+    public void setCommunicationEventStatusType(CommunicationEventStatusType communicationEventStatusType){
+        this.communicationEventStatusType = communicationEventStatusType == null ? null : communicationEventStatusType.getId();
     }
 
     public ContactMechanismType getContactMechanismType() {
@@ -69,5 +73,21 @@ public class CommunicationEvent extends StandardEntity {
 
     public void setContactMechanismType(ContactMechanismType contactMechanismType) {
         this.contactMechanismType = contactMechanismType;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public List<CommunicationEventPurpose> getCommunicationEventPurposes() {
+        return communicationEventPurposes;
+    }
+
+    public void setCommunicationEventPurposes(List<CommunicationEventPurpose> communicationEventPurposes) {
+        this.communicationEventPurposes = communicationEventPurposes;
     }
 }

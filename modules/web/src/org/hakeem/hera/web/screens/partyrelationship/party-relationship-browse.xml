@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://partyRelationshipBrowse.caption"
+        focusComponent="partyRelationshipsTable"
+        messagesPack="org.hakeem.hera.web.screens.partyrelationship">
+    <data readOnly="true">
+        <collection id="partyRelationshipsDc"
+                    class="org.hakeem.hera.entity.party.PartyRelationship">
+            <view extends="_local">
+                <property name="fromPartyRole" view="_minimal"/>
+                <property name="toPartyRole" view="_minimal"/>
+            </view>
+            <loader id="partyRelationshipsDl">
+                <query>
+                    <![CDATA[select e from hera_PartyRelationship e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="partyRelationshipsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="partyRelationshipsTable"
+                dataLoader="partyRelationshipsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="partyRelationshipsTable"
+                    width="100%"
+                    dataContainer="partyRelationshipsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="fromPartyRole"/>
+                <column id="toPartyRole"/>
+                <column id="fromDate"/>
+                <column id="thruDate"/>
+                <column id="name"/>
+                <column id="description"/>
+                <column id="processState"/>
+                <column id="processDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="partyRelationshipsTable.create"/>
+                <button id="editBtn" action="partyRelationshipsTable.edit"/>
+                <button id="removeBtn" action="partyRelationshipsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

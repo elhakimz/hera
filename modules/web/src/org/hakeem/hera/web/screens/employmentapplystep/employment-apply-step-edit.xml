@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://employmentApplyStepEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.employmentapplystep">
+    <data>
+        <instance id="employmentApplyStepDc"
+                  class="org.hakeem.hera.entity.hr.EmploymentApplyStep">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="employmentApplyStepDc">
+            <column width="350px">
+                <dateField id="stepDateField" property="stepDate"/>
+                <lookupField id="hiringStepTypeField" property="hiringStepType"/>
+                <textField id="descriptionField" property="description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

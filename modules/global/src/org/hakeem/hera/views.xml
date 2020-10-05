@@ -170,9 +170,17 @@
     <view entity="hera_Education" name="education-view"/>
     <view entity="hera_SkillType" name="skillType-view"/>
     <view entity="hera_FamilyRelation" name="familyRelation-view"/>
-    <view entity="hera_CommunicationEvent" name="communicationEvent-view"/>
+    <view entity="hera_CommunicationEvent" name="communicationEvent-view">
+       <property name="communicationEventStatusType"/>
+    </view>
     <view entity="hera_CommunicationEventPurpose" name="communicationEventPurpose-view"/>
     <view entity="hera_CommunicationEventPurposeType" name="communicationEventPurposeType-view"/>
-    <view entity="hera_ContactMechanismType" name="contactMechanismType-view"/>
+    <view entity="hera_ContactMechanismType" name="contactMechanismType-view">
+       <property name="name"/>
+    </view>
+    <view entity="hera_PartyRoleType" name="partyRoleType-view"/>
+    <view entity="hera_SourceType" name="sourceType-view"/>
+    <view entity="hera_EmploymentApplication" name="employmentApplication-view"/>
+    <view entity="hera_EmploymentApplStep" name="employmentApplyStep-view"/>
 
 </views>

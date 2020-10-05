@@ -67,6 +67,7 @@ create table HERA_PARTY_ROLE (
     NAME varchar(100),
     DESCRIPTION varchar(255),
     PARTY_ID varchar(36),
+    PARTYROLETYPE_ID varchar(36),
     FROM_DATE date,
     THRU_DATE date,
     --
@@ -154,6 +155,8 @@ create table HERA_PARTY_RELATIONSHIP (
     THRU_DATE date,
     NAME varchar(100),
     DESCRIPTION varchar(255),
+    PROCESS_STATE varchar(255),
+    PROCESS_DATE date,
     --
     -- from hera_FamilyRelation
     FAMILY_RELATION_TYPE varchar(50),
@@ -772,3 +775,153 @@ create table HERA_SKILL_TYPE (
     primary key (ID)
 )^
 -- end HERA_SKILL_TYPE
+-- begin HERA_CONTACT_MECHANISM_TYPE
+create table HERA_CONTACT_MECHANISM_TYPE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_CONTACT_MECHANISM_TYPE
+-- begin HERA_COMMUNICATION_EVENT
+create table HERA_COMMUNICATION_EVENT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FROM_DATE date,
+    TO_DATE date,
+    NOTE varchar(255),
+    PARTYRELATIONSHIP_ID varchar(36),
+    STATUS_TYPE varchar(255),
+    CONTACTMECHTYPE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_COMMUNICATION_EVENT
+-- begin HERA_COMMUNICATION_EVENT_PURPOSE
+create table HERA_COMMUNICATION_EVENT_PURPOSE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    COMMUNICATIONEVENT_ID varchar(36),
+    DESCRIPTION varchar(255),
+    COMMEVENTPURPOSETYPE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_COMMUNICATION_EVENT_PURPOSE
+-- begin HERA_COMMUNICATION_EVENT_PURPOSE_TYPE
+create table HERA_COMMUNICATION_EVENT_PURPOSE_TYPE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_COMMUNICATION_EVENT_PURPOSE_TYPE
+-- begin HERA_PARTY_ROLE_TYPE
+create table HERA_PARTY_ROLE_TYPE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_PARTY_ROLE_TYPE
+-- begin HERA_EMPLOYMENT_APPL_STEP
+create table HERA_EMPLOYMENT_APPL_STEP (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EMPLOYMENTAPPLICATION_ID varchar(36),
+    STEPDATE date,
+    HIRINGSTEPTYPE varchar(50),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYMENT_APPL_STEP
+-- begin HERA_EMPLOYMENT_APPLICATION
+create table HERA_EMPLOYMENT_APPLICATION (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CODE varchar(10),
+    APPLYDATE date,
+    POSITION_ID varchar(36),
+    FROMPERSON_ID varchar(36),
+    REFERPERSON_ID varchar(36),
+    SOURCETYPE_ID varchar(36),
+    DESCRIPTION varchar(255),
+    PROCESS_STATE varchar(255),
+    PROCESS_DATE date,
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYMENT_APPLICATION
+-- begin HERA_SOURCE_TYPE
+create table HERA_SOURCE_TYPE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    --
+    primary key (ID)
+)^
+-- end HERA_SOURCE_TYPE

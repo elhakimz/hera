@@ -11,12 +11,14 @@
                 <property name="contacts" view="_local"/>
                 <property name="identifiers" view="_local"/>
                 <property name="bankAccounts" view="_local"/>
+                <property name="partyRoles" view="_local"/>
             </view>
             <loader/>
             <collection id="addressesDc" property="addresses"/>
             <collection id="contactsDc" property="contacts"/>
             <collection id="identifiersDc" property="identifiers"/>
             <collection id="bankAccountsDc" property="bankAccounts"/>
+            <collection id="partyRolesDc" property="partyRoles"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -100,6 +102,26 @@
                     <button action="bankAccountsTable.create"/>
                     <button action="bankAccountsTable.edit"/>
                     <button action="bankAccountsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="partyRolesBox" caption="msg://org.hakeem.hera.entity.party/Party.partyRoles">
+            <table id="partyRolesTable" dataContainer="partyRolesDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="description"/>
+                    <column id="fromDate"/>
+                    <column id="thruDate"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="partyRolesTable.create"/>
+                    <button action="partyRolesTable.edit"/>
+                    <button action="partyRolesTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>

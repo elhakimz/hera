@@ -50,5 +50,9 @@
         <class>org.hakeem.hera.entity.commevent.ContactMechanismType</class>
         <class>org.hakeem.hera.entity.commevent.CommunicationEventPurpose</class>
         <class>org.hakeem.hera.entity.commevent.CommunicationEventPurposeType</class>
+        <class>org.hakeem.hera.entity.party.PartyRoleType</class>
+        <class>org.hakeem.hera.entity.hr.EmploymentApplication</class>
+        <class>org.hakeem.hera.entity.types.SourceType</class>
+        <class>org.hakeem.hera.entity.hr.EmploymentApplyStep</class>
     </persistence-unit>
 </persistence>

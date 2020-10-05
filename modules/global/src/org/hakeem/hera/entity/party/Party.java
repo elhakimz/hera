@@ -41,6 +41,8 @@ public class Party extends StandardEntity {
     @OneToMany(mappedBy = "party")
     private List<BankAccount> bankAccounts;
 
+    @OneToMany(mappedBy = "party")
+    private List<PartyRole> partyRoles;
 
     public List<BankAccount> getBankAccounts() {
         return bankAccounts;
@@ -88,5 +90,13 @@ public class Party extends StandardEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<PartyRole> getPartyRoles() {
+        return partyRoles;
+    }
+
+    public void setPartyRoles(List<PartyRole> partyRoles) {
+        this.partyRoles = partyRoles;
     }
 }

@@ -1,5 +1,6 @@
 package org.hakeem.hera.entity.commevent;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 
 @Table(name = "HERA_CONTACT_MECHANISM_TYPE")
 @Entity(name = "hera_ContactMechanismType")
+@NamePattern("%s|name")
 public class ContactMechanismType extends StandardEntity {
     private static final long serialVersionUID = -1354935529892616007L;
 

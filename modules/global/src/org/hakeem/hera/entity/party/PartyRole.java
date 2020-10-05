@@ -2,11 +2,13 @@ package org.hakeem.hera.entity.party;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import org.slf4j.Logger;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@PublishEntityChangedEvents
 @DiscriminatorValue("ROLE")
 @Table(name = "HERA_PARTY_ROLE")
 @Entity(name = "hera_PartyRole")
@@ -25,6 +27,10 @@ public class PartyRole extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PARTY_ID")
     private Party party;
+
+    @JoinColumn(name = "PARTYROLETYPE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private PartyRoleType partyRoleType;
 
     @Column(name = "FROM_DATE")
     private LocalDate fromDate;
@@ -71,5 +77,24 @@ public class PartyRole extends StandardEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+          if(name==null || name.isEmpty()) {
+              try {
+                  name=  getPartyRoleType().getName();
+              } catch (Exception e) {
+                  log.error("Error", e);
+              }
+          }
+    }
+
+    public PartyRoleType getPartyRoleType() {
+        return partyRoleType;
+    }
+
+    public void setPartyRoleType(PartyRoleType partyRoleType) {
+        this.partyRoleType = partyRoleType;
     }
 }

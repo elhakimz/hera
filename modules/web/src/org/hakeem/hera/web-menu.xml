@@ -18,7 +18,16 @@
 
             </menu>
         </menu>
+        <menu id="comm_menu" caption="mainMsg://menu_config.hera_CommunicationEvent.menu" icon="font-icon:PHONE">
+            <item screen="hera_CommunicationEvent.browse" caption="mainMsg://menu_config.hera_CommunicationEvent.browse"/>
 
+            <item screen="hera_ContactMechanismType.browse"
+                  caption="mainMsg://menu_config.hera_ContactMechanismType.browse"/>
+            <item screen="hera_CommunicationEventPurposeType.browse"
+                  caption="mainMsg://menu_config.hera_CommunicationEventPurposeType.browse"/>
+            <item screen="hera_CommunicationEventPurpose.browse"
+                  caption="mainMsg://menu_config.hera_CommunicationEventPurpose.browse"/>
+        </menu>
         <menu id="employees_menu" caption="mainMsg://menu_config.hera_Employee.browse" icon="USER_CIRCLE">
             <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
             <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
@@ -46,18 +55,20 @@
             <item screen="hera_PartyRole.browse" caption="mainMsg://menu_config.hera_PartyRole.browse"/>
             <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
             <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
+            <item screen="hera_PartyRelationship.browse" caption="mainMsg://menu_config.hera_PartyRelationship.browse"/>
         </menu>
         <menu id="master_menu" caption="Master" icon="font-icon:GEAR">
             <item screen="hera_Currency.browse" caption="mainMsg://menu_config.hera_Currency.browse"/>
             <item screen="hera_Country.browse" caption="mainMsg://menu_config.hera_Country.browse" icon="GLOBE"/>
             <item screen="hera_Holiday.browse" caption="mainMsg://menu_config.hera_Holiday.browse"/>
+            <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
+            <item screen="hera_SkillType.browse" caption="mainMsg://menu_config.hera_SkillType.browse"/>
         </menu>
-        <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
-        <item screen="hera_SkillType.browse" caption="mainMsg://menu_config.hera_SkillType.browse"/>
-        <item screen="hera_ContactMechanismType.browse"
-              caption="mainMsg://menu_config.hera_ContactMechanismType.browse"/>
-        <item screen="hera_CommunicationEventPurposeType.browse"
-              caption="mainMsg://menu_config.hera_CommunicationEventPurposeType.browse"/>
+        <item screen="hera_PartyRoleType.browse" caption="mainMsg://menu_config.hera_PartyRoleType.browse"/>
+        <item screen="hera_SourceType.browse" caption="mainMsg://menu_config.hera_SourceType.browse"/>
+        <item screen="hera_EmploymentApplication.browse"
+              caption="mainMsg://menu_config.hera_EmploymentApplication.browse"/>
+
 
     </menu>
 </menu-config>
