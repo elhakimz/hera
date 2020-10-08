@@ -10,7 +10,7 @@ public enum AccountNumberType implements EnumClass<String> {
     IBAN("IBAN"),
     OTHER("OTHER");
 
-    private String id;
+    private final String id;
 
     AccountNumberType(String value) {
         this.id = value;

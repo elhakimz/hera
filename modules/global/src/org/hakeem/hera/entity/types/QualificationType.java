@@ -11,7 +11,7 @@ public enum QualificationType implements EnumClass<String> {
     DEGREE("Degree") ;
 
 
-    private String id;
+    private final String id;
 
     QualificationType(String value) {
         this.id = value;

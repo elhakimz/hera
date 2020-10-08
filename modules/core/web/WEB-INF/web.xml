@@ -17,7 +17,7 @@
     <context-param>
         <param-name>appComponents</param-name>
         <param-value>com.haulmont.cuba com.haulmont.reports de.diedavids.cuba.attachable com.haulmont.addon.dashboard
-            br.com.petersonbr.translations com.haulmont.bpm</param-value>
+            br.com.petersonbr.translations com.haulmont.bpm com.haulmont.addon.restapi</param-value>
     </context-param>
     <listener>
         <listener-class>com.haulmont.cuba.core.sys.AppContextLoader</listener-class>

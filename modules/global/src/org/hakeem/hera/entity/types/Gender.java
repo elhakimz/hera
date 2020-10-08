@@ -11,7 +11,7 @@ public enum Gender implements EnumClass<String> {
     FEMALE("Female"),
     OTHER("Other");
 
-    private String id;
+    private final String id;
 
     Gender(String value) {
         this.id = value;

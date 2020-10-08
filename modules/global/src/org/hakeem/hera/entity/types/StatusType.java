@@ -11,7 +11,7 @@ public enum StatusType implements EnumClass<String> {
     INACTIVE("Inactive"),
     FULFILLED("Fulfilled");
 
-    private String id;
+    private final String id;
 
     StatusType(String value) {
         this.id = value;

@@ -7,7 +7,7 @@
         <instance id="employmentApplicationDc"
                   class="org.hakeem.hera.entity.hr.EmploymentApplication">
             <view extends="_local">
-                <property name="position" view="_minimal"/>
+                <property name="position" view="position-view"/>
                 <property name="fromPerson" view="_minimal"/>
                 <property name="referPerson" view="_minimal"/>
                 <property name="sourceType" view="_minimal"/>
@@ -69,7 +69,7 @@
                 </actions>
                 <columns>
                     <column id="stepDate"/>
-                    <column id="hiringStepType"/>
+                    <column id="employmentApplyStepType"/>
                     <column id="description"/>
                 </columns>
                 <buttonsPanel>

@@ -10,7 +10,7 @@ public enum PartyType implements EnumClass<String> {
     PERSON("Person"),
     ORGANIZATION("Organization");
 
-    private String id;
+    private final String id;
 
     PartyType(String value) {
         this.id = value;

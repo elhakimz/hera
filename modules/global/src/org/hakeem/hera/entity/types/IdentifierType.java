@@ -13,7 +13,7 @@ public enum IdentifierType implements EnumClass<String> {
     BPJS("Bpjs"),
     BPJSTK("BPJSTK");
 
-    private String id;
+    private final String id;
 
     IdentifierType(String value) {
         this.id = value;

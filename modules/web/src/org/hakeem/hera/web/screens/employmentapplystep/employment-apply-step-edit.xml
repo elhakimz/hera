@@ -18,7 +18,7 @@
         <form id="form" dataContainer="employmentApplyStepDc">
             <column width="350px">
                 <dateField id="stepDateField" property="stepDate"/>
-                <lookupField id="hiringStepTypeField" property="hiringStepType"/>
+                <lookupField id="hiringStepTypeField" property="employmentApplyStepType"/>
                 <textField id="descriptionField" property="description"/>
             </column>
         </form>

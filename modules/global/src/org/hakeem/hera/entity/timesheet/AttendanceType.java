@@ -14,7 +14,7 @@ public enum AttendanceType implements EnumClass<String> {
     SICK("Sick"),
     VACATION("Vacation");
 
-    private String id;
+    private final String id;
 
     AttendanceType(String value) {
         this.id = value;

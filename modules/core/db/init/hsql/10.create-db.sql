@@ -878,7 +878,7 @@ create table HERA_EMPLOYMENT_APPL_STEP (
     --
     EMPLOYMENTAPPLICATION_ID varchar(36),
     STEPDATE date,
-    HIRINGSTEPTYPE varchar(50),
+    HIRINGSTEPTYPE varchar(255),
     DESCRIPTION varchar(255),
     --
     primary key (ID)

@@ -5,7 +5,7 @@ import com.haulmont.chile.core.datatypes.impl.EnumClass;
 import javax.annotation.Nullable;
 
 
-public enum HiringStepType implements EnumClass<String> {
+public enum EmploymentApplyStepType implements EnumClass<String> {
     SOURCED("Sourced"),
     APPLICANT("Applicant"),
     CANDIDATE("Candidate"),
@@ -15,9 +15,9 @@ public enum HiringStepType implements EnumClass<String> {
     REJECTED("Rejected"),
     HIRED("Hired");
 
-    private String id;
+    private final String id;
 
-    HiringStepType(String value) {
+    EmploymentApplyStepType(String value) {
         this.id = value;
     }
 
@@ -26,8 +26,8 @@ public enum HiringStepType implements EnumClass<String> {
     }
 
     @Nullable
-    public static HiringStepType fromId(String id) {
-        for (HiringStepType at : HiringStepType.values()) {
+    public static EmploymentApplyStepType fromId(String id) {
+        for (EmploymentApplyStepType at : EmploymentApplyStepType.values()) {
             if (at.getId().equals(id)) {
                 return at;
             }

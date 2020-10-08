@@ -12,7 +12,7 @@ public enum Salutation implements EnumClass<String> {
     ESQ("Esquire"),
     MADAM("Madam");
 
-    private String id;
+    private final String id;
 
     Salutation(String value) {
         this.id = value;

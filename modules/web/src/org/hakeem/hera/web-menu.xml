@@ -15,7 +15,6 @@
                 <item screen="hera_PositionClassificationType.browse"
                       caption="mainMsg://menu_config.hera_PositionClassificationType.browse"/>
                 <item screen="hera_Rank.browse" caption="mainMsg://menu_config.hera_Rank.browse"/>
-
             </menu>
         </menu>
         <menu id="comm_menu" caption="mainMsg://menu_config.hera_CommunicationEvent.menu" icon="font-icon:PHONE">
@@ -31,6 +30,8 @@
         <menu id="employees_menu" caption="mainMsg://menu_config.hera_Employee.browse" icon="USER_CIRCLE">
             <item screen="hera_Employee.browse" caption="mainMsg://menu_config.hera_Employee.browse"/>
             <item screen="hera_Employment.browse" caption="mainMsg://menu_config.hera_Employment.browse"/>
+            <item screen="hera_EmploymentApplication.browse"
+                  caption="mainMsg://menu_config.hera_EmploymentApplication.browse"/>
         </menu>
         <menu id="attendance_menu" caption="Attendance" icon="CALENDAR_CHECK_O">
             <item screen="hera_AttendanceCalendar.browse" caption="mainMsg://menu_config.hera_AttendanceCalendar.browse"/>
@@ -56,6 +57,8 @@
             <item screen="hera_PartyCompany.browse" caption="mainMsg://menu_config.hera_PartyCompany.browse"/>
             <item screen="hera_PartyEmployee.browse" caption="mainMsg://menu_config.hera_PartyEmployee.browse"/>
             <item screen="hera_PartyRelationship.browse" caption="mainMsg://menu_config.hera_PartyRelationship.browse"/>
+            <item screen="hera_PartyRoleType.browse" caption="mainMsg://menu_config.hera_PartyRoleType.browse"/>
+            <item screen="hera_SourceType.browse" caption="mainMsg://menu_config.hera_SourceType.browse"/>
         </menu>
         <menu id="master_menu" caption="Master" icon="font-icon:GEAR">
             <item screen="hera_Currency.browse" caption="mainMsg://menu_config.hera_Currency.browse"/>
@@ -64,11 +67,6 @@
             <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
             <item screen="hera_SkillType.browse" caption="mainMsg://menu_config.hera_SkillType.browse"/>
         </menu>
-        <item screen="hera_PartyRoleType.browse" caption="mainMsg://menu_config.hera_PartyRoleType.browse"/>
-        <item screen="hera_SourceType.browse" caption="mainMsg://menu_config.hera_SourceType.browse"/>
-        <item screen="hera_EmploymentApplication.browse"
-              caption="mainMsg://menu_config.hera_EmploymentApplication.browse"/>
-
 
     </menu>
 </menu-config>

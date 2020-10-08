@@ -18,7 +18,7 @@ public enum ReligionType implements EnumClass<String> {
     OTHER("Lainnya");
 
 
-    private String id;
+    private final String id;
 
     ReligionType(String value) {
         this.id = value;

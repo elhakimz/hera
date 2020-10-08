@@ -12,7 +12,7 @@ public enum AgreementType implements EnumClass<String> {
     OTHER("Other")
     ;
 
-    private String id;
+    private final String id;
 
     AgreementType(String value) {
         this.id = value;

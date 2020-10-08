@@ -11,7 +11,7 @@ public enum RateType implements EnumClass<String> {
     LOWEST("Lowest"),
     STANDARD("Standard");
 
-    private String id;
+    private final String id;
 
     RateType(String value) {
         this.id = value;

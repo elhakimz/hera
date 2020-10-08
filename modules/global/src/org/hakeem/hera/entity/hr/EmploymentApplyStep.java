@@ -2,15 +2,14 @@ package org.hakeem.hera.entity.hr;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import org.hakeem.hera.entity.types.HiringStepType;
-import org.hakeem.hera.entity.types.MaritalStatus;
+import org.hakeem.hera.entity.types.EmploymentApplyStepType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(name = "HERA_EMPLOYMENT_APPL_STEP")
 @Entity(name = "hera_EmploymentApplStep")
-@NamePattern("%s - %s|employmentApplication,hiringStepType")
+@NamePattern("%s - %s|employmentApplication,employmentApplyStepType")
 public class EmploymentApplyStep extends StandardEntity {
     private static final long serialVersionUID = 5273674598750184221L;
 
@@ -22,7 +21,7 @@ public class EmploymentApplyStep extends StandardEntity {
     private LocalDate stepDate;
 
     @Column(name = "HIRINGSTEPTYPE")
-    private String hiringStepType;
+    private String employmentApplyStepType;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -33,11 +32,6 @@ public class EmploymentApplyStep extends StandardEntity {
 
     public void setStepDate(LocalDate stepDate) {
         this.stepDate = stepDate;
-    }
-
-
-    public void setHiringStepType(String hiringStepType) {
-        this.hiringStepType = hiringStepType;
     }
 
     public String getDescription() {
@@ -56,11 +50,11 @@ public class EmploymentApplyStep extends StandardEntity {
         this.employmentApplication = employmentApplication;
     }
 
-    public void setHiringStepType(HiringStepType hiringStepType){
-        this.hiringStepType = hiringStepType == null ? null : hiringStepType.getId();
+    public void setEmploymentApplyStepType(EmploymentApplyStepType employmentApplyStepType){
+        this.employmentApplyStepType = employmentApplyStepType == null ? null : employmentApplyStepType.getId();
     }
 
-    public HiringStepType getHiringStepType(){
-        return hiringStepType == null ? null : HiringStepType.fromId(hiringStepType);
+    public EmploymentApplyStepType getEmploymentApplyStepType(){
+        return employmentApplyStepType == null ? null : EmploymentApplyStepType.fromId(employmentApplyStepType);
     }
 }

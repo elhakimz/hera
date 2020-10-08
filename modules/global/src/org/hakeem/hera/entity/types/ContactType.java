@@ -14,7 +14,7 @@ public enum ContactType implements EnumClass<String> {
     TWITTER("Twitter"),
     WHATSAPP("Whatsapp");
 
-    private String id;
+    private final String id;
 
     ContactType(String value) {
         this.id = value;

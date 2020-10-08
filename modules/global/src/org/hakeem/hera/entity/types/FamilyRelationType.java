@@ -12,7 +12,7 @@ public enum FamilyRelationType implements EnumClass<String> {
     SON("Anak laki laki"),
     DAUGHTER("Anak Perempuan"),;
 
-    private String id;
+    private final String id;
 
     FamilyRelationType(String value) {
         this.id = value;

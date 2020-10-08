@@ -12,7 +12,7 @@ public enum PeriodType implements EnumClass<String> {
     MONTHLY("Monthly"),
     YEARLY("Yearly");
 
-    private String id;
+    private final String id;
 
     PeriodType(String value) {
         this.id = value;

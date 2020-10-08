@@ -12,7 +12,7 @@ public enum CommunicationEventStatusType implements EnumClass<String> {
     PENDING("Ditunda");
 
 
-    private String id;
+    private final String id;
 
     CommunicationEventStatusType(String value) {
         this.id = value;

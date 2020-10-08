@@ -11,7 +11,7 @@ public enum MaritalStatus implements EnumClass<String> {
     UNMARRIED("Tidak Menikah"),
     DIVORCED("Bercerai");
 
-    private String id;
+    private final String id;
 
     MaritalStatus(String value) {
         this.id = value;

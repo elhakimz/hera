@@ -11,7 +11,7 @@ public enum SkillLevelType implements EnumClass<String> {
     INTERMEDIATE("Intermediate"),
     EXPERT("Expert");
 
-    private String id;
+    private final String id;
 
     SkillLevelType(String value) {
         this.id = value;
