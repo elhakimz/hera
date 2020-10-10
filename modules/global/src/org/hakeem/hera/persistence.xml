@@ -54,5 +54,12 @@
         <class>org.hakeem.hera.entity.hr.EmploymentApplication</class>
         <class>org.hakeem.hera.entity.types.SourceType</class>
         <class>org.hakeem.hera.entity.hr.EmploymentApplyStep</class>
+        <class>org.hakeem.hera.entity.common.NameDescription</class>
+        <class>org.hakeem.hera.entity.hr.EmployeeRequest</class>
+        <class>org.hakeem.hera.entity.hr.EmployeeTask</class>
+        <class>org.hakeem.hera.entity.common.Questionaire</class>
+        <class>org.hakeem.hera.entity.common.QuestionaireType</class>
+        <class>org.hakeem.hera.entity.common.QuestionaireItem</class>
+        <class>org.hakeem.hera.entity.common.QuestionaireResult</class>
     </persistence-unit>
 </persistence>

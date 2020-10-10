@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://personApplicantEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.person">
+    <data>
+        <instance id="personDc"
+                  class="org.hakeem.hera.entity.party.Person">
+            <view extends="_local">
+                <property name="photoImage" view="_minimal"/>
+            </view>
+            <loader/>
+            <instance id="photoImageDc" property="photoImage"/>
+        </instance>
+
+        <collection id="positionDc" class="org.hakeem.hera.entity.hr.Position"/>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="personDc">
+                <column width="350px">
+                    <lookupField id="salutationField" property="salutation"/>
+                    <textField id="firstNameField" property="firstName"/>
+                    <textField id="middleNameField" property="middleName"/>
+                    <textField id="lastNameField" property="lastName"/>
+                    <dateField id="birthDateField" property="birthDate"/>
+                    <textField id="birthPlaceField" property="birthPlace"/>
+                    <lookupField id="genderField" property="gender"/>
+                    <lookupField id="religionTypeField" property="religionType"/>
+                    <lookupField id="maritalStatusField" property="maritalStatus"/>
+                    <upload id="photoImageField" fileStoragePutMode="IMMEDIATE" property="photoImage"
+                            showFileName="true"/>
+
+                </column>
+            </form>
+            <groupBox spacing="true" caption="Pertanyaan">
+                <vbox spacing="true">
+                    <hbox><label value="Untuk Jabatan"/><lookupField id="positionWantedField" dataContainer="positionDc"/></hbox>
+                    <hbox><label value="Gaji Yang Diinginkan"/><currencyField id="salaryWantedField"/></hbox>
+                    <hbox><label value="Fasilitas Yang Diinginkan"/><textField id="facilityWantedField"/></hbox>
+                    <hbox><label value="Bersediakah Anda Probation"/><checkBox id="probationField"/></hbox>
+                    <hbox><label value="Alasan Melamar"/><textArea id="reasonField"/></hbox>
+                    <hbox><label value="Jabarkan Visi"/><textArea id="visionField"/></hbox>
+                </vbox>
+            </groupBox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="btnCommitAndClose" action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

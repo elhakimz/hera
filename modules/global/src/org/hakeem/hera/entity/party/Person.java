@@ -69,7 +69,6 @@ public class Person extends Party {
     @MetaProperty
     private String otherInfo;
 
-
     public Integer getAge() {
 
         try {
@@ -78,7 +77,7 @@ public class Person extends Party {
                age = period.getYears();
             }
         } catch (Exception e) {
-            log.error("Error", e);
+            //log.error("Error", e);
         }
 
         return age;

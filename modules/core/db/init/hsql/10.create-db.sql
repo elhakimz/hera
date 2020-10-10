@@ -733,6 +733,7 @@ create table HERA_EDUCATION (
     FROM_DATE date,
     TO_DATE date,
     QUALIFICATION_TYPE varchar(50),
+    BRANCHOFSTUDY varchar(255),
     --
     primary key (ID)
 )^
@@ -925,3 +926,56 @@ create table HERA_SOURCE_TYPE (
     primary key (ID)
 )^
 -- end HERA_SOURCE_TYPE
+-- begin HERA_NAME_DESCRIPTION
+create table HERA_NAME_DESCRIPTION (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    DTYPE varchar(31),
+    --
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    VALIDFROM date,
+    VALIDUNTIL date,
+    LANG varchar(10),
+    --
+    primary key (ID)
+)^
+-- end HERA_NAME_DESCRIPTION
+-- begin HERA_EMPLOYEE_REQUEST
+create table HERA_EMPLOYEE_REQUEST (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EMPLOYEE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYEE_REQUEST
+-- begin HERA_EMPLOYEE_TASK
+create table HERA_EMPLOYEE_TASK (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    EMPLOYEE_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYEE_TASK

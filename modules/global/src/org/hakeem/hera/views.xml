@@ -69,6 +69,11 @@
         <property name="positionFulfillments" view="_local">
         </property>
     </view>
+    <view entity="hera_Position" name="position-min-view" extends="_local">
+        <property name="positionType" view="positionType-view"/>
+        <property name="name"/>
+    </view>
+
     <view entity="hera_PositionFulfillment" name="positionFulfillment-view" extends="_local">
         <property name="fulfillmentOf" view="_local">
             <property name="name"/>
@@ -182,5 +187,6 @@
     <view entity="hera_SourceType" name="sourceType-view"/>
     <view entity="hera_EmploymentApplication" name="employmentApplication-view"/>
     <view entity="hera_EmploymentApplStep" name="employmentApplyStep-view"/>
+    <view entity="hera_NameDescription" name="nameDescription-view"/>
 
 </views>

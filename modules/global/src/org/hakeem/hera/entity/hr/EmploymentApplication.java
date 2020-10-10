@@ -2,6 +2,7 @@ package org.hakeem.hera.entity.hr;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import org.hakeem.hera.entity.party.Person;
 import org.hakeem.hera.entity.types.SourceType;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
+@PublishEntityChangedEvents
 @Table(name = "HERA_EMPLOYMENT_APPLICATION")
 @Entity(name = "hera_EmploymentApplication")
 @NamePattern("%s|code")
@@ -48,9 +50,20 @@ public class EmploymentApplication extends StandardEntity {
     @Column(name="PROCESS_DATE")
     private LocalDate processDate;
 
+    @Column(name = "LAST_STEP")
+    private String lastStep;
 
     @OneToMany(mappedBy = "employmentApplication")
     private List<EmploymentApplyStep> steps;
+
+    public void setLastStep(String lastStep) {
+        this.lastStep = lastStep;
+    }
+
+    public String getLastStep() {
+        return lastStep;
+    }
+
 
     public void setSteps(List<EmploymentApplyStep> steps) {
         this.steps = steps;
@@ -131,4 +144,6 @@ public class EmploymentApplication extends StandardEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }

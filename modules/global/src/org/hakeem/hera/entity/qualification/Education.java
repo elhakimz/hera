@@ -35,6 +35,10 @@ public class Education extends StandardEntity {
     @Column(name="QUALIFICATION_TYPE")
     private String qualificationType;
 
+    @Column(name = "BRANCHOFSTUDY")
+    private String branchOfStudy;
+
+
     public String getName() {
         return name;
     }
@@ -81,5 +85,13 @@ public class Education extends StandardEntity {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public String getBranchOfStudy() {
+        return branchOfStudy;
+    }
+
+    public void setBranchOfStudy(String branchOfStudy) {
+        this.branchOfStudy = branchOfStudy;
     }
 }

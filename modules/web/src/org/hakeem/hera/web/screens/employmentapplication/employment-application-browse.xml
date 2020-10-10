@@ -8,7 +8,7 @@
         <collection id="employmentApplicationsDc"
                     class="org.hakeem.hera.entity.hr.EmploymentApplication">
             <view extends="_local">
-                <property name="position" view="_minimal"/>
+                <property name="position" view="position-min-view"/>
                 <property name="fromPerson" view="_minimal"/>
             </view>
             <loader id="employmentApplicationsDl">
@@ -42,7 +42,6 @@
                 <column id="fromPerson"/>
                 <column id="description"/>
                 <column id="processState"/>
-                <column id="processDate"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
@@ -50,6 +49,8 @@
                 <button id="createBtn" action="employmentApplicationsTable.create"/>
                 <button id="editBtn" action="employmentApplicationsTable.edit"/>
                 <button id="removeBtn" action="employmentApplicationsTable.remove"/>
+                <label width="25px" value="|"/>
+                <button id="applicantBtn" caption="Create Applicant" />
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
