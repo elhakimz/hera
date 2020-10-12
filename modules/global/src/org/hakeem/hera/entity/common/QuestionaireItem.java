@@ -24,6 +24,28 @@ public class QuestionaireItem extends StandardEntity {
     @Column(name = "ANSWER")
     private String answer;
 
+    @Column(name = "QUESTION_TYPE")
+    private String questionType;
+
+    @Column(name = "WEIGHT")
+    private Double weight;
+
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType==null? null:questionType.getId();
+    }
+
+    public QuestionType getQuestionType() {
+        return questionType==null ? null : QuestionType.fromId(questionType);
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
     public void setAnswer(String answer) {
         this.answer = answer;
     }

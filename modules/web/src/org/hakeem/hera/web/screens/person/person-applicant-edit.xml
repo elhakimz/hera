@@ -6,19 +6,23 @@
     <data>
         <instance id="personDc"
                   class="org.hakeem.hera.entity.party.Person">
-            <view extends="_local">
-                <property name="photoImage" view="_minimal"/>
-            </view>
+            <view extends="person-view"/>
             <loader/>
             <instance id="photoImageDc" property="photoImage"/>
         </instance>
 
-        <collection id="positionDc" class="org.hakeem.hera.entity.hr.Position"/>
+        <collection id="positionsDc" class="org.hakeem.hera.entity.hr.Position" view="position-min-view">
+          <loader>
+              <query>
+                   select e from hera_Position e
+              </query>
+          </loader>
+        </collection>
+        <collection id="questionsDc" class="org.hakeem.hera.entity.common.QuestionaireResult" view="questionaireResult-view"/>
     </data>
     <dialogMode height="AUTO"
-                width="AUTO"
-                modal="true"
-                forceDialog="true"/>
+                width="640px"
+                modal="true"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
             <form id="form" dataContainer="personDc">
@@ -34,22 +38,22 @@
                     <lookupField id="maritalStatusField" property="maritalStatus"/>
                     <upload id="photoImageField" fileStoragePutMode="IMMEDIATE" property="photoImage"
                             showFileName="true"/>
-
                 </column>
             </form>
-            <groupBox spacing="true" caption="Pertanyaan">
-                <vbox spacing="true">
-                    <hbox><label value="Untuk Jabatan"/><lookupField id="positionWantedField" dataContainer="positionDc"/></hbox>
-                    <hbox><label value="Gaji Yang Diinginkan"/><currencyField id="salaryWantedField"/></hbox>
-                    <hbox><label value="Fasilitas Yang Diinginkan"/><textField id="facilityWantedField"/></hbox>
-                    <hbox><label value="Bersediakah Anda Probation"/><checkBox id="probationField"/></hbox>
-                    <hbox><label value="Alasan Melamar"/><textArea id="reasonField"/></hbox>
-                    <hbox><label value="Jabarkan Visi"/><textArea id="visionField"/></hbox>
+            <groupBox spacing="true" caption="Pertanyaan" width="100%"  stylename="borderless" height="250px" expand="vbox1">
+                <vbox id="vbox1" spacing="true" expand="questionTable"  margin="true">
+                    <hbox><label value="Untuk Jabatan"/><lookupField id="positionWantedField" optionsContainer="positionsDc" width="100%" height="100%"/></hbox>
+                    <table dataContainer="questionsDc" id="questionTable" editable="true" stylename="no-vertical-lines borderless" width="100%" height="100%">
+                        <columns>
+                            <column id="questionaireItem"  editable="false"/>
+                        </columns>
+                        <rows/>
+                    </table>
                 </vbox>
             </groupBox>
         </scrollBox>
         <hbox id="editActions" spacing="true">
-            <button id="btnCommitAndClose" action="windowCommitAndClose"/>
+            <button id="btnCommitAndClose" caption="Create Applicant" stylename="primary" />
             <button action="windowClose"/>
         </hbox>
     </layout>

@@ -38,6 +38,7 @@ public class EmploymentApplicationEdit extends StandardEditor<EmploymentApplicat
     private InstanceLoader<EmploymentApplication> employmentApplicationDl;
     @Inject
     private CollectionLoader<ProcAttachment> procAttachmentsDl;
+
     @Inject
     private ProcActionsFragment procActionsFragment;
 

@@ -896,15 +896,16 @@ create table HERA_EMPLOYMENT_APPLICATION (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CODE varchar(10),
+    CODE varchar(255),
     APPLYDATE date,
     POSITION_ID varchar(36),
     FROMPERSON_ID varchar(36),
     REFERPERSON_ID varchar(36),
     SOURCETYPE_ID varchar(36),
-    DESCRIPTION varchar(255),
+    DESCRIPTION longvarchar,
     PROCESS_STATE varchar(255),
     PROCESS_DATE date,
+    LAST_STEP varchar(255),
     --
     primary key (ID)
 )^
@@ -959,6 +960,15 @@ create table HERA_EMPLOYEE_REQUEST (
     DELETED_BY varchar(50),
     --
     EMPLOYEE_ID varchar(36),
+    EMPLOYEEREQUESTTYPE varchar(50),
+    PROCESSSTATE varchar(255),
+    PROCESSDATE date,
+    ISSUEDATE date,
+    REASON varchar(255),
+    REQUESTFROMDATE date,
+    REQUESTTODATE date,
+    AMOUNT decimal(19, 2),
+    MANAGER_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -979,3 +989,69 @@ create table HERA_EMPLOYEE_TASK (
     primary key (ID)
 )^
 -- end HERA_EMPLOYEE_TASK
+-- begin HERA_QUESTIONAIRE_RESULT
+create table HERA_QUESTIONAIRE_RESULT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PERSON_ID varchar(36),
+    EMPLOYEE_ID varchar(36),
+    QUESTIONAIREITEM_ID varchar(36),
+    QUESTION_TYPE varchar(50),
+    RESULT_ANSWER varchar(255),
+    ON_DATE date,
+    EMPLOYMENTAPPLICATION_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end HERA_QUESTIONAIRE_RESULT
+-- begin HERA_QUESTIONAIRE_ITEM
+create table HERA_QUESTIONAIRE_ITEM (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QUESTIONAIRE_ID varchar(36),
+    QUESTION varchar(255),
+    LANG_CODE varchar(10),
+    ANSWER varchar(255),
+    QUESTION_TYPE varchar(50),
+    WEIGHT double precision,
+    --
+    primary key (ID)
+)^
+-- end HERA_QUESTIONAIRE_ITEM
+-- begin HERA_QUESTIONAIRE
+create table HERA_QUESTIONAIRE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QUESTIONAIRETYPE_ID varchar(36),
+    FROM_DATE date,
+    TO_DATE date,
+    NAME varchar(100),
+    DESCRIPTION varchar(255),
+    MAKER_ID varchar(36),
+    PROCESS_STATE varchar(25),
+    PROCESS_DATE date,
+    --
+    primary key (ID)
+)^
+-- end HERA_QUESTIONAIRE

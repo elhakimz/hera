@@ -11,6 +11,7 @@
             <collection id="addressesDc" property="addresses"/>
             <collection id="identifiersDc" property="identifiers"/>
             <collection id="bankAccountsDc" property="bankAccounts"/>
+            <collection id="contactsDc" property="contacts"/>
         </instance>
     </data>
     <dialogMode height="600"

@@ -27,6 +27,7 @@
 
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
         <property name="country" view="_local"/>
+        <property name="city" />
     </view>
 
     <view entity="hera_Country" name="country-view" extends="_local"/>
@@ -188,5 +189,12 @@
     <view entity="hera_EmploymentApplication" name="employmentApplication-view"/>
     <view entity="hera_EmploymentApplStep" name="employmentApplyStep-view"/>
     <view entity="hera_NameDescription" name="nameDescription-view"/>
+    <view entity="hera_QuestionaireItem" name="questionaireItem-view"/>
+    <view entity="hera_Questionaire" name="questionaire-view"/>
+    <view entity="hera_QuestionaireType" name="questionaireType-view"/>
+    <view entity="hera_QuestionaireResult" name="questionaireResult-view">
+           <property name="questionaireItem"/>
+           <property name="result"/>
+    </view>
 
 </views>

@@ -1,0 +1,1 @@
+alter table HERA_QUESTIONAIRE_RESULT add column EMPLOYMENTAPPLICATION_ID varchar(36) ;

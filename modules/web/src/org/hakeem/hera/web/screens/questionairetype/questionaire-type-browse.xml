@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://questionaireTypeBrowse.caption"
+        focusComponent="questionaireTypesTable"
+        messagesPack="org.hakeem.hera.web.screens.questionairetype">
+    <data >
+        <collection id="questionaireTypesDc"
+                    class="org.hakeem.hera.entity.common.QuestionaireType">
+            <view extends="_local"/>
+            <loader id="questionaireTypesDl">
+                <query>
+                    <![CDATA[select e from hera_QuestionaireType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="questionaireTypesTable"
+            spacing="true">
+        <groupTable id="questionaireTypesTable"
+                    width="100%"
+                    dataContainer="questionaireTypesDc" editable="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name" editable="true"/>
+                <column id="description" editable="true"/>
+                <column id="validFrom" editable="true"/>
+                <column id="validUntil" editable="true"/>
+                <column id="language" editable="true"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="questionaireTypesTable.create"/>
+                <button id="removeBtn" action="questionaireTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

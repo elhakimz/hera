@@ -7,5 +7,13 @@
     <context:component-scan base-package="org.hakeem.hera"/>
     
     <gui:screens base-packages="org.hakeem.hera.web"/>
+    <bean id="hera_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="hera_QuestionaireService" value="org.hakeem.hera.service.QuestionaireService"/>
+            </map>
+        </property>
+    </bean>
 
 </beans>

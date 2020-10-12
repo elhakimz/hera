@@ -67,6 +67,8 @@
             <item screen="hera_Agreement.browse" caption="mainMsg://menu_config.hera_Agreement.browse"/>
             <item screen="hera_SkillType.browse" caption="mainMsg://menu_config.hera_SkillType.browse"/>
         </menu>
+        <item screen="hera_QuestionaireType.browse" caption="mainMsg://menu_config.hera_QuestionaireType.browse"/>
+        <item screen="hera_Questionaire.browse" caption="mainMsg://menu_config.hera_Questionaire.browse"/>
 
     </menu>
 </menu-config>

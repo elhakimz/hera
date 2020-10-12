@@ -1,13 +1,16 @@
 package org.hakeem.hera.entity.common;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import org.hakeem.hera.entity.hr.Employee;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Table(name = "HERA_QUESTIONAIRE")
 @Entity(name = "hera_Questionaire")
+@NamePattern("%s|name")
 public class Questionaire extends StandardEntity {
     private static final long serialVersionUID = 8978722710042235623L;
 
@@ -31,11 +34,8 @@ public class Questionaire extends StandardEntity {
     @JoinColumn(name = "MAKER_ID")
     private Employee maker;
 
-    @Column(name = "ISSELECTABLE")
-    private Boolean isSelectable;
-
-    @Column(name = "IS_MULTI_SELECT")
-    private Boolean isMultiSelect;
+    @OneToMany(mappedBy = "questionaire")
+    private List<QuestionaireItem> questionaireItems;
 
     @Column(name = "PROCESS_STATE", length = 25)
     private String processState;
@@ -43,21 +43,14 @@ public class Questionaire extends StandardEntity {
     @Column(name = "PROCESS_DATE")
     private LocalDate processDate;
 
-    public void setMultiSelect(Boolean multiSelect) {
-        isMultiSelect = multiSelect;
+    public void setQuestionaireItems(List<QuestionaireItem> questionaireItems) {
+        this.questionaireItems = questionaireItems;
     }
 
-    public Boolean getMultiSelect() {
-        return isMultiSelect;
+    public List<QuestionaireItem> getQuestionaireItems() {
+        return questionaireItems;
     }
 
-    public void setSelectable(Boolean selectable) {
-        isSelectable = selectable;
-    }
-
-    public Boolean isSelectable() {
-        return isSelectable;
-    }
 
     public void setProcessDate(LocalDate processDate) {
         this.processDate = processDate;

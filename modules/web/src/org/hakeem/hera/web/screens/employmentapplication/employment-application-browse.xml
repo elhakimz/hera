@@ -46,11 +46,11 @@
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="employmentApplicationsTable.create"/>
+                <button id="applicantBtn" caption="Create Applicant" />
                 <button id="editBtn" action="employmentApplicationsTable.edit"/>
                 <button id="removeBtn" action="employmentApplicationsTable.remove"/>
-                <label width="25px" value="|"/>
-                <button id="applicantBtn" caption="Create Applicant" />
+                <label value="|"/>
+
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

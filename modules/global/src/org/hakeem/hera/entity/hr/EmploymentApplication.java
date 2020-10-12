@@ -3,6 +3,7 @@ package org.hakeem.hera.entity.hr;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
+import org.hakeem.hera.entity.common.QuestionaireResult;
 import org.hakeem.hera.entity.party.Person;
 import org.hakeem.hera.entity.types.SourceType;
 
@@ -19,7 +20,7 @@ public class EmploymentApplication extends StandardEntity {
     private static final long serialVersionUID = 1247731668178665864L;
 
     @NotNull
-    @Column(name = "CODE", length = 10)
+    @Column(name = "CODE")
     private String code;
 
     @Column(name = "APPLYDATE")
@@ -42,6 +43,7 @@ public class EmploymentApplication extends StandardEntity {
     private SourceType sourceType;
 
     @Column(name = "DESCRIPTION")
+    @Lob
     private String description;
 
     @Column(name="PROCESS_STATE")
@@ -55,6 +57,18 @@ public class EmploymentApplication extends StandardEntity {
 
     @OneToMany(mappedBy = "employmentApplication")
     private List<EmploymentApplyStep> steps;
+
+    @OneToMany(mappedBy = "employmentApplication")
+    private List<QuestionaireResult> questionaireResults;
+
+
+    public void setQuestionaireResults(List<QuestionaireResult> questionaireResults) {
+        this.questionaireResults = questionaireResults;
+    }
+
+    public List<QuestionaireResult> getQuestionaireResults() {
+        return questionaireResults;
+    }
 
     public void setLastStep(String lastStep) {
         this.lastStep = lastStep;

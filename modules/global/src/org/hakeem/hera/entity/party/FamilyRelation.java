@@ -4,10 +4,11 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import org.hakeem.hera.entity.types.FamilyRelationType;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name = "HERA_FAMILY_RELATION")
+@DiscriminatorValue("FAMILYRELATION")
 @Entity(name = "hera_FamilyRelation")
 @NamePattern("%s|name")
 public class FamilyRelation extends PartyRelationship {
