@@ -1,27 +1,33 @@
 package org.hakeem.hera.web.screens.person;
 
+import com.haulmont.cuba.core.app.UniqueNumbersService;
 import com.haulmont.cuba.core.global.CommitContext;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.Metadata;
+import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
+import com.haulmont.cuba.gui.components.data.value.ContainerValueSource;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.DataContext;
 import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.screen.*;
 import org.hakeem.hera.entity.common.QuestionType;
+import org.hakeem.hera.entity.common.QuestionaireItem;
 import org.hakeem.hera.entity.common.QuestionaireResult;
 import org.hakeem.hera.entity.hr.EmploymentApplication;
 import org.hakeem.hera.entity.hr.EmploymentApplyStep;
 import org.hakeem.hera.entity.hr.Position;
+import org.hakeem.hera.entity.party.PartyRole;
 import org.hakeem.hera.entity.party.Person;
 import org.hakeem.hera.entity.types.EmploymentApplyStepType;
+import org.hakeem.hera.service.PartyService;
 import org.hakeem.hera.service.QuestionaireService;
 
 import javax.inject.Inject;
+import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -38,6 +44,8 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
     protected DataContext dataContext;
     @Inject
     protected DataManager dataManager;
+    @Inject
+    protected Notifications notifications;
 
     @Inject
     private Metadata metadata;
@@ -48,6 +56,12 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
     @Inject
     protected QuestionaireService questionaireService;
 
+    @Inject
+    protected PartyService partyService;
+
+    @Inject
+    protected UniqueNumbersService uniqueNumbersService;
+
     private Position selectedPosition;
 
     @Subscribe
@@ -55,53 +69,18 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
         Person p = metadata.create(Person.class);
         setEntityToEdit(p);
 
-        questionTable.addGeneratedColumn("result",entity -> {
-            return createColumnComponent(entity.getQuestionType(),entity);
-        });
-
         List<QuestionaireResult> qlist=questionaireService.generateQuestionaireList("Interview");
 
         for(QuestionaireResult result:qlist){
             result.setPerson(getEditedEntity());
         }
-        questionsDc.getMutableItems().addAll(qlist);
+        questionsDc.setItems(qlist);
     }
 
     @Subscribe("btnCommitAndClose")
     public void onBtnCommitAndCloseClick(Button.ClickEvent event) {
         createEmployeeApplication();
         closeWithCommit();
-    }
-
-    private Component createColumnComponent(QuestionType questionType,  QuestionaireResult result){
-
-        if(questionType==QuestionType.BOOLEAN){
-            CheckBox cb = uiComponents.create(CheckBox.class);
-            cb.addValueChangeListener(booleanValueChangeEvent -> result.setResult(booleanValueChangeEvent.getValue().toString()));
-            return cb;
-        }else if(questionType==QuestionType.TEXT){
-            TextField tf= uiComponents.create(TextField.TYPE_STRING);
-             tf.setWidth("100%");
-             tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
-                    valueChangeEvent -> result.setResult((String) valueChangeEvent.getValue()));
-           return tf;
-        }else if(questionType==QuestionType.DATE){
-            DateField df =uiComponents.create(DateField.TYPE_DATE);
-            df.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
-                    valueChangeEvent -> result.setResult(valueChangeEvent.getValue().toString()));
-            return df;
-        }else if(questionType==QuestionType.NUMBER){
-            TextField tf = uiComponents.create(TextField.TYPE_DOUBLE);
-            tf.setWidth("100%");
-            tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
-                    valueChangeEvent -> result.setResult((String) valueChangeEvent.getValue()));
-            return tf;
-        }
-        TextField tf = uiComponents.create(TextField.TYPE_STRING);
-        tf.setWidth("100%");
-        tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
-                valueChangeEvent -> result.setResult((String) valueChangeEvent.getValue()));
-        return tf;
     }
 
     @Subscribe(id = "questionsDc", target = Target.DATA_CONTAINER)
@@ -114,31 +93,35 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
         dataContext.commit();
     }
 
-    @Subscribe(id = "questionsDc", target = Target.DATA_CONTAINER)
-    protected void onQuestionsDcItemPropertyChange(InstanceContainer.ItemPropertyChangeEvent<QuestionaireResult> event) {
-        dataContext.commit();
-    }
 
 
     private void createEmployeeApplication(){
 
-        CommitContext commitContext = new CommitContext();
-        EmploymentApplication ea=dataManager.create(EmploymentApplication.class);
-        ea.setCode("APPL-"+LocalDate.now());
+        PartyRole partyRole = partyService.createPartyRole("PERSON");
+
+        if(partyRole!=null){
+            partyRole.setParty(getEditedEntity());
+            dataContext.merge(partyRole);
+            List<PartyRole> roles = new ArrayList<>();
+            getEditedEntity().setPartyRoles(roles);
+            getEditedEntity().getPartyRoles().add(partyRole);
+        }
+        dataContext.merge(getEditedEntity());
+
+        final EmploymentApplication ea=dataManager.create(EmploymentApplication.class);
+
+        ea.setCode("APPL-"+uniqueNumbersService.getNextNumber(EmploymentApplication.class.getSimpleName()));
         ea.setFromPerson(getEditedEntity());
         ea.setApplyDate(LocalDate.now());
 
         List<QuestionaireResult> qrs = questionsDc.getMutableItems();
         StringBuilder descr = new StringBuilder();
 
-        qrs.forEach(qr -> {
-            descr.append(qr.getQuestionaireItem().getQuestion())
-                    .append(": ").append(qr.getResult()).append("\r\n");
-        });
+        qrs.forEach(qr -> descr.append(qr.getQuestionaireItem().getQuestion())
+                .append(": ").append(qr.getResult()).append("\r\n"));
 
         ea.setDescription(descr.toString());
         ea.setPosition(selectedPosition);
-
         List<EmploymentApplyStep> eas=new ArrayList<>();
         EmploymentApplyStep applyStep = dataManager.create(EmploymentApplyStep.class);
         applyStep.setEmploymentApplication(ea);
@@ -147,19 +130,15 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
         applyStep.setEmploymentApplyStepType(EmploymentApplyStepType.SOURCED);
         ea.setSteps(eas);
         ea.setLastStep(EmploymentApplyStepType.SOURCED.getId());
+        dataContext.merge(ea);
+        dataContext.merge(applyStep);
 
-        qrs.forEach(qr -> {
-           QuestionaireResult res=dataManager.create(QuestionaireResult.class);
-           res.setEmploymentApplication(ea);
-           res.setResult(qr.getResult());
-           res.setPerson(getEditedEntity());
-           res.setQuestionType(qr.getQuestionType());
-           res.setOnDate(qr.getOnDate());
-           commitContext.addInstanceToCommit(res);
-         });
-
-        commitContext.addInstanceToCommit(ea).addInstanceToCommit(applyStep);
-        dataManager.commit(commitContext);
+        for(QuestionaireResult qr:qrs){
+             qr.setEmploymentApplication(ea);
+             dataContext.merge(qr);
+        }
+        dataContext.commit();
+        notifications.create(Notifications.NotificationType.TRAY).withCaption("Employment Application has been created").show();
     }
 
     @Subscribe("positionWantedField")
@@ -167,5 +146,47 @@ public class PersonApplicantEdit extends StandardEditor<Person> {
         selectedPosition = event.getValue();
     }
 
+
+    public Component generateResultCell(QuestionaireResult entity) {
+        QuestionType questionType = entity.getQuestionType();
+        TextField tf;
+        if(questionType==QuestionType.TEXT){
+             tf= uiComponents.create(TextField.TYPE_STRING);
+            tf.setWidthFull();
+            tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
+                    valueChangeEvent -> entity.setResult(String.valueOf(valueChangeEvent.getValue()))
+            );
+            return tf;
+        }else  if(questionType==QuestionType.NUMBER){
+             tf = uiComponents.create(TextField.TYPE_DOUBLE);
+            tf.setWidthFull();
+            tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
+                    valueChangeEvent -> entity.setResult(String.valueOf(valueChangeEvent.getValue()))
+            );
+
+            return tf;
+        }else  if(questionType==QuestionType.MONEY){
+            CurrencyField cf = uiComponents.create(CurrencyField.TYPE_BIGDECIMAL);
+            cf.setWidthFull();
+            cf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
+                    valueChangeEvent -> entity.setResult(String.valueOf(valueChangeEvent.getValue()))
+            );
+
+            return cf;
+        }else{
+            tf = uiComponents.create(TextField.TYPE_STRING);
+            tf.setWidthFull();
+            tf.addValueChangeListener((Consumer<HasValue.ValueChangeEvent>)
+                    valueChangeEvent -> entity.setResult(String.valueOf(valueChangeEvent.getValue()))
+            );
+
+        }
+        return tf;
+    }
+
+//    @Subscribe(id = "questionsDc", target = Target.DATA_CONTAINER)
+//    protected void onQuestionsDcItemPropertyChange(InstanceContainer.ItemPropertyChangeEvent<QuestionaireResult> event) {
+//        dataContext.merge(event.getItem());
+//    }
 
 }

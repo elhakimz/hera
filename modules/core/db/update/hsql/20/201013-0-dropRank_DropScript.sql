@@ -1,0 +1,1 @@
+drop table HERA_RANK__U55562 if exists cascade ;

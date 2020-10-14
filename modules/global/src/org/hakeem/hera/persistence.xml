@@ -61,5 +61,8 @@
         <class>org.hakeem.hera.entity.common.QuestionaireType</class>
         <class>org.hakeem.hera.entity.common.QuestionaireItem</class>
         <class>org.hakeem.hera.entity.common.QuestionaireResult</class>
+        <class>org.hakeem.hera.entity.hr.EmployeeGroup</class>
+        <class>org.hakeem.hera.entity.common.Task</class>
+        <class>org.hakeem.hera.entity.hr.EmployeeUser</class>
     </persistence-unit>
 </persistence>

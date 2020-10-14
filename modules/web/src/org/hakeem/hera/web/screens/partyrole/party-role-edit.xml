@@ -6,7 +6,9 @@
     <data>
         <instance id="partyRoleDc"
                   class="org.hakeem.hera.entity.party.PartyRole">
-            <view extends="partyRole-view"/>
+            <view extends="partyRole-view">
+                <property name="partyRoleType" view="_minimal"/>
+            </view>
             <loader/>
         </instance>
     </data>
@@ -25,6 +27,7 @@
                 </pickerField>
                 <dateField id="fromDateField" property="fromDate"/>
                 <dateField id="thruDateField" property="thruDate"/>
+                <pickerField id="partyRoleTypeField" property="partyRoleType"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

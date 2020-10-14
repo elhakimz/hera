@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://employeeUserBrowse.caption"
+        focusComponent="employeeUsersTable"
+        messagesPack="org.hakeem.hera.web.screens.employeeuser">
+    <data readOnly="false">
+        <collection id="employeeUsersDc"
+                    class="org.hakeem.hera.entity.hr.EmployeeUser">
+            <view extends="_local">
+                <property name="user" view="_minimal"/>
+                <property name="employee" view="_minimal"/>
+            </view>
+            <loader id="employeeUsersDl">
+                <query>
+                    <![CDATA[select e from hera_EmployeeUser e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="employeeUsersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="employeeUsersTable"
+                dataLoader="employeeUsersDl">
+            <properties include=".*"/>
+        </filter>
+        <dataGrid id="employeeUsersTable"
+                  width="100%"
+                  dataContainer="employeeUsersDc" editorEnabled="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column property="user" id="user" editable="true" expandRatio="3"/>
+                <column property="employee" id="employee" editable="true" expandRatio="3"/>
+                <column property="registerDate" id="registerDate"/>
+
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="employeeUsersTable.create"/>
+                <button id="removeBtn" action="employeeUsersTable.remove"/>
+            </buttonsPanel>
+        </dataGrid>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

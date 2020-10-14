@@ -2,12 +2,14 @@ package org.hakeem.hera.entity.hr;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.annotation.CaseConversion;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import org.hakeem.hera.entity.party.PartyRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@PublishEntityChangedEvents
 @javax.persistence.DiscriminatorValue("EMPLOYEE")
 @Entity(name = "hera_Employee")
 @NamePattern("%s|name")

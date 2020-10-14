@@ -25,6 +25,7 @@
         <property name="birthPlace"/>
     </view>
 
+
     <view entity="hera_PartyAddress" name="partyAddress-view" extends="_local">
         <property name="country" view="_local"/>
         <property name="city" />
@@ -38,6 +39,7 @@
         <property name="party" view="party-view"/>
         <property name="name"/>
         <property name="positionFulfillments" view="positionFulfillment-view"/>
+        <property name="partyRoleType" view="partyRoleType-view"/>
     </view>
     <view entity="hera_Employment" name="employment-view" extends="_local">
         <property name="fromPartyRole" view="_minimal"/>
@@ -195,6 +197,11 @@
     <view entity="hera_QuestionaireResult" name="questionaireResult-view">
            <property name="questionaireItem"/>
            <property name="result"/>
+           <property name="onDate"/>
+           <property name="questionType"/>
     </view>
+    <view entity="hera_Task" name="task-view"/>
+    <view entity="hera_EmployeeTask" name="employeeTask-view"/>
+    <view entity="hera_EmployeeUser" name="employeeUser-view"/>
 
 </views>

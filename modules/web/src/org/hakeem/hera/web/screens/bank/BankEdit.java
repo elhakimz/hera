@@ -63,10 +63,5 @@ public class BankEdit extends StandardEditor<Bank> {
        onCreateAccountNumber();
     }
 
-    @Subscribe(id = "bankAccountNumbersDc", target = Target.DATA_CONTAINER)
-    public void onBankAccountNumbersDcCollectionChange(CollectionContainer.CollectionChangeEvent<BankAccountNumber> event) {
-        dataContext.commit();
 
-
-    }
 }

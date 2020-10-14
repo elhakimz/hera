@@ -1,0 +1,2 @@
+alter table HERA_TASK add constraint FK_HERA_TASK_ON_FROM_EMPLOYEE foreign key (FROM_EMPLOYEE_ID) references HERA_PARTY_ROLE(ID);
+create index IDX_HERA_TASK_ON_FROM_EMPLOYEE on HERA_TASK (FROM_EMPLOYEE_ID);

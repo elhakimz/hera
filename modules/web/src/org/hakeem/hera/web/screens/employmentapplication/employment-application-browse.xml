@@ -40,17 +40,17 @@
                 <column id="applyDate"/>
                 <column id="position"/>
                 <column id="fromPerson"/>
-                <column id="description"/>
                 <column id="processState"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="applicantBtn" caption="Create Applicant" />
+                <button id="applicantBtn" caption="Create Applicant" stylename="primary" />
                 <button id="editBtn" action="employmentApplicationsTable.edit"/>
                 <button id="removeBtn" action="employmentApplicationsTable.remove"/>
                 <label value="|"/>
-
+                <lookupField caption="Usulkan Proses" id="lookUpPropagate"  nullName="Pilih Proses" enable="false"/>
+                <button  id="propagateBtn" icon="font-icon:CHECK" caption="Usulkan"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

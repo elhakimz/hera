@@ -606,23 +606,7 @@ create table HERA_EMPLOYEE_RANK (
     primary key (ID)
 )^
 -- end HERA_EMPLOYEE_RANK
--- begin HERA_RANK
-create table HERA_RANK (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    NAME varchar(255),
-    DESCRIPTION varchar(255),
-    --
-    primary key (ID)
-)^
--- end HERA_RANK
+
 -- begin HERA_HOLIDAY
 create table HERA_HOLIDAY (
     ID varchar(36) not null,
@@ -945,6 +929,9 @@ create table HERA_NAME_DESCRIPTION (
     VALIDUNTIL date,
     LANG varchar(10),
     --
+    -- from hera_Rank
+    CODE varchar(255),
+    --
     primary key (ID)
 )^
 -- end HERA_NAME_DESCRIPTION
@@ -973,22 +960,7 @@ create table HERA_EMPLOYEE_REQUEST (
     primary key (ID)
 )^
 -- end HERA_EMPLOYEE_REQUEST
--- begin HERA_EMPLOYEE_TASK
-create table HERA_EMPLOYEE_TASK (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    EMPLOYEE_ID varchar(36),
-    --
-    primary key (ID)
-)^
--- end HERA_EMPLOYEE_TASK
+
 -- begin HERA_QUESTIONAIRE_RESULT
 create table HERA_QUESTIONAIRE_RESULT (
     ID varchar(36) not null,
@@ -1055,3 +1027,51 @@ create table HERA_QUESTIONAIRE (
     primary key (ID)
 )^
 -- end HERA_QUESTIONAIRE
+-- begin HERA_EMPLOYEE_USER
+create table HERA_EMPLOYEE_USER (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    user_ID varchar(36),
+    EMPLOYEE_ID varchar(36),
+    REGISTER_DATE date,
+    --
+    primary key (ID)
+)^
+-- end HERA_EMPLOYEE_USER
+-- begin HERA_TASK
+create table HERA_TASK (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    DTYPE varchar(31),
+    --
+    NAME varchar(255),
+    TODO longvarchar,
+    FROM_DATE date,
+    TO_DATE date,
+    PRIORITY_TYPE varchar(50),
+    TASK_STATUS_TYPE varchar(50),
+    PROCESS_STATE varchar(255),
+    PROCESS_DATE varchar(255),
+    --
+    -- from hera_EmployeeTask
+    EMPLOYEE_ID varchar(36),
+    FROM_EMPLOYEE_ID varchar(36),
+    FWD_EMPLOYEE_ID varchar(36),
+    FORWARD_DATE date,
+    --
+    primary key (ID)
+)^
+-- end HERA_TASK

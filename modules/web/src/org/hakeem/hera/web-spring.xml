@@ -12,6 +12,8 @@
         <property name="remoteServices">
             <map>
                 <entry key="hera_QuestionaireService" value="org.hakeem.hera.service.QuestionaireService"/>
+                <entry key="hera_PartyService" value="org.hakeem.hera.service.PartyService"/>
+                <entry key="hera_TaskService" value="org.hakeem.hera.service.TaskService"/>
             </map>
         </property>
     </bean>

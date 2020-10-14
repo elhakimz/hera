@@ -3,6 +3,7 @@ package org.hakeem.hera.entity.finance;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import org.hakeem.hera.entity.party.Organization;
 import org.slf4j.Logger;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@PublishEntityChangedEvents
 @Table(name = "HERA_BANK")
 @Entity(name = "hera_Bank")
 @NamePattern("%s|name")

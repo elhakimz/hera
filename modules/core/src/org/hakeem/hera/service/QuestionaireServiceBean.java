@@ -4,6 +4,7 @@ import com.haulmont.cuba.core.EntityManager;
 import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.Metadata;
 import org.hakeem.hera.entity.common.Questionaire;
 import org.hakeem.hera.entity.common.QuestionaireItem;
 import org.hakeem.hera.entity.common.QuestionaireResult;
@@ -19,6 +20,9 @@ import java.util.UUID;
 public class QuestionaireServiceBean implements QuestionaireService {
 
 
+
+    @Inject
+    protected Metadata metadata;
     @Inject
     protected DataManager dataManager;
 
@@ -52,7 +56,9 @@ public class QuestionaireServiceBean implements QuestionaireService {
                 qr.setQuestionType(qi.getQuestionType());
                 qr.setResult("");
                 results.add(qr);
+                em.flush();
             }
+
             return results;
         }
 

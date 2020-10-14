@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://employeeTaskBrowse.caption"
+        focusComponent="employeesTable"
+        messagesPack="org.hakeem.hera.web.screens.employeetask">
+    <data readOnly="true">
+
+        <collection id="employeesDc" class="org.hakeem.hera.entity.hr.Employee">
+            <view extends="_local">
+               <property name="party"/>
+            </view>
+            <loader id="employeedDl">
+                <query>
+                    <![CDATA[select e from hera_Employee e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="employeeTasksDc"
+                    class="org.hakeem.hera.entity.hr.EmployeeTask">
+            <view extends="_local">
+                <property name="toEmployee" view="_minimal"/>
+                <property name="delegatedFrom" view="_minimal"/>
+            </view>
+            <loader id="employeeTasksDl">
+                <query>
+                    <![CDATA[select e from hera_EmployeeTask e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="splitter"
+            spacing="true">
+        <filter id="filter"
+                applyTo="employeesTable"
+                dataLoader="employeedDl">
+            <properties include=".*"/>
+        </filter>
+        <split id="splitter" orientation="horizontal" width="100%" pos="30">
+            <vbox width="100%" height="100%" expand="employeesTable" spacing="true">
+                <textField id="searchField" caption="Cari"/>
+                <table id="employeesTable" dataContainer="employeesDc" stylename="borderless no-header no-vertical-lines">
+                    <columns>
+                        <column id="toEmployee"></column>
+                    </columns>
+                    <rows/>
+                </table>
+            </vbox>
+            <scrollBox id="scrollBox" orientation="vertical" width="100%" height="100%">
+                <flowBox id="flowBox" height="AUTO" width="100%" spacing="true">
+
+                </flowBox>
+            </scrollBox>
+        </split>
+
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

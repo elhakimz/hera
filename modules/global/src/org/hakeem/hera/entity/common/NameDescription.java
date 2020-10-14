@@ -31,6 +31,17 @@ public class NameDescription extends StandardEntity {
     @Column(name="LANG", length = 10)
     private String language;
 
+    @Column(name = "CODE")
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getName() {
         return name;
     }

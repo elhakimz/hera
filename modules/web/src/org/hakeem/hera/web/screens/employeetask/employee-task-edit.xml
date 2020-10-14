@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://employeeTaskEdit.caption"
+        focusComponent="form"
+        messagesPack="org.hakeem.hera.web.screens.employeetask">
+    <data>
+        <instance id="employeeTaskDc"
+                  class="org.hakeem.hera.entity.hr.EmployeeTask">
+            <view extends="_local">
+                <property name="toEmployee" view="_minimal"/>
+                <property name="delegatedFrom" view="_minimal"/>
+                <property name="forwardedTo" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800" />
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="employeeTaskDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textArea id="todoField" property="todo" rows="5"/>
+                <dateField id="fromDateField" property="fromDate"/>
+                <dateField id="toDateField" property="toDate"/>
+                <lookupField id="priorityTypeField" property="priorityType"/>
+                <lookupField id="taskStatusTypeField" property="taskStatusType"/>
+                <pickerField id="toEmployeeField" property="toEmployee">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="delegatedFromField" property="delegatedFrom">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="forwardedToField" property="forwardedTo">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <dateField id="forwardDateField" property="forwardDate"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

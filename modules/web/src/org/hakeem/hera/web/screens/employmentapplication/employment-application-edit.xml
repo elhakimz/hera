@@ -8,18 +8,19 @@
                   class="org.hakeem.hera.entity.hr.EmploymentApplication">
             <view extends="_local">
                 <property name="position" view="position-view"/>
-                <property name="fromPerson" view="_minimal"/>
+                <property name="fromPerson" view="person-view"/>
                 <property name="referPerson" view="_minimal"/>
                 <property name="sourceType" view="_minimal"/>
                 <property name="steps" view="_minimal">
                     <property name="stepDate"/>
                     <property name="description"/>
                 </property>
-                <property name="questionaireResults" view="_local"/>
+                <property name="questionaireResults" view="questionaireResult-view"/>
             </view>
             <loader id="employmentApplicationDl"/>
             <collection id="stepsDc" property="steps"/>
-            <collection id="questionaireResultsDc" property="questionaireResults"/>
+            <collection id="questionaireResultsDc" property="questionaireResults" />
+
         </instance>
         <collection id="procAttachmentsDc"
                     class="com.haulmont.bpm.entity.ProcAttachment"
@@ -118,21 +119,11 @@
         <groupBox id="questionaireResultsBox"
                   caption="msg://org.hakeem.hera.entity.hr/EmploymentApplication.questionaireResults">
             <table id="questionaireResultsTable" dataContainer="questionaireResultsDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
                 <columns>
-                    <column id="questionType"/>
+                    <column id="questionaireItem"/>
                     <column id="result"/>
                     <column id="onDate"/>
                 </columns>
-                <buttonsPanel>
-                    <button action="questionaireResultsTable.create"/>
-                    <button action="questionaireResultsTable.edit"/>
-                    <button action="questionaireResultsTable.remove"/>
-                </buttonsPanel>
             </table>
         </groupBox>
         <hbox id="editActions" spacing="true">

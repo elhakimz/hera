@@ -43,9 +43,10 @@
             <groupBox spacing="true" caption="Pertanyaan" width="100%"  stylename="borderless" height="250px" expand="vbox1">
                 <vbox id="vbox1" spacing="true" expand="questionTable"  margin="true">
                     <hbox><label value="Untuk Jabatan"/><lookupField id="positionWantedField" optionsContainer="positionsDc" width="100%" height="100%"/></hbox>
-                    <table dataContainer="questionsDc" id="questionTable" editable="true" stylename="no-vertical-lines borderless" width="100%" height="100%">
+                    <table dataContainer="questionsDc" id="questionTable" editable="true" stylename="no-vertical-lines borderless, no-header no-stripes" showSelection="false" width="100%" >
                         <columns>
                             <column id="questionaireItem"  editable="false"/>
+                            <column id="result"  editable="true"/>
                         </columns>
                         <rows/>
                     </table>

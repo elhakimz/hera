@@ -1,0 +1,1 @@
+alter table HERA_EMPLOYEE_RANK add constraint FK_HERA_EMPLOYEE_RANK_ON_RANK_TYPE foreign key (RANK_TYPE_ID) references HERA_NAME_DESCRIPTION(ID);

@@ -9,6 +9,7 @@ public enum QuestionType implements EnumClass<String> {
 
     TEXT("Text"),
     NUMBER("Number"),
+    MONEY("Money"),
     DATE("Date"),
     BOOLEAN("Boolean"),
     SELECT("Selection"),

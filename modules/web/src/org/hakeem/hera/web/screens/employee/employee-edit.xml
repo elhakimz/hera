@@ -9,6 +9,7 @@
             <view extends="employee-view">
                 <property name="party"/>
                 <property name="positionFulfillments" view="positionFulfillment-view"/>
+                <property name="partyRoleType" view="partyRoleType-view"/>
             </view>
             <loader/>
             <collection id="positionFulfillmentsDc" property="positionFulfillments" >
